@@ -23,34 +23,34 @@ int main(){
     crypto_kem_keypair(k_pub, k_priv);
     crypto_kem_keypair(v_pub, v_priv);
 
+    printf("KYBER_K: %d\n", KYBER_K);
 
+    // crypto_kem_enc(ephemeral_pub_key, ss, v_pub);
+    // crypto_kem_dec(ss2, ephemeral_pub_key, v_priv);
 
-    crypto_kem_enc(ephemeral_pub_key, ss, v_pub);
-    crypto_kem_dec(ss2, ephemeral_pub_key, v_priv);
+    // for(int i=0; i< KYBER_SSBYTES; i++){
+    //     printf("%d", ss[i]);
+    // }printf("\n\n");
 
-    for(int i=0; i< KYBER_SSBYTES; i++){
-        printf("%d", ss[i]);
-    }printf("\n\n");
-
-    for(int i=0; i< KYBER_SSBYTES; i++){
-        printf("%d", ss2[i]);
-    }
+    // for(int i=0; i< KYBER_SSBYTES; i++){
+    //     printf("%d", ss2[i]);
+    // }
     //2. Sender computes shared secret and view tag
-    // sender_computes_stealth_pub_key_and_viewtag(stealth_pub_key_sender, ephemeral_pub_key, 
-    //                                                 &view_tag, v_pub, k_pub);
+    sender_computes_stealth_pub_key_and_viewtag(stealth_pub_key_sender, ephemeral_pub_key, 
+                                                    &view_tag, v_pub, k_pub);
 
-    // //3. Recipient calculates stealth address public key
-    // recipient_computes_stealth_pub_key(stealth_pub_key_reciever,
-    //                                   k_pub,
-    //                                   ephemeral_pub_key,
-    //                                   v_priv);
+    //3. Recipient calculates stealth address public key
+    recipient_computes_stealth_pub_key(stealth_pub_key_reciever,
+                                      k_pub,
+                                      ephemeral_pub_key,
+                                      v_priv);
 
     for(int i=0; i<STEALTH_ADDRESS_BYTES; i++){
         if(stealth_pub_key_reciever[i]!=stealth_pub_key_sender[i]){
 
             // printf("R: %d\tS: %d\n", stealth_pub_key_reciever[i], stealth_pub_key_sender[i]);
-            // printf("Test FAILED!\n");
-            // return 0;
+            printf("Test FAILED!\n");
+            return 0;
         }
     }
     printf("Test PASSED!\n");

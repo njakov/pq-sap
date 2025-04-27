@@ -14,8 +14,8 @@ MAIN_SOURCES = main.c
 SHARED_SOURCES = $(LIB_DIR)/randombytes.c #$(LIB_DIR)/indcpa.c
 
 
-# Libraries
-KYBER_LIBS = -lpqcrystals_kyber512_avx2 -lpqcrystals_kyber768_avx2 -lpqcrystals_kyber1024_avx2
+# Libraries 
+KYBER_LIBS =  -lpqcrystals_kyber512_avx2 -lpqcrystals_kyber768_avx2 -lpqcrystals_kyber1024_avx2
 FIPS202_LIBS = -lpqcrystals_fips202_ref -lpqcrystals_fips202x4_avx2
 
 # Compiler and flags

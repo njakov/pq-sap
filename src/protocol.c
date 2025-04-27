@@ -71,6 +71,7 @@ uint8_t calculate_view_tag(const uint8_t ss[SS_BYTES]) {
     return view_tag;  // First byte of hash
 }
 
+
 void calculate_stealth_pub_key(uint8_t stealth_pub_key[STEALTH_ADDRESS_BYTES], 
                              const uint8_t ss[KYBER_SYMBYTES], 
                              const uint8_t k_pub[KYBER_INDCPA_PUBLICKEYBYTES]) {
