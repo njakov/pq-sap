@@ -2,6 +2,7 @@
 LIB_DIR = ./libs
 INC_DIR = ./libs
 TEST_DIR = ./tests
+SRC_DIR = ./src
 
 # Targets
 TARGET = kyber_demo
@@ -10,16 +11,16 @@ TEST_TARGETS = $(addprefix $(TEST_DIR)/, $(TEST_NAMES))
 
 # Sources
 MAIN_SOURCES = main.c 
-SHARED_SOURCES = $(LIB_DIR)/randombytes.c
+SHARED_SOURCES = $(LIB_DIR)/randombytes.c #$(LIB_DIR)/indcpa.c
 
 
-# Libraries
-KYBER_LIBS = -lpqcrystals_kyber512_avx2 -lpqcrystals_kyber768_avx2 -lpqcrystals_kyber1024_avx2
+# Libraries 
+KYBER_LIBS =  -lpqcrystals_kyber512_avx2 -lpqcrystals_kyber768_avx2 -lpqcrystals_kyber1024_avx2
 FIPS202_LIBS = -lpqcrystals_fips202_ref -lpqcrystals_fips202x4_avx2
 
 # Compiler and flags
 CC = gcc
-CFLAGS = -Wall -Wextra -I$(INC_DIR)
+CFLAGS = -Wall -Wextra -I$(INC_DIR) -I$(SRC_DIR)
 LDFLAGS = -L$(LIB_DIR) -Wl,-rpath=$(LIB_DIR) $(KYBER_LIBS) $(FIPS202_LIBS)
 
 # Default target
@@ -30,8 +31,13 @@ $(TARGET): $(MAIN_SOURCES) $(SHARED_SOURCES)
 	$(CC) $(CFLAGS) $^ -o $@ $(LDFLAGS)
 
 # Rule for compiling tests
-$(TEST_DIR)/%: $(TEST_DIR)/%.c
-	$(CC) $(CFLAGS) $< $(SHARED_SOURCES) -o $@ $(LDFLAGS)
+# Rule for compiling tests
+$(TEST_DIR)/kem_test: $(TEST_DIR)/kem_test.c $(SHARED_SOURCES)
+	$(CC) $(CFLAGS) $^ -o $@ $(LDFLAGS)
+
+$(TEST_DIR)/protocol_test: $(TEST_DIR)/protocol_test.c $(SRC_DIR)/protocol.c $(SHARED_SOURCES)
+	$(CC) $(CFLAGS) $^ -o $@ $(LDFLAGS)
+
 
 # Build all test targets
 tests: $(TEST_TARGETS)
