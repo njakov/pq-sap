@@ -1,3 +1,17 @@
+/**
+ * @file poly.h
+ * @brief This file defines the `poly` data structure and provides function declarations for operations
+ * on polynomials used in cryptographic algorithms, particularly in the context of Kyber, a lattice-based
+ * encryption scheme. The operations include compression, decomposition, NTT (Number Theoretic Transform),
+ * base multiplication, and polynomial reductions.
+ *
+ * The `poly` structure represents a polynomial used in the Kyber cryptosystem, and the functions in this file
+ * perform various polynomial operations, such as converting to/from byte arrays, applying noise, performing
+ * modular reductions, and executing arithmetic operations (addition, subtraction, multiplication).
+ *
+ * The function implementations are likely found in the corresponding Kyber implementation files.
+ */
+
 #ifndef POLY_H
 #define POLY_H
 
@@ -7,8 +21,27 @@
 
 typedef ALIGNED_INT16(KYBER_N) poly;
 
-#define poly_compress KYBER_NAMESPACE(poly_compress)
+/**
+ * @brief Compresses a polynomial into a compact byte representation.
+ *
+ * This function compresses the given polynomial `a` into a byte array `r`. The implementation is optimized for
+ * the Kyber encryption scheme and is used for efficient polynomial storage and transmission.
+ *
+ * @param r The compressed byte representation of the polynomial.
+ * @param a The polynomial to be compressed.
+ */#define poly_compress KYBER_NAMESPACE(poly_compress)
 void poly_compress(uint8_t r[KYBER_POLYCOMPRESSEDBYTES], const poly *a);
+
+
+/**
+ * @brief Decompresses a byte array back into a polynomial.
+ *
+ * This function decompresses the byte array `a` into the polynomial `r`. The byte array `a` represents the
+ * compressed form of the polynomial.
+ *
+ * @param r The resulting polynomial.
+ * @param a The byte array containing the compressed polynomial.
+ */
 #define poly_decompress KYBER_NAMESPACE(poly_decompress)
 void poly_decompress(poly *r, const uint8_t a[KYBER_POLYCOMPRESSEDBYTES]);
 
@@ -22,6 +55,17 @@ void poly_frommsg(poly *r, const uint8_t msg[KYBER_INDCPA_MSGBYTES]);
 #define poly_tomsg KYBER_NAMESPACE(poly_tomsg)
 void poly_tomsg(uint8_t msg[KYBER_INDCPA_MSGBYTES], const poly *r);
 
+
+/**
+ * @brief Generates noise (eta1) for a polynomial using a seed and nonce.
+ *
+ * This function generates noise with a specific distribution (eta1) and stores it in the polynomial `r`.
+ * The noise is generated deterministically using the provided `seed` and `nonce`.
+ *
+ * @param r The resulting polynomial containing the generated noise.
+ * @param seed The seed for noise generation.
+ * @param nonce The nonce used to differentiate different noise generations.
+ */
 #define poly_getnoise_eta1 KYBER_NAMESPACE(poly_getnoise_eta1)
 void poly_getnoise_eta1(poly *r, const uint8_t seed[KYBER_SYMBYTES], uint8_t nonce);
 
@@ -63,6 +107,16 @@ void poly_invntt_tomont(poly *r);
 void poly_nttunpack(poly *r);
 #define poly_basemul_montgomery KYBER_NAMESPACE(poly_basemul_montgomery)
 void poly_basemul_montgomery(poly *r, const poly *a, const poly *b);
+
+
+/**
+ * @brief Converts a polynomial to Montgomery form.
+ *
+ * This function converts the polynomial `r` into Montgomery form, which is necessary for efficient modular
+ * arithmetic in the Kyber scheme.
+ *
+ * @param r The polynomial to be converted.
+ */
 #define poly_tomont KYBER_NAMESPACE(poly_tomont)
 void poly_tomont(poly *r);
 

@@ -1,0 +1,277 @@
+\doxysection{libs/polyvec.h File Reference}
+\hypertarget{polyvec_8h}{}\label{polyvec_8h}\index{libs/polyvec.h@{libs/polyvec.h}}
+
+
+This file defines the {\ttfamily polyvec} data structure and provides function declarations for operations on polynomial vectors used in cryptographic algorithms, particularly in the context of Kyber, a lattice-\/based encryption scheme.  
+
+
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include "{}params.\+h"{}}\newline
+{\ttfamily \#include "{}poly.\+h"{}}\newline
+Include dependency graph for polyvec.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structpolyvec}{polyvec}}
+\begin{DoxyCompactList}\small\item\em A structure that holds a vector of polynomials. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{polyvec_8h_a143ae5510ea6ef799d18ebedefcb9956}{polyvec\+\_\+compress}}~\mbox{\hyperlink{params_8h_a51c1085c773ccaac6cfa51a987dd346b}{KYBER\+\_\+\+NAMESPACE}}(polyvec\+\_\+compress)
+\begin{DoxyCompactList}\small\item\em Compresses a polynomial vector into a compact byte representation. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{polyvec_8h_a06d34684a282207aaf4bc00c2ac1fe79}{polyvec\+\_\+decompress}}~\mbox{\hyperlink{params_8h_a51c1085c773ccaac6cfa51a987dd346b}{KYBER\+\_\+\+NAMESPACE}}(polyvec\+\_\+decompress)
+\begin{DoxyCompactList}\small\item\em Decompresses a byte representation back into a polynomial vector. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{polyvec_8h_a68bc449baca16c3d14c221146fed8a62}{polyvec\+\_\+tobytes}}~\mbox{\hyperlink{params_8h_a51c1085c773ccaac6cfa51a987dd346b}{KYBER\+\_\+\+NAMESPACE}}(polyvec\+\_\+tobytes)
+\begin{DoxyCompactList}\small\item\em Converts a polynomial vector into a byte array. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{polyvec_8h_a6bccf486b0a4aa8bae3689c1c2a540f0}{polyvec\+\_\+frombytes}}~\mbox{\hyperlink{params_8h_a51c1085c773ccaac6cfa51a987dd346b}{KYBER\+\_\+\+NAMESPACE}}(polyvec\+\_\+frombytes)
+\begin{DoxyCompactList}\small\item\em Converts a byte array back into a polynomial vector. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{polyvec_8h_a9c96c440b3c9c2d63db4d57b7033de46}{polyvec\+\_\+ntt}}~\mbox{\hyperlink{params_8h_a51c1085c773ccaac6cfa51a987dd346b}{KYBER\+\_\+\+NAMESPACE}}(polyvec\+\_\+ntt)
+\item 
+\#define \mbox{\hyperlink{polyvec_8h_aa149bf7b856462a2b8151fd5544155d4}{polyvec\+\_\+invntt\+\_\+tomont}}~\mbox{\hyperlink{params_8h_a51c1085c773ccaac6cfa51a987dd346b}{KYBER\+\_\+\+NAMESPACE}}(polyvec\+\_\+invntt\+\_\+tomont)
+\item 
+\#define \mbox{\hyperlink{polyvec_8h_a5ef9e3b32a6e413955076778ca9f056f}{polyvec\+\_\+basemul\+\_\+acc\+\_\+montgomery}}~\mbox{\hyperlink{params_8h_a51c1085c773ccaac6cfa51a987dd346b}{KYBER\+\_\+\+NAMESPACE}}(polyvec\+\_\+basemul\+\_\+acc\+\_\+montgomery)
+\begin{DoxyCompactList}\small\item\em Performs base multiplication and accumulation in Montgomery form on two polynomial vectors. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{polyvec_8h_a0ee7c5915d658a6b2d9e69c62aa35162}{polyvec\+\_\+reduce}}~\mbox{\hyperlink{params_8h_a51c1085c773ccaac6cfa51a987dd346b}{KYBER\+\_\+\+NAMESPACE}}(polyvec\+\_\+reduce)
+\begin{DoxyCompactList}\small\item\em Reduces the coefficients of a polynomial vector. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{polyvec_8h_afeba48290257815f6213f9812426fe8d}{polyvec\+\_\+add}}~\mbox{\hyperlink{params_8h_a51c1085c773ccaac6cfa51a987dd346b}{KYBER\+\_\+\+NAMESPACE}}(polyvec\+\_\+add)
+\begin{DoxyCompactList}\small\item\em Adds two polynomial vectors. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{polyvec_8h_ab78c380199882bdeaa0486b6e8b4e9e5}{pqcrystals\+\_\+kyber768\+\_\+avx2\+\_\+polyvec\+\_\+compress}} (uint8\+\_\+t r\mbox{[}(3 \texorpdfstring{$\ast$}{*}320)+2\mbox{]}, const \mbox{\hyperlink{structpolyvec}{polyvec}} \texorpdfstring{$\ast$}{*}a)
+\item 
+void \mbox{\hyperlink{polyvec_8h_a15ed6e6819b04e963ad4b8084332ec4e}{pqcrystals\+\_\+kyber768\+\_\+avx2\+\_\+polyvec\+\_\+decompress}} (\mbox{\hyperlink{structpolyvec}{polyvec}} \texorpdfstring{$\ast$}{*}r, const uint8\+\_\+t a\mbox{[}(3 \texorpdfstring{$\ast$}{*}320)+12\mbox{]})
+\item 
+void \mbox{\hyperlink{polyvec_8h_aa86464199d0c60070cfd0f12cf55cb8b}{pqcrystals\+\_\+kyber768\+\_\+avx2\+\_\+polyvec\+\_\+tobytes}} (uint8\+\_\+t r\mbox{[}(3 \texorpdfstring{$\ast$}{*}384)\mbox{]}, const \mbox{\hyperlink{structpolyvec}{polyvec}} \texorpdfstring{$\ast$}{*}a)
+\item 
+void \mbox{\hyperlink{polyvec_8h_a55026bba5bf0d8e1021696c47363a0f4}{pqcrystals\+\_\+kyber768\+\_\+avx2\+\_\+polyvec\+\_\+frombytes}} (\mbox{\hyperlink{structpolyvec}{polyvec}} \texorpdfstring{$\ast$}{*}r, const uint8\+\_\+t a\mbox{[}(3 \texorpdfstring{$\ast$}{*}384)\mbox{]})
+\item 
+void \mbox{\hyperlink{polyvec_8h_ad5c08d583d85659fe08bd9a42a9840f9}{pqcrystals\+\_\+kyber768\+\_\+avx2\+\_\+polyvec\+\_\+ntt}} (\mbox{\hyperlink{structpolyvec}{polyvec}} \texorpdfstring{$\ast$}{*}r)
+\item 
+void \mbox{\hyperlink{polyvec_8h_a63152d41841718c8a7731e8f40cb0ed1}{pqcrystals\+\_\+kyber768\+\_\+avx2\+\_\+polyvec\+\_\+invntt\+\_\+tomont}} (\mbox{\hyperlink{structpolyvec}{polyvec}} \texorpdfstring{$\ast$}{*}r)
+\item 
+void \mbox{\hyperlink{polyvec_8h_a7065277ebc98fe4f3104bf8e9497a759}{pqcrystals\+\_\+kyber768\+\_\+avx2\+\_\+polyvec\+\_\+basemul\+\_\+acc\+\_\+montgomery}} (\mbox{\hyperlink{unionpoly}{poly}} \texorpdfstring{$\ast$}{*}r, const \mbox{\hyperlink{structpolyvec}{polyvec}} \texorpdfstring{$\ast$}{*}a, const \mbox{\hyperlink{structpolyvec}{polyvec}} \texorpdfstring{$\ast$}{*}b)
+\item 
+void \mbox{\hyperlink{polyvec_8h_ad8dafe084731ff0e05322a0bdd374ce0}{pqcrystals\+\_\+kyber768\+\_\+avx2\+\_\+polyvec\+\_\+reduce}} (\mbox{\hyperlink{structpolyvec}{polyvec}} \texorpdfstring{$\ast$}{*}r)
+\item 
+void \mbox{\hyperlink{polyvec_8h_aeb30e411d94ded6c2fe471a591309c43}{pqcrystals\+\_\+kyber768\+\_\+avx2\+\_\+polyvec\+\_\+add}} (\mbox{\hyperlink{structpolyvec}{polyvec}} \texorpdfstring{$\ast$}{*}r, const \mbox{\hyperlink{structpolyvec}{polyvec}} \texorpdfstring{$\ast$}{*}a, const \mbox{\hyperlink{structpolyvec}{polyvec}} \texorpdfstring{$\ast$}{*}b)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This file defines the {\ttfamily polyvec} data structure and provides function declarations for operations on polynomial vectors used in cryptographic algorithms, particularly in the context of Kyber, a lattice-\/based encryption scheme. 
+
+The operations include compression, decomposition, NTT (Number Theoretic Transform), and base multiplication.
+
+The {\ttfamily polyvec} structure is an array of polynomials and various functions operate on these vectors to perform polynomial transformations, reductions, additions, and byte conversions. These operations are integral to the encryption and decryption procedures of the Kyber scheme.
+
+The function implementations are likely located in the corresponding Kyber implementation files. 
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{polyvec_8h_afeba48290257815f6213f9812426fe8d}\label{polyvec_8h_afeba48290257815f6213f9812426fe8d} 
+\index{polyvec.h@{polyvec.h}!polyvec\_add@{polyvec\_add}}
+\index{polyvec\_add@{polyvec\_add}!polyvec.h@{polyvec.h}}
+\doxysubsubsection{\texorpdfstring{polyvec\_add}{polyvec\_add}}
+{\footnotesize\ttfamily \#define polyvec\+\_\+add~\mbox{\hyperlink{params_8h_a51c1085c773ccaac6cfa51a987dd346b}{KYBER\+\_\+\+NAMESPACE}}(polyvec\+\_\+add)}
+
+
+
+Adds two polynomial vectors. 
+
+This function adds the polynomial vectors {\ttfamily a} and {\ttfamily b}, storing the result in the polynomial vector {\ttfamily r}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em r} & The resulting polynomial vector after addition. \\
+\hline
+{\em a} & The first polynomial vector. \\
+\hline
+{\em b} & The second polynomial vector. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{polyvec_8h_a5ef9e3b32a6e413955076778ca9f056f}\label{polyvec_8h_a5ef9e3b32a6e413955076778ca9f056f} 
+\index{polyvec.h@{polyvec.h}!polyvec\_basemul\_acc\_montgomery@{polyvec\_basemul\_acc\_montgomery}}
+\index{polyvec\_basemul\_acc\_montgomery@{polyvec\_basemul\_acc\_montgomery}!polyvec.h@{polyvec.h}}
+\doxysubsubsection{\texorpdfstring{polyvec\_basemul\_acc\_montgomery}{polyvec\_basemul\_acc\_montgomery}}
+{\footnotesize\ttfamily \#define polyvec\+\_\+basemul\+\_\+acc\+\_\+montgomery~\mbox{\hyperlink{params_8h_a51c1085c773ccaac6cfa51a987dd346b}{KYBER\+\_\+\+NAMESPACE}}(polyvec\+\_\+basemul\+\_\+acc\+\_\+montgomery)}
+
+
+
+Performs base multiplication and accumulation in Montgomery form on two polynomial vectors. 
+
+This function performs base multiplication on two polynomial vectors {\ttfamily a} and {\ttfamily b}, accumulating the result into the polynomial {\ttfamily r} in Montgomery form. This operation is essential for lattice-\/based cryptographic schemes like Kyber.
+
+
+\begin{DoxyParams}{Parameters}
+{\em r} & The result of the base multiplication and accumulation. \\
+\hline
+{\em a} & The first polynomial vector. \\
+\hline
+{\em b} & The second polynomial vector. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{polyvec_8h_a143ae5510ea6ef799d18ebedefcb9956}\label{polyvec_8h_a143ae5510ea6ef799d18ebedefcb9956} 
+\index{polyvec.h@{polyvec.h}!polyvec\_compress@{polyvec\_compress}}
+\index{polyvec\_compress@{polyvec\_compress}!polyvec.h@{polyvec.h}}
+\doxysubsubsection{\texorpdfstring{polyvec\_compress}{polyvec\_compress}}
+{\footnotesize\ttfamily \#define polyvec\+\_\+compress~\mbox{\hyperlink{params_8h_a51c1085c773ccaac6cfa51a987dd346b}{KYBER\+\_\+\+NAMESPACE}}(polyvec\+\_\+compress)}
+
+
+
+Compresses a polynomial vector into a compact byte representation. 
+
+This function compresses the given polynomial vector {\ttfamily a} into the byte array {\ttfamily r}, which is of fixed size. The implementation is likely found in one of the Kyber library files, specifically designed for efficient compression.
+
+
+\begin{DoxyParams}{Parameters}
+{\em r} & The compressed byte representation of the polynomial vector. \\
+\hline
+{\em a} & The polynomial vector to be compressed. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{polyvec_8h_a06d34684a282207aaf4bc00c2ac1fe79}\label{polyvec_8h_a06d34684a282207aaf4bc00c2ac1fe79} 
+\index{polyvec.h@{polyvec.h}!polyvec\_decompress@{polyvec\_decompress}}
+\index{polyvec\_decompress@{polyvec\_decompress}!polyvec.h@{polyvec.h}}
+\doxysubsubsection{\texorpdfstring{polyvec\_decompress}{polyvec\_decompress}}
+{\footnotesize\ttfamily \#define polyvec\+\_\+decompress~\mbox{\hyperlink{params_8h_a51c1085c773ccaac6cfa51a987dd346b}{KYBER\+\_\+\+NAMESPACE}}(polyvec\+\_\+decompress)}
+
+
+
+Decompresses a byte representation back into a polynomial vector. 
+
+This function decompresses the byte array {\ttfamily a} into the polynomial vector {\ttfamily r}. The byte array {\ttfamily a} contains a compressed version of the polynomial vector, and the function reconstructs the original polynomial vector.
+
+
+\begin{DoxyParams}{Parameters}
+{\em r} & The resulting polynomial vector. \\
+\hline
+{\em a} & The byte array containing the compressed polynomial vector. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{polyvec_8h_a6bccf486b0a4aa8bae3689c1c2a540f0}\label{polyvec_8h_a6bccf486b0a4aa8bae3689c1c2a540f0} 
+\index{polyvec.h@{polyvec.h}!polyvec\_frombytes@{polyvec\_frombytes}}
+\index{polyvec\_frombytes@{polyvec\_frombytes}!polyvec.h@{polyvec.h}}
+\doxysubsubsection{\texorpdfstring{polyvec\_frombytes}{polyvec\_frombytes}}
+{\footnotesize\ttfamily \#define polyvec\+\_\+frombytes~\mbox{\hyperlink{params_8h_a51c1085c773ccaac6cfa51a987dd346b}{KYBER\+\_\+\+NAMESPACE}}(polyvec\+\_\+frombytes)}
+
+
+
+Converts a byte array back into a polynomial vector. 
+
+This function converts the byte array {\ttfamily a} back into the corresponding polynomial vector {\ttfamily r}. The byte array {\ttfamily a} represents a serialized form of the polynomial vector.
+
+
+\begin{DoxyParams}{Parameters}
+{\em r} & The resulting polynomial vector. \\
+\hline
+{\em a} & The byte array containing the serialized polynomial vector. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{polyvec_8h_aa149bf7b856462a2b8151fd5544155d4}\label{polyvec_8h_aa149bf7b856462a2b8151fd5544155d4} 
+\index{polyvec.h@{polyvec.h}!polyvec\_invntt\_tomont@{polyvec\_invntt\_tomont}}
+\index{polyvec\_invntt\_tomont@{polyvec\_invntt\_tomont}!polyvec.h@{polyvec.h}}
+\doxysubsubsection{\texorpdfstring{polyvec\_invntt\_tomont}{polyvec\_invntt\_tomont}}
+{\footnotesize\ttfamily \#define polyvec\+\_\+invntt\+\_\+tomont~\mbox{\hyperlink{params_8h_a51c1085c773ccaac6cfa51a987dd346b}{KYBER\+\_\+\+NAMESPACE}}(polyvec\+\_\+invntt\+\_\+tomont)}
+
+\Hypertarget{polyvec_8h_a9c96c440b3c9c2d63db4d57b7033de46}\label{polyvec_8h_a9c96c440b3c9c2d63db4d57b7033de46} 
+\index{polyvec.h@{polyvec.h}!polyvec\_ntt@{polyvec\_ntt}}
+\index{polyvec\_ntt@{polyvec\_ntt}!polyvec.h@{polyvec.h}}
+\doxysubsubsection{\texorpdfstring{polyvec\_ntt}{polyvec\_ntt}}
+{\footnotesize\ttfamily \#define polyvec\+\_\+ntt~\mbox{\hyperlink{params_8h_a51c1085c773ccaac6cfa51a987dd346b}{KYBER\+\_\+\+NAMESPACE}}(polyvec\+\_\+ntt)}
+
+\Hypertarget{polyvec_8h_a0ee7c5915d658a6b2d9e69c62aa35162}\label{polyvec_8h_a0ee7c5915d658a6b2d9e69c62aa35162} 
+\index{polyvec.h@{polyvec.h}!polyvec\_reduce@{polyvec\_reduce}}
+\index{polyvec\_reduce@{polyvec\_reduce}!polyvec.h@{polyvec.h}}
+\doxysubsubsection{\texorpdfstring{polyvec\_reduce}{polyvec\_reduce}}
+{\footnotesize\ttfamily \#define polyvec\+\_\+reduce~\mbox{\hyperlink{params_8h_a51c1085c773ccaac6cfa51a987dd346b}{KYBER\+\_\+\+NAMESPACE}}(polyvec\+\_\+reduce)}
+
+
+
+Reduces the coefficients of a polynomial vector. 
+
+This function reduces the coefficients of the polynomial vector {\ttfamily r} by applying a modular reduction. It is commonly used to ensure the coefficients are within a certain range, typically required by the Kyber scheme.
+
+
+\begin{DoxyParams}{Parameters}
+{\em r} & The polynomial vector whose coefficients will be reduced. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{polyvec_8h_a68bc449baca16c3d14c221146fed8a62}\label{polyvec_8h_a68bc449baca16c3d14c221146fed8a62} 
+\index{polyvec.h@{polyvec.h}!polyvec\_tobytes@{polyvec\_tobytes}}
+\index{polyvec\_tobytes@{polyvec\_tobytes}!polyvec.h@{polyvec.h}}
+\doxysubsubsection{\texorpdfstring{polyvec\_tobytes}{polyvec\_tobytes}}
+{\footnotesize\ttfamily \#define polyvec\+\_\+tobytes~\mbox{\hyperlink{params_8h_a51c1085c773ccaac6cfa51a987dd346b}{KYBER\+\_\+\+NAMESPACE}}(polyvec\+\_\+tobytes)}
+
+
+
+Converts a polynomial vector into a byte array. 
+
+This function converts the given polynomial vector {\ttfamily a} into a byte array {\ttfamily r} for transmission or storage. The byte array is of fixed size, determined by the parameters of the Kyber scheme.
+
+
+\begin{DoxyParams}{Parameters}
+{\em r} & The resulting byte array representation of the polynomial vector. \\
+\hline
+{\em a} & The polynomial vector to be converted to bytes. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{polyvec_8h_aeb30e411d94ded6c2fe471a591309c43}\label{polyvec_8h_aeb30e411d94ded6c2fe471a591309c43} 
+\index{polyvec.h@{polyvec.h}!pqcrystals\_kyber768\_avx2\_polyvec\_add@{pqcrystals\_kyber768\_avx2\_polyvec\_add}}
+\index{pqcrystals\_kyber768\_avx2\_polyvec\_add@{pqcrystals\_kyber768\_avx2\_polyvec\_add}!polyvec.h@{polyvec.h}}
+\doxysubsubsection{\texorpdfstring{pqcrystals\_kyber768\_avx2\_polyvec\_add()}{pqcrystals\_kyber768\_avx2\_polyvec\_add()}}
+{\footnotesize\ttfamily void pqcrystals\+\_\+kyber768\+\_\+avx2\+\_\+polyvec\+\_\+add (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structpolyvec}{polyvec}} \texorpdfstring{$\ast$}{*}}]{r,  }\item[{const \mbox{\hyperlink{structpolyvec}{polyvec}} \texorpdfstring{$\ast$}{*}}]{a,  }\item[{const \mbox{\hyperlink{structpolyvec}{polyvec}} \texorpdfstring{$\ast$}{*}}]{b }\end{DoxyParamCaption})}
+
+\Hypertarget{polyvec_8h_a7065277ebc98fe4f3104bf8e9497a759}\label{polyvec_8h_a7065277ebc98fe4f3104bf8e9497a759} 
+\index{polyvec.h@{polyvec.h}!pqcrystals\_kyber768\_avx2\_polyvec\_basemul\_acc\_montgomery@{pqcrystals\_kyber768\_avx2\_polyvec\_basemul\_acc\_montgomery}}
+\index{pqcrystals\_kyber768\_avx2\_polyvec\_basemul\_acc\_montgomery@{pqcrystals\_kyber768\_avx2\_polyvec\_basemul\_acc\_montgomery}!polyvec.h@{polyvec.h}}
+\doxysubsubsection{\texorpdfstring{pqcrystals\_kyber768\_avx2\_polyvec\_basemul\_acc\_montgomery()}{pqcrystals\_kyber768\_avx2\_polyvec\_basemul\_acc\_montgomery()}}
+{\footnotesize\ttfamily void pqcrystals\+\_\+kyber768\+\_\+avx2\+\_\+polyvec\+\_\+basemul\+\_\+acc\+\_\+montgomery (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{unionpoly}{poly}} \texorpdfstring{$\ast$}{*}}]{r,  }\item[{const \mbox{\hyperlink{structpolyvec}{polyvec}} \texorpdfstring{$\ast$}{*}}]{a,  }\item[{const \mbox{\hyperlink{structpolyvec}{polyvec}} \texorpdfstring{$\ast$}{*}}]{b }\end{DoxyParamCaption})}
+
+\Hypertarget{polyvec_8h_ab78c380199882bdeaa0486b6e8b4e9e5}\label{polyvec_8h_ab78c380199882bdeaa0486b6e8b4e9e5} 
+\index{polyvec.h@{polyvec.h}!pqcrystals\_kyber768\_avx2\_polyvec\_compress@{pqcrystals\_kyber768\_avx2\_polyvec\_compress}}
+\index{pqcrystals\_kyber768\_avx2\_polyvec\_compress@{pqcrystals\_kyber768\_avx2\_polyvec\_compress}!polyvec.h@{polyvec.h}}
+\doxysubsubsection{\texorpdfstring{pqcrystals\_kyber768\_avx2\_polyvec\_compress()}{pqcrystals\_kyber768\_avx2\_polyvec\_compress()}}
+{\footnotesize\ttfamily void pqcrystals\+\_\+kyber768\+\_\+avx2\+\_\+polyvec\+\_\+compress (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{r\mbox{[}(3 \texorpdfstring{$\ast$}{*}320)+2\mbox{]},  }\item[{const \mbox{\hyperlink{structpolyvec}{polyvec}} \texorpdfstring{$\ast$}{*}}]{a }\end{DoxyParamCaption})}
+
+\Hypertarget{polyvec_8h_a15ed6e6819b04e963ad4b8084332ec4e}\label{polyvec_8h_a15ed6e6819b04e963ad4b8084332ec4e} 
+\index{polyvec.h@{polyvec.h}!pqcrystals\_kyber768\_avx2\_polyvec\_decompress@{pqcrystals\_kyber768\_avx2\_polyvec\_decompress}}
+\index{pqcrystals\_kyber768\_avx2\_polyvec\_decompress@{pqcrystals\_kyber768\_avx2\_polyvec\_decompress}!polyvec.h@{polyvec.h}}
+\doxysubsubsection{\texorpdfstring{pqcrystals\_kyber768\_avx2\_polyvec\_decompress()}{pqcrystals\_kyber768\_avx2\_polyvec\_decompress()}}
+{\footnotesize\ttfamily void pqcrystals\+\_\+kyber768\+\_\+avx2\+\_\+polyvec\+\_\+decompress (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structpolyvec}{polyvec}} \texorpdfstring{$\ast$}{*}}]{r,  }\item[{const uint8\+\_\+t}]{a\mbox{[}(3 \texorpdfstring{$\ast$}{*}320)+12\mbox{]} }\end{DoxyParamCaption})}
+
+\Hypertarget{polyvec_8h_a55026bba5bf0d8e1021696c47363a0f4}\label{polyvec_8h_a55026bba5bf0d8e1021696c47363a0f4} 
+\index{polyvec.h@{polyvec.h}!pqcrystals\_kyber768\_avx2\_polyvec\_frombytes@{pqcrystals\_kyber768\_avx2\_polyvec\_frombytes}}
+\index{pqcrystals\_kyber768\_avx2\_polyvec\_frombytes@{pqcrystals\_kyber768\_avx2\_polyvec\_frombytes}!polyvec.h@{polyvec.h}}
+\doxysubsubsection{\texorpdfstring{pqcrystals\_kyber768\_avx2\_polyvec\_frombytes()}{pqcrystals\_kyber768\_avx2\_polyvec\_frombytes()}}
+{\footnotesize\ttfamily void pqcrystals\+\_\+kyber768\+\_\+avx2\+\_\+polyvec\+\_\+frombytes (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structpolyvec}{polyvec}} \texorpdfstring{$\ast$}{*}}]{r,  }\item[{const uint8\+\_\+t}]{a\mbox{[}(3 \texorpdfstring{$\ast$}{*}384)\mbox{]} }\end{DoxyParamCaption})}
+
+\Hypertarget{polyvec_8h_a63152d41841718c8a7731e8f40cb0ed1}\label{polyvec_8h_a63152d41841718c8a7731e8f40cb0ed1} 
+\index{polyvec.h@{polyvec.h}!pqcrystals\_kyber768\_avx2\_polyvec\_invntt\_tomont@{pqcrystals\_kyber768\_avx2\_polyvec\_invntt\_tomont}}
+\index{pqcrystals\_kyber768\_avx2\_polyvec\_invntt\_tomont@{pqcrystals\_kyber768\_avx2\_polyvec\_invntt\_tomont}!polyvec.h@{polyvec.h}}
+\doxysubsubsection{\texorpdfstring{pqcrystals\_kyber768\_avx2\_polyvec\_invntt\_tomont()}{pqcrystals\_kyber768\_avx2\_polyvec\_invntt\_tomont()}}
+{\footnotesize\ttfamily void pqcrystals\+\_\+kyber768\+\_\+avx2\+\_\+polyvec\+\_\+invntt\+\_\+tomont (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structpolyvec}{polyvec}} \texorpdfstring{$\ast$}{*}}]{r }\end{DoxyParamCaption})}
+
+\Hypertarget{polyvec_8h_ad5c08d583d85659fe08bd9a42a9840f9}\label{polyvec_8h_ad5c08d583d85659fe08bd9a42a9840f9} 
+\index{polyvec.h@{polyvec.h}!pqcrystals\_kyber768\_avx2\_polyvec\_ntt@{pqcrystals\_kyber768\_avx2\_polyvec\_ntt}}
+\index{pqcrystals\_kyber768\_avx2\_polyvec\_ntt@{pqcrystals\_kyber768\_avx2\_polyvec\_ntt}!polyvec.h@{polyvec.h}}
+\doxysubsubsection{\texorpdfstring{pqcrystals\_kyber768\_avx2\_polyvec\_ntt()}{pqcrystals\_kyber768\_avx2\_polyvec\_ntt()}}
+{\footnotesize\ttfamily void pqcrystals\+\_\+kyber768\+\_\+avx2\+\_\+polyvec\+\_\+ntt (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structpolyvec}{polyvec}} \texorpdfstring{$\ast$}{*}}]{r }\end{DoxyParamCaption})}
+
+\Hypertarget{polyvec_8h_ad8dafe084731ff0e05322a0bdd374ce0}\label{polyvec_8h_ad8dafe084731ff0e05322a0bdd374ce0} 
+\index{polyvec.h@{polyvec.h}!pqcrystals\_kyber768\_avx2\_polyvec\_reduce@{pqcrystals\_kyber768\_avx2\_polyvec\_reduce}}
+\index{pqcrystals\_kyber768\_avx2\_polyvec\_reduce@{pqcrystals\_kyber768\_avx2\_polyvec\_reduce}!polyvec.h@{polyvec.h}}
+\doxysubsubsection{\texorpdfstring{pqcrystals\_kyber768\_avx2\_polyvec\_reduce()}{pqcrystals\_kyber768\_avx2\_polyvec\_reduce()}}
+{\footnotesize\ttfamily void pqcrystals\+\_\+kyber768\+\_\+avx2\+\_\+polyvec\+\_\+reduce (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structpolyvec}{polyvec}} \texorpdfstring{$\ast$}{*}}]{r }\end{DoxyParamCaption})}
+
+\Hypertarget{polyvec_8h_aa86464199d0c60070cfd0f12cf55cb8b}\label{polyvec_8h_aa86464199d0c60070cfd0f12cf55cb8b} 
+\index{polyvec.h@{polyvec.h}!pqcrystals\_kyber768\_avx2\_polyvec\_tobytes@{pqcrystals\_kyber768\_avx2\_polyvec\_tobytes}}
+\index{pqcrystals\_kyber768\_avx2\_polyvec\_tobytes@{pqcrystals\_kyber768\_avx2\_polyvec\_tobytes}!polyvec.h@{polyvec.h}}
+\doxysubsubsection{\texorpdfstring{pqcrystals\_kyber768\_avx2\_polyvec\_tobytes()}{pqcrystals\_kyber768\_avx2\_polyvec\_tobytes()}}
+{\footnotesize\ttfamily void pqcrystals\+\_\+kyber768\+\_\+avx2\+\_\+polyvec\+\_\+tobytes (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{r\mbox{[}(3 \texorpdfstring{$\ast$}{*}384)\mbox{]},  }\item[{const \mbox{\hyperlink{structpolyvec}{polyvec}} \texorpdfstring{$\ast$}{*}}]{a }\end{DoxyParamCaption})}
+

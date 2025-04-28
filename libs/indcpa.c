@@ -9,17 +9,14 @@
 #include "symmetric.h"
 #include "randombytes.h"
 
-/*************************************************
-* Name:        pack_pk
-*
-* Description: Serialize the public key as concatenation of the
-*              serialized vector of polynomials pk
-*              and the public seed used to generate the matrix A.
-*
-* Arguments:   uint8_t *r: pointer to the output serialized public key
-*              polyvec *pk: pointer to the input public-key polyvec
-*              const uint8_t *seed: pointer to the input public seed
-**************************************************/
+/**
+ * @brief Serialize the public key as a concatenation of the serialized vector of polynomials pk and the public seed used to generate the matrix A.
+ **Workflow:
+ *   1.  Calling  polyvec_tobytes(r, pk) .
+ * @param r Pointer to the output serialized public key.
+ * @param pk Pointer to the input public-key polyvec.
+ * @param seed Pointer to the input public seed.
+ */
 static void pack_pk(uint8_t r[KYBER_INDCPA_PUBLICKEYBYTES],
                     polyvec *pk,
                     const uint8_t seed[KYBER_SYMBYTES])
@@ -28,16 +25,10 @@ static void pack_pk(uint8_t r[KYBER_INDCPA_PUBLICKEYBYTES],
   memcpy(r+KYBER_POLYVECBYTES, seed, KYBER_SYMBYTES);
 }
 
-/*************************************************
-* Name:        unpack_pk
-*
-* Description: De-serialize public key from a byte array;
-*              approximate inverse of pack_pk
-*
-* Arguments:   - polyvec *pk: pointer to output public-key polynomial vector
-*              - uint8_t *seed: pointer to output seed to generate matrix A
-*              - const uint8_t *packedpk: pointer to input serialized public key
-**************************************************/
+/**
+*Workflow:
+ *   1.  Calling polyvec_frombytes(pk, packedpk) .
+ */
 void unpack_pk(polyvec *pk,
                       uint8_t seed[KYBER_SYMBYTES],
                       const uint8_t packedpk[KYBER_INDCPA_PUBLICKEYBYTES])
@@ -46,78 +37,66 @@ void unpack_pk(polyvec *pk,
   memcpy(seed, packedpk+KYBER_POLYVECBYTES, KYBER_SYMBYTES);
 }
 
-/*************************************************
-* Name:        pack_sk
-*
-* Description: Serialize the secret key
-*
-* Arguments:   - uint8_t *r: pointer to output serialized secret key
-*              - polyvec *sk: pointer to input vector of polynomials (secret key)
-**************************************************/
+
+/**
+ * @brief Serialize the secret key.
+ *Workflow:
+ *   1.  Calling  polyvec_tobytes(r, sk) .
+ * @param r Pointer to output serialized secret key.
+ * @param sk Pointer to input vector of polynomials (secret key).
+ */
 static void pack_sk(uint8_t r[KYBER_INDCPA_SECRETKEYBYTES], polyvec *sk)
 {
   polyvec_tobytes(r, sk);
 }
 
-/*************************************************
-* Name:        unpack_sk
-*
-* Description: De-serialize the secret key; inverse of pack_sk
-*
-* Arguments:   - polyvec *sk: pointer to output vector of polynomials (secret key)
-*              - const uint8_t *packedsk: pointer to input serialized secret key
-**************************************************/
+/**
+* Workflow:
+    1.  Calling   polyvec_frombytes(sk, packedsk) .
+*/
 static void unpack_sk(polyvec *sk, const uint8_t packedsk[KYBER_INDCPA_SECRETKEYBYTES])
 {
   polyvec_frombytes(sk, packedsk);
 }
 
-/*************************************************
-* Name:        pack_ciphertext
-*
-* Description: Serialize the ciphertext as concatenation of the
-*              compressed and serialized vector of polynomials b
-*              and the compressed and serialized polynomial v
-*
-* Arguments:   uint8_t *r: pointer to the output serialized ciphertext
-*              poly *pk: pointer to the input vector of polynomials b
-*              poly *v: pointer to the input polynomial v
-**************************************************/
+/**
+ * @brief Serialize the ciphertext as a concatenation of the compressed and serialized vector of polynomials b and the compressed and serialized polynomial v.
+ *Workflow:
+ * 1. Calling polyvec_compress(r, b)
+ * 2. Calling poly_compress(r+KYBER_POLYVECCOMPRESSEDBYTES, v)
+ * @param r Pointer to the output serialized ciphertext.
+ * @param b Pointer to the input vector of polynomials b.
+ * @param v Pointer to the input polynomial v.
+ */
 static void pack_ciphertext(uint8_t r[KYBER_INDCPA_BYTES], polyvec *b, poly *v)
 {
   polyvec_compress(r, b);
   poly_compress(r+KYBER_POLYVECCOMPRESSEDBYTES, v);
 }
-
-/*************************************************
-* Name:        unpack_ciphertext
-*
-* Description: De-serialize and decompress ciphertext from a byte array;
-*              approximate inverse of pack_ciphertext
-*
-* Arguments:   - polyvec *b: pointer to the output vector of polynomials b
-*              - poly *v: pointer to the output polynomial v
-*              - const uint8_t *c: pointer to the input serialized ciphertext
-**************************************************/
+/**
+ * @brief De-serialize and decompress ciphertext from a byte array; approximate inverse of pack_ciphertext.
+ * *Workflow:
+ * 1. Calling  polyvec_decompress(b, c)
+ * 2. Calling poly_decompress(v, c+#KYBER_POLYVECCOMPRESSEDBYTES)
+ * @param b Pointer to the output vector of polynomials b.
+ * @param v Pointer to the output polynomial v.
+ * @param c Pointer to the input serialized ciphertext.
+ */
 static void unpack_ciphertext(polyvec *b, poly *v, const uint8_t c[KYBER_INDCPA_BYTES])
 {
   polyvec_decompress(b, c);
   poly_decompress(v, c+KYBER_POLYVECCOMPRESSEDBYTES);
 }
 
-/*************************************************
-* Name:        rej_uniform
-*
-* Description: Run rejection sampling on uniform random bytes to generate
-*              uniform random integers mod q
-*
-* Arguments:   - int16_t *r: pointer to output buffer
-*              - unsigned int len: requested number of 16-bit integers (uniform mod q)
-*              - const uint8_t *buf: pointer to input buffer (assumed to be uniformly random bytes)
-*              - unsigned int buflen: length of input buffer in bytes
-*
-* Returns number of sampled 16-bit integers (at most len)
-**************************************************/
+/**
+ * @brief Run rejection sampling on uniform random bytes to generate uniform random integers mod q.
+ *
+ * @param r Pointer to output buffer.
+ * @param len Requested number of 16-bit integers (uniform mod q).
+ * @param buf Pointer to input buffer (assumed to be uniformly random bytes).
+ * @param buflen Length of input buffer in bytes.
+ * @return The number of sampled 16-bit integers (at most len).
+ */
 static unsigned int rej_uniform(int16_t *r,
                                 unsigned int len,
                                 const uint8_t *buf,
@@ -145,16 +124,30 @@ static unsigned int rej_uniform(int16_t *r,
 #define gen_at(A,B) gen_matrix(A,B,1)
 
 /*************************************************
-* Name:        gen_matrix
-*
-* Description: Deterministically generate matrix A (or the transpose of A)
-*              from a seed. Entries of the matrix are polynomials that look
-*              uniformly random. Performs rejection sampling on output of
-*              a XOF
-*
-* Arguments:   - polyvec *a: pointer to ouptput matrix A
-*              - const uint8_t *seed: pointer to input seed
-*              - int transposed: boolean deciding whether A or A^T is generated
+ *Workflow: 
+ * 1. **Absorb the Seed and Indices (i, j):**
+ *    - The xof_absorb() function is called to absorb the seed and the matrix indices (i, j).
+ *    - This determines whether matrix A or its transpose A^T is generated, depending on the `transposed` flag.
+ *
+ * 2. **Squeeze Random Values:**
+ *    - The xof_squeezeblocks() function is invoked to generate blocks of random values.
+ *    - These values are stored in the `buf` buffer and will serve as potential coefficients for the matrix entries.
+ *
+ * 3. **Rejection Sampling:**
+ *    - The rejection sampling algorithm (rej_uniform() ) is applied to filter out invalid coefficients.
+ *    - Coefficients are constrained to the range defined by `KYBER_Q`.
+ *    - If a coefficient is invalid (out of range), additional random blocks are squeezed and the process repeats.
+ *
+ * 4. **Matrix Population:**
+ *    - The valid coefficients are used to populate the entries in the matrix `a[i].vec[j].coeffs`.
+ *    - The process continues until all matrix entries are populated with valid coefficients.
+ *    - The final matrix can either be A or A^T based on the `transposed` flag.
+ *
+ * @param a Pointer to the output matrix A or A^T (polynomial vectors).
+ * @param seed Pointer to the input seed used for random number generation.
+ * @param transposed A flag indicating whether to generate A^T (1) or A (0).
+ *
+ * @return None.
 **************************************************/
 #if(XOF_BLOCKBYTES % 3)
 #error "Implementation of gen_matrix assumes that XOF_BLOCKBYTES is a multiple of 3"

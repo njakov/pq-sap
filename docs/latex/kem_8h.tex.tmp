@@ -1,0 +1,272 @@
+\doxysection{libs/kem.h File Reference}
+\hypertarget{kem_8h}{}\label{kem_8h}\index{libs/kem.h@{libs/kem.h}}
+
+
+Header file for Kyber Key Encapsulation Mechanism (KEM) implementation.  
+
+
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include "{}params.\+h"{}}\newline
+Include dependency graph for kem.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{kem_8h_a15a0b213afe1dabb9286f9f92a05251e}{CRYPTO\+\_\+\+SECRETKEYBYTES}}~\mbox{\hyperlink{params_8h_a7f9a2f9ae6937442f988816af97babb3}{KYBER\+\_\+\+SECRETKEYBYTES}}
+\begin{DoxyCompactList}\small\item\em Size of secret key. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{kem_8h_ad3ae9ccc17354eeb4bfd498a1b76e938}{CRYPTO\+\_\+\+PUBLICKEYBYTES}}~\mbox{\hyperlink{params_8h_a7663b32715a32f12eb70420793753ce3}{KYBER\+\_\+\+PUBLICKEYBYTES}}
+\begin{DoxyCompactList}\small\item\em Size of public key. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{kem_8h_a258382115ab5fef86c334e6dcc9069ac}{CRYPTO\+\_\+\+CIPHERTEXTBYTES}}~\mbox{\hyperlink{params_8h_a356cca49fc302b0c34c18f4bbda6e5fe}{KYBER\+\_\+\+CIPHERTEXTBYTES}}
+\begin{DoxyCompactList}\small\item\em Size of ciphertext. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{kem_8h_a091b7456f2796811d5ffbfccbfdabbfd}{CRYPTO\+\_\+\+BYTES}}~\mbox{\hyperlink{params_8h_a5054c9269277412d8536eb82cfffbe15}{KYBER\+\_\+\+SSBYTES}}
+\begin{DoxyCompactList}\small\item\em Size of shared secret. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{kem_8h_a4ee5ebe5981b4239b3b2adaa732cb1f1}{CRYPTO\+\_\+\+ALGNAME}}~"{}Kyber768"{}
+\begin{DoxyCompactList}\small\item\em Defines the algorithm name based on the KYBER\+\_\+K parameter. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{kem_8h_ac555dd337156af1cb48c341f260ca061}{crypto\+\_\+kem\+\_\+keypair\+\_\+derand}}~\mbox{\hyperlink{params_8h_a51c1085c773ccaac6cfa51a987dd346b}{KYBER\+\_\+\+NAMESPACE}}(keypair\+\_\+derand)
+\begin{DoxyCompactList}\small\item\em Generates a public and secret key with additional random data. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{kem_8h_affcceebbb34b0fcdd82918c9dd6f80ef}{crypto\+\_\+kem\+\_\+keypair}}~\mbox{\hyperlink{params_8h_a51c1085c773ccaac6cfa51a987dd346b}{KYBER\+\_\+\+NAMESPACE}}(keypair)
+\begin{DoxyCompactList}\small\item\em Generates a public and secret key for Kyber KEM. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{kem_8h_acf75639e33e41b126f355686766d6672}{crypto\+\_\+kem\+\_\+enc\+\_\+derand}}~\mbox{\hyperlink{params_8h_a51c1085c773ccaac6cfa51a987dd346b}{KYBER\+\_\+\+NAMESPACE}}(enc\+\_\+derand)
+\begin{DoxyCompactList}\small\item\em Encrypts data using the public key and generates a shared secret. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{kem_8h_a34799e9bffdfd9786a5fcd8867837c74}{crypto\+\_\+kem\+\_\+enc}}~\mbox{\hyperlink{params_8h_a51c1085c773ccaac6cfa51a987dd346b}{KYBER\+\_\+\+NAMESPACE}}(enc)
+\begin{DoxyCompactList}\small\item\em Encrypts data using the public key. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{kem_8h_a08dbb674e5d520aca994bc4472ce5a02}{crypto\+\_\+kem\+\_\+dec}}~\mbox{\hyperlink{params_8h_a51c1085c773ccaac6cfa51a987dd346b}{KYBER\+\_\+\+NAMESPACE}}(dec)
+\begin{DoxyCompactList}\small\item\em Decrypts the ciphertext using the secret key and generates the shared secret. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{kem_8h_a645bbad31f75f057d0123047871ea13e}{pqcrystals\+\_\+kyber768\+\_\+avx2\+\_\+keypair\+\_\+derand}} (uint8\+\_\+t \texorpdfstring{$\ast$}{*}pk, uint8\+\_\+t \texorpdfstring{$\ast$}{*}sk, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}coins)
+\item 
+int \mbox{\hyperlink{kem_8h_af3bc7e232f7932a69009fd6995d6fdb4}{pqcrystals\+\_\+kyber768\+\_\+avx2\+\_\+keypair}} (uint8\+\_\+t \texorpdfstring{$\ast$}{*}pk, uint8\+\_\+t \texorpdfstring{$\ast$}{*}sk)
+\item 
+int \mbox{\hyperlink{kem_8h_a113b14cd6d23445ecc01293264d32eeb}{pqcrystals\+\_\+kyber768\+\_\+avx2\+\_\+enc\+\_\+derand}} (uint8\+\_\+t \texorpdfstring{$\ast$}{*}ct, uint8\+\_\+t \texorpdfstring{$\ast$}{*}ss, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}pk, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}coins)
+\item 
+int \mbox{\hyperlink{kem_8h_a0ff624b8d78bd1c39083adb998a6eadf}{pqcrystals\+\_\+kyber768\+\_\+avx2\+\_\+enc}} (uint8\+\_\+t \texorpdfstring{$\ast$}{*}ct, uint8\+\_\+t \texorpdfstring{$\ast$}{*}ss, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}pk)
+\item 
+int \mbox{\hyperlink{kem_8h_a74b922a1783cac775aeb2b5e4242e75e}{pqcrystals\+\_\+kyber768\+\_\+avx2\+\_\+dec}} (uint8\+\_\+t \texorpdfstring{$\ast$}{*}ss, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}ct, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}sk)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Header file for Kyber Key Encapsulation Mechanism (KEM) implementation. 
+
+This file provides the interface for the Kyber KEM (Key Encapsulation Mechanism), which is a post-\/quantum cryptographic algorithm used for key exchange. It includes definitions for key sizes, encryption and decryption functions, and shared secret generation based on the Kyber algorithm variant selected (Kyber512, Kyber768, or Kyber1024).
+
+The functions in this file include\+:
+\begin{DoxyItemize}
+\item Key pair generation (both random and deterministic)
+\item Encryption and decryption of data using the Kyber public and secret keys
+\item Generation of shared secrets during encryption and decryption processes
+\end{DoxyItemize}
+
+The algorithm used is based on the Kyber post-\/quantum cryptosystem, which relies on lattice-\/based cryptography. This header file is designed to work with a specific implementation of the Kyber algorithm with different parameter sets, as defined by the KYBER\+\_\+K constant.
+
+\begin{DoxyNote}{Note}
+This file requires the inclusion of "{}params.\+h"{} for the configuration of Kyber parameters. 
+\end{DoxyNote}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{kem_8h_a4ee5ebe5981b4239b3b2adaa732cb1f1}\label{kem_8h_a4ee5ebe5981b4239b3b2adaa732cb1f1} 
+\index{kem.h@{kem.h}!CRYPTO\_ALGNAME@{CRYPTO\_ALGNAME}}
+\index{CRYPTO\_ALGNAME@{CRYPTO\_ALGNAME}!kem.h@{kem.h}}
+\doxysubsubsection{\texorpdfstring{CRYPTO\_ALGNAME}{CRYPTO\_ALGNAME}}
+{\footnotesize\ttfamily \#define CRYPTO\+\_\+\+ALGNAME~"{}Kyber768"{}}
+
+
+
+Defines the algorithm name based on the KYBER\+\_\+K parameter. 
+
+Sets the algorithm name depending on the value of {\ttfamily KYBER\+\_\+K}. {\ttfamily KYBER\+\_\+K} can be 2, 3, or 4, representing different variants of the Kyber algorithm\+: Kyber512, Kyber768, or Kyber1024. \Hypertarget{kem_8h_a091b7456f2796811d5ffbfccbfdabbfd}\label{kem_8h_a091b7456f2796811d5ffbfccbfdabbfd} 
+\index{kem.h@{kem.h}!CRYPTO\_BYTES@{CRYPTO\_BYTES}}
+\index{CRYPTO\_BYTES@{CRYPTO\_BYTES}!kem.h@{kem.h}}
+\doxysubsubsection{\texorpdfstring{CRYPTO\_BYTES}{CRYPTO\_BYTES}}
+{\footnotesize\ttfamily \#define CRYPTO\+\_\+\+BYTES~\mbox{\hyperlink{params_8h_a5054c9269277412d8536eb82cfffbe15}{KYBER\+\_\+\+SSBYTES}}}
+
+
+
+Size of shared secret. 
+
+\Hypertarget{kem_8h_a258382115ab5fef86c334e6dcc9069ac}\label{kem_8h_a258382115ab5fef86c334e6dcc9069ac} 
+\index{kem.h@{kem.h}!CRYPTO\_CIPHERTEXTBYTES@{CRYPTO\_CIPHERTEXTBYTES}}
+\index{CRYPTO\_CIPHERTEXTBYTES@{CRYPTO\_CIPHERTEXTBYTES}!kem.h@{kem.h}}
+\doxysubsubsection{\texorpdfstring{CRYPTO\_CIPHERTEXTBYTES}{CRYPTO\_CIPHERTEXTBYTES}}
+{\footnotesize\ttfamily \#define CRYPTO\+\_\+\+CIPHERTEXTBYTES~\mbox{\hyperlink{params_8h_a356cca49fc302b0c34c18f4bbda6e5fe}{KYBER\+\_\+\+CIPHERTEXTBYTES}}}
+
+
+
+Size of ciphertext. 
+
+\Hypertarget{kem_8h_a08dbb674e5d520aca994bc4472ce5a02}\label{kem_8h_a08dbb674e5d520aca994bc4472ce5a02} 
+\index{kem.h@{kem.h}!crypto\_kem\_dec@{crypto\_kem\_dec}}
+\index{crypto\_kem\_dec@{crypto\_kem\_dec}!kem.h@{kem.h}}
+\doxysubsubsection{\texorpdfstring{crypto\_kem\_dec}{crypto\_kem\_dec}}
+{\footnotesize\ttfamily \#define crypto\+\_\+kem\+\_\+dec~\mbox{\hyperlink{params_8h_a51c1085c773ccaac6cfa51a987dd346b}{KYBER\+\_\+\+NAMESPACE}}(dec)}
+
+
+
+Decrypts the ciphertext using the secret key and generates the shared secret. 
+
+This function decrypts the ciphertext using the secret key and generates the shared secret.
+
+
+\begin{DoxyParams}{Parameters}
+{\em ss} & Pointer to the shared secret that will be generated during decryption. \\
+\hline
+{\em ct} & Pointer to the ciphertext that will be decrypted. \\
+\hline
+{\em sk} & Pointer to the secret key used for decryption.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 if the function is executed successfully, or a non-\/zero value if an error occurs. 
+\end{DoxyReturn}
+\Hypertarget{kem_8h_a34799e9bffdfd9786a5fcd8867837c74}\label{kem_8h_a34799e9bffdfd9786a5fcd8867837c74} 
+\index{kem.h@{kem.h}!crypto\_kem\_enc@{crypto\_kem\_enc}}
+\index{crypto\_kem\_enc@{crypto\_kem\_enc}!kem.h@{kem.h}}
+\doxysubsubsection{\texorpdfstring{crypto\_kem\_enc}{crypto\_kem\_enc}}
+{\footnotesize\ttfamily \#define crypto\+\_\+kem\+\_\+enc~\mbox{\hyperlink{params_8h_a51c1085c773ccaac6cfa51a987dd346b}{KYBER\+\_\+\+NAMESPACE}}(enc)}
+
+
+
+Encrypts data using the public key. 
+
+This function uses the public key to encrypt the data and generates the ciphertext along with the shared secret.
+
+
+\begin{DoxyParams}{Parameters}
+{\em ct} & Pointer to an array where the ciphertext will be stored. \\
+\hline
+{\em ss} & Pointer to the shared secret that will be generated during encryption. \\
+\hline
+{\em pk} & Pointer to the public key used for encryption.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 if the function is executed successfully, or a non-\/zero value if an error occurs. 
+\end{DoxyReturn}
+\Hypertarget{kem_8h_acf75639e33e41b126f355686766d6672}\label{kem_8h_acf75639e33e41b126f355686766d6672} 
+\index{kem.h@{kem.h}!crypto\_kem\_enc\_derand@{crypto\_kem\_enc\_derand}}
+\index{crypto\_kem\_enc\_derand@{crypto\_kem\_enc\_derand}!kem.h@{kem.h}}
+\doxysubsubsection{\texorpdfstring{crypto\_kem\_enc\_derand}{crypto\_kem\_enc\_derand}}
+{\footnotesize\ttfamily \#define crypto\+\_\+kem\+\_\+enc\+\_\+derand~\mbox{\hyperlink{params_8h_a51c1085c773ccaac6cfa51a987dd346b}{KYBER\+\_\+\+NAMESPACE}}(enc\+\_\+derand)}
+
+
+
+Encrypts data using the public key and generates a shared secret. 
+
+This function uses the public key to encrypt the message and generates the ciphertext along with the shared secret.
+
+
+\begin{DoxyParams}{Parameters}
+{\em ct} & Pointer to an array where the ciphertext will be stored. \\
+\hline
+{\em ss} & Pointer to the shared secret that will be generated during encryption. \\
+\hline
+{\em pk} & Pointer to the public key used for encryption.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 if the function is executed successfully, or a non-\/zero value if an error occurs. 
+\end{DoxyReturn}
+\Hypertarget{kem_8h_affcceebbb34b0fcdd82918c9dd6f80ef}\label{kem_8h_affcceebbb34b0fcdd82918c9dd6f80ef} 
+\index{kem.h@{kem.h}!crypto\_kem\_keypair@{crypto\_kem\_keypair}}
+\index{crypto\_kem\_keypair@{crypto\_kem\_keypair}!kem.h@{kem.h}}
+\doxysubsubsection{\texorpdfstring{crypto\_kem\_keypair}{crypto\_kem\_keypair}}
+{\footnotesize\ttfamily \#define crypto\+\_\+kem\+\_\+keypair~\mbox{\hyperlink{params_8h_a51c1085c773ccaac6cfa51a987dd346b}{KYBER\+\_\+\+NAMESPACE}}(keypair)}
+
+
+
+Generates a public and secret key for Kyber KEM. 
+
+This function generates a public and secret key for the Kyber KEM without additional random data.
+
+
+\begin{DoxyParams}{Parameters}
+{\em pk} & Pointer to an array where the public key will be stored. \\
+\hline
+{\em sk} & Pointer to an array where the secret key will be stored.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 if the function is executed successfully, or a non-\/zero value if an error occurs. 
+\end{DoxyReturn}
+\Hypertarget{kem_8h_ac555dd337156af1cb48c341f260ca061}\label{kem_8h_ac555dd337156af1cb48c341f260ca061} 
+\index{kem.h@{kem.h}!crypto\_kem\_keypair\_derand@{crypto\_kem\_keypair\_derand}}
+\index{crypto\_kem\_keypair\_derand@{crypto\_kem\_keypair\_derand}!kem.h@{kem.h}}
+\doxysubsubsection{\texorpdfstring{crypto\_kem\_keypair\_derand}{crypto\_kem\_keypair\_derand}}
+{\footnotesize\ttfamily \#define crypto\+\_\+kem\+\_\+keypair\+\_\+derand~\mbox{\hyperlink{params_8h_a51c1085c773ccaac6cfa51a987dd346b}{KYBER\+\_\+\+NAMESPACE}}(keypair\+\_\+derand)}
+
+
+
+Generates a public and secret key with additional random data. 
+
+This function generates a public and secret key for the Kyber KEM (Key Encapsulation Mechanism) using additional random data.
+
+
+\begin{DoxyParams}{Parameters}
+{\em pk} & Pointer to an array where the public key will be stored. \\
+\hline
+{\em sk} & Pointer to an array where the secret key will be stored. \\
+\hline
+{\em coins} & Pointer to an array of random data used for key generation.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 if the function is executed successfully, or a non-\/zero value if an error occurs. 
+\end{DoxyReturn}
+\Hypertarget{kem_8h_ad3ae9ccc17354eeb4bfd498a1b76e938}\label{kem_8h_ad3ae9ccc17354eeb4bfd498a1b76e938} 
+\index{kem.h@{kem.h}!CRYPTO\_PUBLICKEYBYTES@{CRYPTO\_PUBLICKEYBYTES}}
+\index{CRYPTO\_PUBLICKEYBYTES@{CRYPTO\_PUBLICKEYBYTES}!kem.h@{kem.h}}
+\doxysubsubsection{\texorpdfstring{CRYPTO\_PUBLICKEYBYTES}{CRYPTO\_PUBLICKEYBYTES}}
+{\footnotesize\ttfamily \#define CRYPTO\+\_\+\+PUBLICKEYBYTES~\mbox{\hyperlink{params_8h_a7663b32715a32f12eb70420793753ce3}{KYBER\+\_\+\+PUBLICKEYBYTES}}}
+
+
+
+Size of public key. 
+
+\Hypertarget{kem_8h_a15a0b213afe1dabb9286f9f92a05251e}\label{kem_8h_a15a0b213afe1dabb9286f9f92a05251e} 
+\index{kem.h@{kem.h}!CRYPTO\_SECRETKEYBYTES@{CRYPTO\_SECRETKEYBYTES}}
+\index{CRYPTO\_SECRETKEYBYTES@{CRYPTO\_SECRETKEYBYTES}!kem.h@{kem.h}}
+\doxysubsubsection{\texorpdfstring{CRYPTO\_SECRETKEYBYTES}{CRYPTO\_SECRETKEYBYTES}}
+{\footnotesize\ttfamily \#define CRYPTO\+\_\+\+SECRETKEYBYTES~\mbox{\hyperlink{params_8h_a7f9a2f9ae6937442f988816af97babb3}{KYBER\+\_\+\+SECRETKEYBYTES}}}
+
+
+
+Size of secret key. 
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{kem_8h_a74b922a1783cac775aeb2b5e4242e75e}\label{kem_8h_a74b922a1783cac775aeb2b5e4242e75e} 
+\index{kem.h@{kem.h}!pqcrystals\_kyber768\_avx2\_dec@{pqcrystals\_kyber768\_avx2\_dec}}
+\index{pqcrystals\_kyber768\_avx2\_dec@{pqcrystals\_kyber768\_avx2\_dec}!kem.h@{kem.h}}
+\doxysubsubsection{\texorpdfstring{pqcrystals\_kyber768\_avx2\_dec()}{pqcrystals\_kyber768\_avx2\_dec()}}
+{\footnotesize\ttfamily int pqcrystals\+\_\+kyber768\+\_\+avx2\+\_\+dec (\begin{DoxyParamCaption}\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{ss,  }\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{ct,  }\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{sk }\end{DoxyParamCaption})}
+
+\Hypertarget{kem_8h_a0ff624b8d78bd1c39083adb998a6eadf}\label{kem_8h_a0ff624b8d78bd1c39083adb998a6eadf} 
+\index{kem.h@{kem.h}!pqcrystals\_kyber768\_avx2\_enc@{pqcrystals\_kyber768\_avx2\_enc}}
+\index{pqcrystals\_kyber768\_avx2\_enc@{pqcrystals\_kyber768\_avx2\_enc}!kem.h@{kem.h}}
+\doxysubsubsection{\texorpdfstring{pqcrystals\_kyber768\_avx2\_enc()}{pqcrystals\_kyber768\_avx2\_enc()}}
+{\footnotesize\ttfamily int pqcrystals\+\_\+kyber768\+\_\+avx2\+\_\+enc (\begin{DoxyParamCaption}\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{ct,  }\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{ss,  }\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{pk }\end{DoxyParamCaption})}
+
+\Hypertarget{kem_8h_a113b14cd6d23445ecc01293264d32eeb}\label{kem_8h_a113b14cd6d23445ecc01293264d32eeb} 
+\index{kem.h@{kem.h}!pqcrystals\_kyber768\_avx2\_enc\_derand@{pqcrystals\_kyber768\_avx2\_enc\_derand}}
+\index{pqcrystals\_kyber768\_avx2\_enc\_derand@{pqcrystals\_kyber768\_avx2\_enc\_derand}!kem.h@{kem.h}}
+\doxysubsubsection{\texorpdfstring{pqcrystals\_kyber768\_avx2\_enc\_derand()}{pqcrystals\_kyber768\_avx2\_enc\_derand()}}
+{\footnotesize\ttfamily int pqcrystals\+\_\+kyber768\+\_\+avx2\+\_\+enc\+\_\+derand (\begin{DoxyParamCaption}\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{ct,  }\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{ss,  }\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{pk,  }\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{coins }\end{DoxyParamCaption})}
+
+\Hypertarget{kem_8h_af3bc7e232f7932a69009fd6995d6fdb4}\label{kem_8h_af3bc7e232f7932a69009fd6995d6fdb4} 
+\index{kem.h@{kem.h}!pqcrystals\_kyber768\_avx2\_keypair@{pqcrystals\_kyber768\_avx2\_keypair}}
+\index{pqcrystals\_kyber768\_avx2\_keypair@{pqcrystals\_kyber768\_avx2\_keypair}!kem.h@{kem.h}}
+\doxysubsubsection{\texorpdfstring{pqcrystals\_kyber768\_avx2\_keypair()}{pqcrystals\_kyber768\_avx2\_keypair()}}
+{\footnotesize\ttfamily int pqcrystals\+\_\+kyber768\+\_\+avx2\+\_\+keypair (\begin{DoxyParamCaption}\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{pk,  }\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{sk }\end{DoxyParamCaption})}
+
+\Hypertarget{kem_8h_a645bbad31f75f057d0123047871ea13e}\label{kem_8h_a645bbad31f75f057d0123047871ea13e} 
+\index{kem.h@{kem.h}!pqcrystals\_kyber768\_avx2\_keypair\_derand@{pqcrystals\_kyber768\_avx2\_keypair\_derand}}
+\index{pqcrystals\_kyber768\_avx2\_keypair\_derand@{pqcrystals\_kyber768\_avx2\_keypair\_derand}!kem.h@{kem.h}}
+\doxysubsubsection{\texorpdfstring{pqcrystals\_kyber768\_avx2\_keypair\_derand()}{pqcrystals\_kyber768\_avx2\_keypair\_derand()}}
+{\footnotesize\ttfamily int pqcrystals\+\_\+kyber768\+\_\+avx2\+\_\+keypair\+\_\+derand (\begin{DoxyParamCaption}\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{pk,  }\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{sk,  }\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{coins }\end{DoxyParamCaption})}
+

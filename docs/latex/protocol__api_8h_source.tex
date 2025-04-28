@@ -1,0 +1,46 @@
+\doxysection{protocol\+\_\+api.\+h}
+\hypertarget{protocol__api_8h_source}{}\label{protocol__api_8h_source}\index{src/protocol\_api.h@{src/protocol\_api.h}}
+\mbox{\hyperlink{protocol__api_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <string.h>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{params_8h}{params.h}}"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{poly_8h}{poly.h}}"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{polyvec_8h}{polyvec.h}}"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{indcpa_8h}{indcpa.h}}"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{kem_8h}{kem.h}}"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{fips202_8h}{fips202.h}}"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}fips202x4.h"{}}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#define\ PUBLIC\_KEY\_BYTES\ KYBER\_PUBLICKEYBYTES}}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#define\ CIPHERTEXT\_BYTES\ KYBER\_CIPHERTEXTBYTES}}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#define\ SECRET\_KEY\_BYTES\ KYBER\_SECRETKEYBYTES}}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#define\ STEALTH\_ADDRESS\_BYTES\ (KYBER\_K\ *\ KYBER\_POLYBYTES)}}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00039\ \textcolor{preprocessor}{\#define\ SS\_BYTES\ KYBER\_SSBYTES}}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00046\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{protocol__api_8h_a2a804d61df9a40fc309e6c609739110d}{calculate\_stealth\_pub\_key}}(uint8\_t\ stealth\_pub\_key[\mbox{\hyperlink{protocol__api_8h_ac42ee8dc097e52d63dd4e8371d769d12}{STEALTH\_ADDRESS\_BYTES}}],}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keyword}{const}\ uint8\_t\ ss[\mbox{\hyperlink{params_8h_a132bbc78e88ea5e14e93e0963dd5d0f9}{KYBER\_SYMBYTES}}],}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keyword}{const}\ uint8\_t\ k\_pub[\mbox{\hyperlink{params_8h_a4c9f2345946a0d01dc2051b493c2bda4}{KYBER\_INDCPA\_PUBLICKEYBYTES}}]);}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00058\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{protocol__api_8h_a858f8d44b117050df006c629482959fc}{recipient\_computes\_stealth\_pub\_key}}(uint8\_t\ stealth\_pub\_key[\mbox{\hyperlink{protocol__api_8h_ac42ee8dc097e52d63dd4e8371d769d12}{STEALTH\_ADDRESS\_BYTES}}],}
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keyword}{const}\ uint8\_t\ k\_pub[\mbox{\hyperlink{protocol__api_8h_ad5efc07c6661656b396c6c3e859e0e74}{PUBLIC\_KEY\_BYTES}}],}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keyword}{const}\ uint8\_t\ ephemeral\_pub\_key[\mbox{\hyperlink{protocol__api_8h_a84c301f8e1f57a825bbd2dcab697fc5e}{CIPHERTEXT\_BYTES}}],}
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keyword}{const}\ uint8\_t\ v[\mbox{\hyperlink{protocol__api_8h_ab3f2c416c5b669c62894a54d8c26c33b}{SECRET\_KEY\_BYTES}}]);}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00073\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{protocol__api_8h_a741d56808420f6e2ee9e851f4122dae0}{sender\_computes\_stealth\_pub\_key\_and\_viewtag}}(uint8\_t\ stealth\_pub\_key[\mbox{\hyperlink{protocol__api_8h_ac42ee8dc097e52d63dd4e8371d769d12}{STEALTH\_ADDRESS\_BYTES}}],}
+\DoxyCodeLine{00074\ \ \ \ \ uint8\_t\ ephemeral\_pub\_key[\mbox{\hyperlink{protocol__api_8h_a84c301f8e1f57a825bbd2dcab697fc5e}{CIPHERTEXT\_BYTES}}],}
+\DoxyCodeLine{00075\ \ \ \ \ uint8\_t*\ view\_tag,}
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keyword}{const}\ uint8\_t\ v\_pub[\mbox{\hyperlink{protocol__api_8h_ad5efc07c6661656b396c6c3e859e0e74}{PUBLIC\_KEY\_BYTES}}],}
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keyword}{const}\ uint8\_t\ k\_pub[\mbox{\hyperlink{protocol__api_8h_ad5efc07c6661656b396c6c3e859e0e74}{PUBLIC\_KEY\_BYTES}}]);}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00085\ uint8\_t\ \mbox{\hyperlink{protocol__api_8h_a9a43976b56c90c6d13ef53bda55a3d34}{calculate\_view\_tag}}(\textcolor{keyword}{const}\ uint8\_t\ ss[\mbox{\hyperlink{protocol__api_8h_a0666dc127dc023e0ab7c99df84cee1c6}{SS\_BYTES}}]);}
+
+\end{DoxyCode}

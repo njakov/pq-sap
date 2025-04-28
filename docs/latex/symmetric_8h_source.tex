@@ -1,0 +1,42 @@
+\doxysection{symmetric.\+h}
+\hypertarget{symmetric_8h_source}{}\label{symmetric_8h_source}\index{libs/symmetric.h@{libs/symmetric.h}}
+\mbox{\hyperlink{symmetric_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ SYMMETRIC\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ SYMMETRIC\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <stddef.h>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{params_8h}{params.h}}"{}}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{fips202_8h}{fips202.h}}"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}fips202x4.h"{}}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{typedef}\ \mbox{\hyperlink{structkeccak__state}{keccak\_state}}\ \mbox{\hyperlink{symmetric_8h_a7dac7d19620804387d30236a26ed635d}{xof\_state}};}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#define\ kyber\_shake128\_absorb\ KYBER\_NAMESPACE(kyber\_shake128\_absorb)}}
+\DoxyCodeLine{00014\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{symmetric_8h_ac9ab7cc2c410ba09ef3874e60db6f073}{kyber\_shake128\_absorb}}(\mbox{\hyperlink{structkeccak__state}{keccak\_state}}\ *s,}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ uint8\_t\ seed[\mbox{\hyperlink{params_8h_a132bbc78e88ea5e14e93e0963dd5d0f9}{KYBER\_SYMBYTES}}],}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ x,}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ y);}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#define\ kyber\_shake256\_prf\ KYBER\_NAMESPACE(kyber\_shake256\_prf)}}
+\DoxyCodeLine{00020\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{symmetric_8h_acc2b4154079d6441d2ec3aed273d3763}{kyber\_shake256\_prf}}(uint8\_t\ *out,\ \textcolor{keywordtype}{size\_t}\ outlen,\ \textcolor{keyword}{const}\ uint8\_t\ key[\mbox{\hyperlink{params_8h_a132bbc78e88ea5e14e93e0963dd5d0f9}{KYBER\_SYMBYTES}}],\ uint8\_t\ nonce);}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#define\ kyber\_shake256\_rkprf\ KYBER\_NAMESPACE(kyber\_shake256\_rkprf)}}
+\DoxyCodeLine{00023\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{symmetric_8h_ac506e9d57c07d1332aabbbcd4e827551}{kyber\_shake256\_rkprf}}(uint8\_t\ out[\mbox{\hyperlink{params_8h_a5054c9269277412d8536eb82cfffbe15}{KYBER\_SSBYTES}}],\ \textcolor{keyword}{const}\ uint8\_t\ key[\mbox{\hyperlink{params_8h_a132bbc78e88ea5e14e93e0963dd5d0f9}{KYBER\_SYMBYTES}}],\ \textcolor{keyword}{const}\ uint8\_t\ input[\mbox{\hyperlink{params_8h_a356cca49fc302b0c34c18f4bbda6e5fe}{KYBER\_CIPHERTEXTBYTES}}]);}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#define\ XOF\_BLOCKBYTES\ SHAKE128\_RATE}}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#define\ hash\_h(OUT,\ IN,\ INBYTES)\ sha3\_256(OUT,\ IN,\ INBYTES)}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#define\ hash\_g(OUT,\ IN,\ INBYTES)\ sha3\_512(OUT,\ IN,\ INBYTES)}}
+\DoxyCodeLine{00044\ \textcolor{preprocessor}{\#define\ xof\_absorb(STATE,\ SEED,\ X,\ Y)\ kyber\_shake128\_absorb(STATE,\ SEED,\ X,\ Y)}}
+\DoxyCodeLine{00059\ \textcolor{preprocessor}{\#define\ xof\_squeezeblocks(OUT,\ OUTBLOCKS,\ STATE)\ shake128\_squeezeblocks(OUT,\ OUTBLOCKS,\ STATE)}}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \textcolor{preprocessor}{\#define\ prf(OUT,\ OUTBYTES,\ KEY,\ NONCE)\ kyber\_shake256\_prf(OUT,\ OUTBYTES,\ KEY,\ NONCE)}}
+\DoxyCodeLine{00063\ \textcolor{preprocessor}{\#define\ rkprf(OUT,\ KEY,\ INPUT)\ kyber\_shake256\_rkprf(OUT,\ KEY,\ INPUT)}}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ SYMMETRIC\_H\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

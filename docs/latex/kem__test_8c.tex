@@ -1,0 +1,54 @@
+\doxysection{tests/kem\+\_\+test.c File Reference}
+\hypertarget{kem__test_8c}{}\label{kem__test_8c}\index{tests/kem\_test.c@{tests/kem\_test.c}}
+{\ttfamily \#include "{}kem.\+h"{}}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+Include dependency graph for kem\+\_\+test.\+c\+:
+% FIG 0
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{kem__test_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\begin{DoxyCompactList}\small\item\em Main function that runs the Kyber Key Encapsulation Mechanism (KEM) and demonstrates key generation, encapsulation, and decapsulation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{kem__test_8c_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{kem__test_8c_ae66f6b31b5ad750f1fe042a706a4e3d4} 
+\index{kem\_test.c@{kem\_test.c}!main@{main}}
+\index{main@{main}!kem\_test.c@{kem\_test.c}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Main function that runs the Kyber Key Encapsulation Mechanism (KEM) and demonstrates key generation, encapsulation, and decapsulation. 
+
+This function orchestrates the entire process of Kyber\textquotesingle{}s Key Encapsulation Mechanism (KEM), starting from the generation of key pairs, followed by the encapsulation and decapsulation of shared secrets. The main purpose of this test is to verify the correctness of the Kyber encryption and decryption cycle.
+
+The following variables are used in this function\+:
+\begin{DoxyItemize}
+\item pk\mbox{[}\doxylink{params_8h_a7663b32715a32f12eb70420793753ce3}{KYBER\+\_\+\+PUBLICKEYBYTES}\mbox{]}\+: Public key used for encryption and encapsulation.
+\item sk\mbox{[}\doxylink{params_8h_a7f9a2f9ae6937442f988816af97babb3}{KYBER\+\_\+\+SECRETKEYBYTES}\mbox{]}\+: Secret key used for decryption and decapsulation.
+\item ct\mbox{[}\doxylink{params_8h_a356cca49fc302b0c34c18f4bbda6e5fe}{KYBER\+\_\+\+CIPHERTEXTBYTES}\mbox{]}\+: Ciphertext, the encrypted version of the shared secret.
+\item ss1\mbox{[}\doxylink{params_8h_a5054c9269277412d8536eb82cfffbe15}{KYBER\+\_\+\+SSBYTES}\mbox{]}\+: Shared secret from encapsulation.
+\item ss2\mbox{[}\doxylink{params_8h_a5054c9269277412d8536eb82cfffbe15}{KYBER\+\_\+\+SSBYTES}\mbox{]}\+: Shared secret from decapsulation.
+\end{DoxyItemize}
+
+The main function performs the following steps\+:
+\begin{DoxyEnumerate}
+\item It generates a public and secret key pair using the Kyber KEM key generation function ( \doxylink{kem_8h_affcceebbb34b0fcdd82918c9dd6f80ef}{crypto\+\_\+kem\+\_\+keypair(pk, sk)} )
+\item It encapsulates a shared secret using the public key to create a ciphertext and a shared secret ( \doxylink{kem_8h_a34799e9bffdfd9786a5fcd8867837c74}{crypto\+\_\+kem\+\_\+enc(ct, ss1, pk)} ).
+\item It decapsulates the ciphertext using the secret key to recover the shared secret ( \doxylink{kem_8h_a08dbb674e5d520aca994bc4472ce5a02}{crypto\+\_\+kem\+\_\+dec(ss2, ct, sk)} ).
+\item It compares the encapsulated and decapsulated shared secrets to ensure they match.
+\item It prints the number of bytes required for the ciphertext in the Kyber scheme.
+\item It prints the result of the test, whether it passed or failed based on the shared secret comparison. This function outputs\+:
+\end{DoxyEnumerate}
+\begin{DoxyItemize}
+\item The public and secret keys in hexadecimal format.
+\item The ciphertext and the two shared secrets (one from encapsulation and one from decapsulation).
+\item A message indicating whether the test passed or failed.
+\end{DoxyItemize}
+
+\begin{DoxyReturn}{Returns}
+0 if the test passes, indicating successful execution; otherwise, it returns early on failure. 
+\end{DoxyReturn}

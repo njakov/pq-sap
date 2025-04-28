@@ -1,0 +1,227 @@
+\doxysection{libs/params.h File Reference}
+\hypertarget{params_8h}{}\label{params_8h}\index{libs/params.h@{libs/params.h}}
+This graph shows which files directly or indirectly include this file\+:
+% FIG 0
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{params_8h_a1e66e19d25aceeae49d1184a077f92db}{KYBER\+\_\+K}}~3 /\texorpdfstring{$\ast$}{*} Change this for different security strengths \texorpdfstring{$\ast$}{*}/
+\item 
+\#define \mbox{\hyperlink{params_8h_a51c1085c773ccaac6cfa51a987dd346b}{KYBER\+\_\+\+NAMESPACE}}(s)~pqcrystals\+\_\+kyber768\+\_\+avx2\+\_\+\#\#s
+\begin{DoxyCompactList}\small\item\em Namespace definition based on the value of KYBER\+\_\+K and KYBER\+\_\+90S. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{params_8h_add4f22a10cc799b6846a517183c7f4cb}{KYBER\+\_\+N}}~256
+\begin{DoxyCompactList}\small\item\em The value of N for Kyber algorithm. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{params_8h_a874d765cb6e25f657aec2f225d8505a6}{KYBER\+\_\+Q}}~3329
+\begin{DoxyCompactList}\small\item\em The modulus Q for Kyber algorithm. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{params_8h_a132bbc78e88ea5e14e93e0963dd5d0f9}{KYBER\+\_\+\+SYMBYTES}}~32   /\texorpdfstring{$\ast$}{*} size in bytes of hashes, and seeds \texorpdfstring{$\ast$}{*}/
+\begin{DoxyCompactList}\small\item\em The size in bytes for hashes and seeds used in the Kyber algorithm. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{params_8h_a5054c9269277412d8536eb82cfffbe15}{KYBER\+\_\+\+SSBYTES}}~32   /\texorpdfstring{$\ast$}{*} size in bytes of shared key \texorpdfstring{$\ast$}{*}/
+\begin{DoxyCompactList}\small\item\em The size in bytes of the shared key in the Kyber algorithm. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{params_8h_af66bcd4f5c1ee3377ed637b38ed8f356}{KYBER\+\_\+\+POLYBYTES}}~384
+\begin{DoxyCompactList}\small\item\em The size in bytes of a single polynomial in the Kyber algorithm. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{params_8h_a173c9a0c50ab5c98875d52bae2de1858}{KYBER\+\_\+\+POLYVECBYTES}}~(\mbox{\hyperlink{params_8h_a1e66e19d25aceeae49d1184a077f92db}{KYBER\+\_\+K}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{params_8h_af66bcd4f5c1ee3377ed637b38ed8f356}{KYBER\+\_\+\+POLYBYTES}})
+\begin{DoxyCompactList}\small\item\em The size in bytes of a vector of polynomials. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{params_8h_a397c6eb7fdf0d7a3cbcd1e888d6e26cd}{KYBER\+\_\+\+ETA1}}~2
+\begin{DoxyCompactList}\small\item\em The value of eta1 based on the security level (KYBER\+\_\+K). \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{params_8h_a51140554139d44ac9793c4d37dddb6c5}{KYBER\+\_\+\+POLYCOMPRESSEDBYTES}}~128
+\item 
+\#define \mbox{\hyperlink{params_8h_a13592b90b6472cdf6d69416092fddb40}{KYBER\+\_\+\+POLYVECCOMPRESSEDBYTES}}~(\mbox{\hyperlink{params_8h_a1e66e19d25aceeae49d1184a077f92db}{KYBER\+\_\+K}} \texorpdfstring{$\ast$}{*} 320)
+\item 
+\#define \mbox{\hyperlink{params_8h_af654c43811cbf8dce2b5ba26e10b376b}{KYBER\+\_\+\+ETA2}}~2
+\begin{DoxyCompactList}\small\item\em The value of eta2 for the Kyber algorithm. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{params_8h_afbda72968986f789dc91f6ca3368a628}{KYBER\+\_\+\+INDCPA\+\_\+\+MSGBYTES}}~(\mbox{\hyperlink{params_8h_a132bbc78e88ea5e14e93e0963dd5d0f9}{KYBER\+\_\+\+SYMBYTES}})
+\begin{DoxyCompactList}\small\item\em The number of bytes used for the message in the Kyber IND-\/\+CPA (Indistinguishability under Chosen-\/\+Plaintext Attack) scheme. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{params_8h_a4c9f2345946a0d01dc2051b493c2bda4}{KYBER\+\_\+\+INDCPA\+\_\+\+PUBLICKEYBYTES}}~(\mbox{\hyperlink{params_8h_a173c9a0c50ab5c98875d52bae2de1858}{KYBER\+\_\+\+POLYVECBYTES}} + \mbox{\hyperlink{params_8h_a132bbc78e88ea5e14e93e0963dd5d0f9}{KYBER\+\_\+\+SYMBYTES}})
+\begin{DoxyCompactList}\small\item\em The number of bytes used for the public key in the Kyber IND-\/\+CPA scheme. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{params_8h_a7258274ad7836627403880fe8dda0cfa}{KYBER\+\_\+\+INDCPA\+\_\+\+SECRETKEYBYTES}}~(\mbox{\hyperlink{params_8h_a173c9a0c50ab5c98875d52bae2de1858}{KYBER\+\_\+\+POLYVECBYTES}})
+\begin{DoxyCompactList}\small\item\em The number of bytes used for the secret key in the Kyber IND-\/\+CPA scheme. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{params_8h_a14d4b725309e5e2664245eedc25ef4c4}{KYBER\+\_\+\+INDCPA\+\_\+\+BYTES}}~(\mbox{\hyperlink{params_8h_a13592b90b6472cdf6d69416092fddb40}{KYBER\+\_\+\+POLYVECCOMPRESSEDBYTES}} + \mbox{\hyperlink{params_8h_a51140554139d44ac9793c4d37dddb6c5}{KYBER\+\_\+\+POLYCOMPRESSEDBYTES}})
+\begin{DoxyCompactList}\small\item\em The number of bytes used for the ciphertext in the Kyber IND-\/\+CPA scheme. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{params_8h_a7663b32715a32f12eb70420793753ce3}{KYBER\+\_\+\+PUBLICKEYBYTES}}~(\mbox{\hyperlink{params_8h_a4c9f2345946a0d01dc2051b493c2bda4}{KYBER\+\_\+\+INDCPA\+\_\+\+PUBLICKEYBYTES}})
+\begin{DoxyCompactList}\small\item\em The number of bytes used for the public key in the Kyber scheme. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{params_8h_a7f9a2f9ae6937442f988816af97babb3}{KYBER\+\_\+\+SECRETKEYBYTES}}~(\mbox{\hyperlink{params_8h_a7258274ad7836627403880fe8dda0cfa}{KYBER\+\_\+\+INDCPA\+\_\+\+SECRETKEYBYTES}} + \mbox{\hyperlink{params_8h_a4c9f2345946a0d01dc2051b493c2bda4}{KYBER\+\_\+\+INDCPA\+\_\+\+PUBLICKEYBYTES}} + 2\texorpdfstring{$\ast$}{*}\mbox{\hyperlink{params_8h_a132bbc78e88ea5e14e93e0963dd5d0f9}{KYBER\+\_\+\+SYMBYTES}})
+\begin{DoxyCompactList}\small\item\em The number of bytes used for the secret key in the Kyber scheme. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{params_8h_a356cca49fc302b0c34c18f4bbda6e5fe}{KYBER\+\_\+\+CIPHERTEXTBYTES}}~(\mbox{\hyperlink{params_8h_a14d4b725309e5e2664245eedc25ef4c4}{KYBER\+\_\+\+INDCPA\+\_\+\+BYTES}})
+\begin{DoxyCompactList}\small\item\em The number of bytes used for the ciphertext in the Kyber scheme. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{params_8h_a356cca49fc302b0c34c18f4bbda6e5fe}\label{params_8h_a356cca49fc302b0c34c18f4bbda6e5fe} 
+\index{params.h@{params.h}!KYBER\_CIPHERTEXTBYTES@{KYBER\_CIPHERTEXTBYTES}}
+\index{KYBER\_CIPHERTEXTBYTES@{KYBER\_CIPHERTEXTBYTES}!params.h@{params.h}}
+\doxysubsubsection{\texorpdfstring{KYBER\_CIPHERTEXTBYTES}{KYBER\_CIPHERTEXTBYTES}}
+{\footnotesize\ttfamily \#define KYBER\+\_\+\+CIPHERTEXTBYTES~(\mbox{\hyperlink{params_8h_a14d4b725309e5e2664245eedc25ef4c4}{KYBER\+\_\+\+INDCPA\+\_\+\+BYTES}})}
+
+
+
+The number of bytes used for the ciphertext in the Kyber scheme. 
+
+This defines the size of the ciphertext in the Kyber cryptosystem. It is composed of the IND-\/\+CPA ciphertext along with the necessary metadata. \Hypertarget{params_8h_a397c6eb7fdf0d7a3cbcd1e888d6e26cd}\label{params_8h_a397c6eb7fdf0d7a3cbcd1e888d6e26cd} 
+\index{params.h@{params.h}!KYBER\_ETA1@{KYBER\_ETA1}}
+\index{KYBER\_ETA1@{KYBER\_ETA1}!params.h@{params.h}}
+\doxysubsubsection{\texorpdfstring{KYBER\_ETA1}{KYBER\_ETA1}}
+{\footnotesize\ttfamily \#define KYBER\+\_\+\+ETA1~2}
+
+
+
+The value of eta1 based on the security level (KYBER\+\_\+K). 
+
+This constant controls the noise parameter in Kyber. It varies based on the security strength, with different values for KYBER\+\_\+K = 2, 3, or 4. \Hypertarget{params_8h_af654c43811cbf8dce2b5ba26e10b376b}\label{params_8h_af654c43811cbf8dce2b5ba26e10b376b} 
+\index{params.h@{params.h}!KYBER\_ETA2@{KYBER\_ETA2}}
+\index{KYBER\_ETA2@{KYBER\_ETA2}!params.h@{params.h}}
+\doxysubsubsection{\texorpdfstring{KYBER\_ETA2}{KYBER\_ETA2}}
+{\footnotesize\ttfamily \#define KYBER\+\_\+\+ETA2~2}
+
+
+
+The value of eta2 for the Kyber algorithm. 
+
+Defines the noise parameter {\ttfamily eta2}, which is constant across all Kyber versions. \Hypertarget{params_8h_a14d4b725309e5e2664245eedc25ef4c4}\label{params_8h_a14d4b725309e5e2664245eedc25ef4c4} 
+\index{params.h@{params.h}!KYBER\_INDCPA\_BYTES@{KYBER\_INDCPA\_BYTES}}
+\index{KYBER\_INDCPA\_BYTES@{KYBER\_INDCPA\_BYTES}!params.h@{params.h}}
+\doxysubsubsection{\texorpdfstring{KYBER\_INDCPA\_BYTES}{KYBER\_INDCPA\_BYTES}}
+{\footnotesize\ttfamily \#define KYBER\+\_\+\+INDCPA\+\_\+\+BYTES~(\mbox{\hyperlink{params_8h_a13592b90b6472cdf6d69416092fddb40}{KYBER\+\_\+\+POLYVECCOMPRESSEDBYTES}} + \mbox{\hyperlink{params_8h_a51140554139d44ac9793c4d37dddb6c5}{KYBER\+\_\+\+POLYCOMPRESSEDBYTES}})}
+
+
+
+The number of bytes used for the ciphertext in the Kyber IND-\/\+CPA scheme. 
+
+This defines the size of the ciphertext in the Kyber IND-\/\+CPA scheme. It is a compressed representation of the polynomial vectors. \Hypertarget{params_8h_afbda72968986f789dc91f6ca3368a628}\label{params_8h_afbda72968986f789dc91f6ca3368a628} 
+\index{params.h@{params.h}!KYBER\_INDCPA\_MSGBYTES@{KYBER\_INDCPA\_MSGBYTES}}
+\index{KYBER\_INDCPA\_MSGBYTES@{KYBER\_INDCPA\_MSGBYTES}!params.h@{params.h}}
+\doxysubsubsection{\texorpdfstring{KYBER\_INDCPA\_MSGBYTES}{KYBER\_INDCPA\_MSGBYTES}}
+{\footnotesize\ttfamily \#define KYBER\+\_\+\+INDCPA\+\_\+\+MSGBYTES~(\mbox{\hyperlink{params_8h_a132bbc78e88ea5e14e93e0963dd5d0f9}{KYBER\+\_\+\+SYMBYTES}})}
+
+
+
+The number of bytes used for the message in the Kyber IND-\/\+CPA (Indistinguishability under Chosen-\/\+Plaintext Attack) scheme. 
+
+This defines the number of bytes used for the message during the encryption process. \Hypertarget{params_8h_a4c9f2345946a0d01dc2051b493c2bda4}\label{params_8h_a4c9f2345946a0d01dc2051b493c2bda4} 
+\index{params.h@{params.h}!KYBER\_INDCPA\_PUBLICKEYBYTES@{KYBER\_INDCPA\_PUBLICKEYBYTES}}
+\index{KYBER\_INDCPA\_PUBLICKEYBYTES@{KYBER\_INDCPA\_PUBLICKEYBYTES}!params.h@{params.h}}
+\doxysubsubsection{\texorpdfstring{KYBER\_INDCPA\_PUBLICKEYBYTES}{KYBER\_INDCPA\_PUBLICKEYBYTES}}
+{\footnotesize\ttfamily \#define KYBER\+\_\+\+INDCPA\+\_\+\+PUBLICKEYBYTES~(\mbox{\hyperlink{params_8h_a173c9a0c50ab5c98875d52bae2de1858}{KYBER\+\_\+\+POLYVECBYTES}} + \mbox{\hyperlink{params_8h_a132bbc78e88ea5e14e93e0963dd5d0f9}{KYBER\+\_\+\+SYMBYTES}})}
+
+
+
+The number of bytes used for the public key in the Kyber IND-\/\+CPA scheme. 
+
+This defines the size of the public key in the Kyber IND-\/\+CPA scheme. It includes the vector of polynomials and the hash of the public key. \Hypertarget{params_8h_a7258274ad7836627403880fe8dda0cfa}\label{params_8h_a7258274ad7836627403880fe8dda0cfa} 
+\index{params.h@{params.h}!KYBER\_INDCPA\_SECRETKEYBYTES@{KYBER\_INDCPA\_SECRETKEYBYTES}}
+\index{KYBER\_INDCPA\_SECRETKEYBYTES@{KYBER\_INDCPA\_SECRETKEYBYTES}!params.h@{params.h}}
+\doxysubsubsection{\texorpdfstring{KYBER\_INDCPA\_SECRETKEYBYTES}{KYBER\_INDCPA\_SECRETKEYBYTES}}
+{\footnotesize\ttfamily \#define KYBER\+\_\+\+INDCPA\+\_\+\+SECRETKEYBYTES~(\mbox{\hyperlink{params_8h_a173c9a0c50ab5c98875d52bae2de1858}{KYBER\+\_\+\+POLYVECBYTES}})}
+
+
+
+The number of bytes used for the secret key in the Kyber IND-\/\+CPA scheme. 
+
+This defines the size of the secret key in the Kyber IND-\/\+CPA scheme. It includes the vector of polynomials used for decryption. \Hypertarget{params_8h_a1e66e19d25aceeae49d1184a077f92db}\label{params_8h_a1e66e19d25aceeae49d1184a077f92db} 
+\index{params.h@{params.h}!KYBER\_K@{KYBER\_K}}
+\index{KYBER\_K@{KYBER\_K}!params.h@{params.h}}
+\doxysubsubsection{\texorpdfstring{KYBER\_K}{KYBER\_K}}
+{\footnotesize\ttfamily \#define KYBER\+\_\+K~3 /\texorpdfstring{$\ast$}{*} Change this for different security strengths \texorpdfstring{$\ast$}{*}/}
+
+\Hypertarget{params_8h_add4f22a10cc799b6846a517183c7f4cb}\label{params_8h_add4f22a10cc799b6846a517183c7f4cb} 
+\index{params.h@{params.h}!KYBER\_N@{KYBER\_N}}
+\index{KYBER\_N@{KYBER\_N}!params.h@{params.h}}
+\doxysubsubsection{\texorpdfstring{KYBER\_N}{KYBER\_N}}
+{\footnotesize\ttfamily \#define KYBER\+\_\+N~256}
+
+
+
+The value of N for Kyber algorithm. 
+
+Defines the size of the underlying ring in the Kyber cryptographic scheme. This value is used for the number of elements in the polynomials. Typically, it is fixed at 256 for all Kyber variants. \Hypertarget{params_8h_a51c1085c773ccaac6cfa51a987dd346b}\label{params_8h_a51c1085c773ccaac6cfa51a987dd346b} 
+\index{params.h@{params.h}!KYBER\_NAMESPACE@{KYBER\_NAMESPACE}}
+\index{KYBER\_NAMESPACE@{KYBER\_NAMESPACE}!params.h@{params.h}}
+\doxysubsubsection{\texorpdfstring{KYBER\_NAMESPACE}{KYBER\_NAMESPACE}}
+{\footnotesize\ttfamily \#define KYBER\+\_\+\+NAMESPACE(\begin{DoxyParamCaption}\item[{}]{s }\end{DoxyParamCaption})~pqcrystals\+\_\+kyber768\+\_\+avx2\+\_\+\#\#s}
+
+
+
+Namespace definition based on the value of KYBER\+\_\+K and KYBER\+\_\+90S. 
+
+Depending on the value of KYBER\+\_\+K (2, 3, or 4) and whether KYBER\+\_\+90S is defined, this macro creates a namespace prefix used for naming functions and variables. This ensures that the correct version of the Kyber algorithm (with different security levels) is used during compilation. \Hypertarget{params_8h_af66bcd4f5c1ee3377ed637b38ed8f356}\label{params_8h_af66bcd4f5c1ee3377ed637b38ed8f356} 
+\index{params.h@{params.h}!KYBER\_POLYBYTES@{KYBER\_POLYBYTES}}
+\index{KYBER\_POLYBYTES@{KYBER\_POLYBYTES}!params.h@{params.h}}
+\doxysubsubsection{\texorpdfstring{KYBER\_POLYBYTES}{KYBER\_POLYBYTES}}
+{\footnotesize\ttfamily \#define KYBER\+\_\+\+POLYBYTES~384}
+
+
+
+The size in bytes of a single polynomial in the Kyber algorithm. 
+
+Defines the size in bytes for a polynomial used in Kyber encryption and decryption. It is based on the N value, which is typically 256. \Hypertarget{params_8h_a51140554139d44ac9793c4d37dddb6c5}\label{params_8h_a51140554139d44ac9793c4d37dddb6c5} 
+\index{params.h@{params.h}!KYBER\_POLYCOMPRESSEDBYTES@{KYBER\_POLYCOMPRESSEDBYTES}}
+\index{KYBER\_POLYCOMPRESSEDBYTES@{KYBER\_POLYCOMPRESSEDBYTES}!params.h@{params.h}}
+\doxysubsubsection{\texorpdfstring{KYBER\_POLYCOMPRESSEDBYTES}{KYBER\_POLYCOMPRESSEDBYTES}}
+{\footnotesize\ttfamily \#define KYBER\+\_\+\+POLYCOMPRESSEDBYTES~128}
+
+\Hypertarget{params_8h_a173c9a0c50ab5c98875d52bae2de1858}\label{params_8h_a173c9a0c50ab5c98875d52bae2de1858} 
+\index{params.h@{params.h}!KYBER\_POLYVECBYTES@{KYBER\_POLYVECBYTES}}
+\index{KYBER\_POLYVECBYTES@{KYBER\_POLYVECBYTES}!params.h@{params.h}}
+\doxysubsubsection{\texorpdfstring{KYBER\_POLYVECBYTES}{KYBER\_POLYVECBYTES}}
+{\footnotesize\ttfamily \#define KYBER\+\_\+\+POLYVECBYTES~(\mbox{\hyperlink{params_8h_a1e66e19d25aceeae49d1184a077f92db}{KYBER\+\_\+K}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{params_8h_af66bcd4f5c1ee3377ed637b38ed8f356}{KYBER\+\_\+\+POLYBYTES}})}
+
+
+
+The size in bytes of a vector of polynomials. 
+
+This defines the size of a vector containing {\ttfamily KYBER\+\_\+K} polynomials. This value changes depending on the Kyber variant (KYBER\+\_\+K). \Hypertarget{params_8h_a13592b90b6472cdf6d69416092fddb40}\label{params_8h_a13592b90b6472cdf6d69416092fddb40} 
+\index{params.h@{params.h}!KYBER\_POLYVECCOMPRESSEDBYTES@{KYBER\_POLYVECCOMPRESSEDBYTES}}
+\index{KYBER\_POLYVECCOMPRESSEDBYTES@{KYBER\_POLYVECCOMPRESSEDBYTES}!params.h@{params.h}}
+\doxysubsubsection{\texorpdfstring{KYBER\_POLYVECCOMPRESSEDBYTES}{KYBER\_POLYVECCOMPRESSEDBYTES}}
+{\footnotesize\ttfamily \#define KYBER\+\_\+\+POLYVECCOMPRESSEDBYTES~(\mbox{\hyperlink{params_8h_a1e66e19d25aceeae49d1184a077f92db}{KYBER\+\_\+K}} \texorpdfstring{$\ast$}{*} 320)}
+
+\Hypertarget{params_8h_a7663b32715a32f12eb70420793753ce3}\label{params_8h_a7663b32715a32f12eb70420793753ce3} 
+\index{params.h@{params.h}!KYBER\_PUBLICKEYBYTES@{KYBER\_PUBLICKEYBYTES}}
+\index{KYBER\_PUBLICKEYBYTES@{KYBER\_PUBLICKEYBYTES}!params.h@{params.h}}
+\doxysubsubsection{\texorpdfstring{KYBER\_PUBLICKEYBYTES}{KYBER\_PUBLICKEYBYTES}}
+{\footnotesize\ttfamily \#define KYBER\+\_\+\+PUBLICKEYBYTES~(\mbox{\hyperlink{params_8h_a4c9f2345946a0d01dc2051b493c2bda4}{KYBER\+\_\+\+INDCPA\+\_\+\+PUBLICKEYBYTES}})}
+
+
+
+The number of bytes used for the public key in the Kyber scheme. 
+
+This defines the size of the public key in the Kyber cryptosystem, including both the IND-\/\+CPA public key and the hash of the public key. \Hypertarget{params_8h_a874d765cb6e25f657aec2f225d8505a6}\label{params_8h_a874d765cb6e25f657aec2f225d8505a6} 
+\index{params.h@{params.h}!KYBER\_Q@{KYBER\_Q}}
+\index{KYBER\_Q@{KYBER\_Q}!params.h@{params.h}}
+\doxysubsubsection{\texorpdfstring{KYBER\_Q}{KYBER\_Q}}
+{\footnotesize\ttfamily \#define KYBER\+\_\+Q~3329}
+
+
+
+The modulus Q for Kyber algorithm. 
+
+This constant defines the modulus used in the Kyber cryptographic scheme. Kyber uses a polynomial ring over the finite field Z/\+QZ, where Q is 3329. \Hypertarget{params_8h_a7f9a2f9ae6937442f988816af97babb3}\label{params_8h_a7f9a2f9ae6937442f988816af97babb3} 
+\index{params.h@{params.h}!KYBER\_SECRETKEYBYTES@{KYBER\_SECRETKEYBYTES}}
+\index{KYBER\_SECRETKEYBYTES@{KYBER\_SECRETKEYBYTES}!params.h@{params.h}}
+\doxysubsubsection{\texorpdfstring{KYBER\_SECRETKEYBYTES}{KYBER\_SECRETKEYBYTES}}
+{\footnotesize\ttfamily \#define KYBER\+\_\+\+SECRETKEYBYTES~(\mbox{\hyperlink{params_8h_a7258274ad7836627403880fe8dda0cfa}{KYBER\+\_\+\+INDCPA\+\_\+\+SECRETKEYBYTES}} + \mbox{\hyperlink{params_8h_a4c9f2345946a0d01dc2051b493c2bda4}{KYBER\+\_\+\+INDCPA\+\_\+\+PUBLICKEYBYTES}} + 2\texorpdfstring{$\ast$}{*}\mbox{\hyperlink{params_8h_a132bbc78e88ea5e14e93e0963dd5d0f9}{KYBER\+\_\+\+SYMBYTES}})}
+
+
+
+The number of bytes used for the secret key in the Kyber scheme. 
+
+This defines the size of the secret key in the Kyber cryptosystem. It includes the IND-\/\+CPA secret key, the public key, and additional data. \Hypertarget{params_8h_a5054c9269277412d8536eb82cfffbe15}\label{params_8h_a5054c9269277412d8536eb82cfffbe15} 
+\index{params.h@{params.h}!KYBER\_SSBYTES@{KYBER\_SSBYTES}}
+\index{KYBER\_SSBYTES@{KYBER\_SSBYTES}!params.h@{params.h}}
+\doxysubsubsection{\texorpdfstring{KYBER\_SSBYTES}{KYBER\_SSBYTES}}
+{\footnotesize\ttfamily \#define KYBER\+\_\+\+SSBYTES~32   /\texorpdfstring{$\ast$}{*} size in bytes of shared key \texorpdfstring{$\ast$}{*}/}
+
+
+
+The size in bytes of the shared key in the Kyber algorithm. 
+
+This is the size in bytes of the shared secret key generated during the encryption and decryption process. \Hypertarget{params_8h_a132bbc78e88ea5e14e93e0963dd5d0f9}\label{params_8h_a132bbc78e88ea5e14e93e0963dd5d0f9} 
+\index{params.h@{params.h}!KYBER\_SYMBYTES@{KYBER\_SYMBYTES}}
+\index{KYBER\_SYMBYTES@{KYBER\_SYMBYTES}!params.h@{params.h}}
+\doxysubsubsection{\texorpdfstring{KYBER\_SYMBYTES}{KYBER\_SYMBYTES}}
+{\footnotesize\ttfamily \#define KYBER\+\_\+\+SYMBYTES~32   /\texorpdfstring{$\ast$}{*} size in bytes of hashes, and seeds \texorpdfstring{$\ast$}{*}/}
+
+
+
+The size in bytes for hashes and seeds used in the Kyber algorithm. 
+
+Defines the length of hash values and seeds in the Kyber algorithm. It is typically set to 32 bytes for security reasons. 

@@ -1,0 +1,65 @@
+\doxysection{fips202.\+h}
+\hypertarget{fips202_8h_source}{}\label{fips202_8h_source}\index{libs/fips202.h@{libs/fips202.h}}
+\mbox{\hyperlink{fips202_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#ifndef\ FIPS202\_H}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#define\ FIPS202\_H}}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#include\ <stddef.h>}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#define\ SHAKE128\_RATE\ 168}}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#define\ SHAKE256\_RATE\ 136}}
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#define\ SHA3\_256\_RATE\ 136}}
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#define\ SHA3\_512\_RATE\ 72}}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#define\ FIPS202\_NAMESPACE(s)\ pqcrystals\_kyber\_fips202\_avx2\_\#\#s}}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{00037\ \ \ \ \ uint64\_t\ s[25];}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structkeccak__state_a3d3dc5ee8fab06e99c3c78b092a53e80}{pos}};}
+\DoxyCodeLine{00039\ \}\ \mbox{\hyperlink{structkeccak__state}{keccak\_state}};}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#define\ shake128\_init\ FIPS202\_NAMESPACE(shake128\_init)}}
+\DoxyCodeLine{00042\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{fips202_8h_a14ab4e5bafa12caba3c24d3cdcfe2f40}{shake128\_init}}(\mbox{\hyperlink{structkeccak__state}{keccak\_state}}\ *state);}
+\DoxyCodeLine{00043\ \textcolor{preprocessor}{\#define\ shake128\_absorb\ FIPS202\_NAMESPACE(shake128\_absorb)}}
+\DoxyCodeLine{00044\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{fips202_8h_a070d5c3e9df7d62499747c67d9fdb3ac}{shake128\_absorb}}(\mbox{\hyperlink{structkeccak__state}{keccak\_state}}\ *state,\ \textcolor{keyword}{const}\ uint8\_t\ *in,\ \textcolor{keywordtype}{size\_t}\ inlen);}
+\DoxyCodeLine{00045\ \textcolor{preprocessor}{\#define\ shake128\_finalize\ FIPS202\_NAMESPACE(shake128\_finalize)}}
+\DoxyCodeLine{00046\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{fips202_8h_abb181d40c8eb2f17bdc3f85191a7a946}{shake128\_finalize}}(\mbox{\hyperlink{structkeccak__state}{keccak\_state}}\ *state);}
+\DoxyCodeLine{00047\ \textcolor{preprocessor}{\#define\ shake128\_squeeze\ FIPS202\_NAMESPACE(shake128\_squeeze)}}
+\DoxyCodeLine{00048\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{fips202_8h_a8f74d9eefd141b2346fe338e6b756156}{shake128\_squeeze}}(uint8\_t\ *out,\ \textcolor{keywordtype}{size\_t}\ outlen,\ \mbox{\hyperlink{structkeccak__state}{keccak\_state}}\ *state);}
+\DoxyCodeLine{00049\ \textcolor{preprocessor}{\#define\ shake128\_absorb\_once\ FIPS202\_NAMESPACE(shake128\_absorb\_once)}}
+\DoxyCodeLine{00050\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{fips202_8h_af40173112a09b899cb1ab2607219c34a}{shake128\_absorb\_once}}(\mbox{\hyperlink{structkeccak__state}{keccak\_state}}\ *state,\ \textcolor{keyword}{const}\ uint8\_t\ *in,\ \textcolor{keywordtype}{size\_t}\ inlen);}
+\DoxyCodeLine{00051\ \textcolor{preprocessor}{\#define\ shake128\_squeezeblocks\ FIPS202\_NAMESPACE(shake128\_squeezeblocks)}}
+\DoxyCodeLine{00052\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{fips202_8h_a18c5357e566744ef37ac98a476daf323}{shake128\_squeezeblocks}}(uint8\_t\ *out,\ \textcolor{keywordtype}{size\_t}\ nblocks,\ \mbox{\hyperlink{structkeccak__state}{keccak\_state}}\ *state);}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \textcolor{preprocessor}{\#define\ shake256\_init\ FIPS202\_NAMESPACE(shake256\_init)}}
+\DoxyCodeLine{00055\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{fips202_8h_a3187bf5964f952dfcb959c17c5ab1514}{shake256\_init}}(\mbox{\hyperlink{structkeccak__state}{keccak\_state}}\ *state);}
+\DoxyCodeLine{00056\ \textcolor{preprocessor}{\#define\ shake256\_absorb\ FIPS202\_NAMESPACE(shake256\_absorb)}}
+\DoxyCodeLine{00057\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{fips202_8h_ac8ca3e3ac64b6c75b6a191a07edd951c}{shake256\_absorb}}(\mbox{\hyperlink{structkeccak__state}{keccak\_state}}\ *state,\ \textcolor{keyword}{const}\ uint8\_t\ *in,\ \textcolor{keywordtype}{size\_t}\ inlen);}
+\DoxyCodeLine{00058\ \textcolor{preprocessor}{\#define\ shake256\_finalize\ FIPS202\_NAMESPACE(shake256\_finalize)}}
+\DoxyCodeLine{00059\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{fips202_8h_a8dd72d3cac99630805259f504f84a4ab}{shake256\_finalize}}(\mbox{\hyperlink{structkeccak__state}{keccak\_state}}\ *state);}
+\DoxyCodeLine{00060\ \textcolor{preprocessor}{\#define\ shake256\_squeeze\ FIPS202\_NAMESPACE(shake256\_squeeze)}}
+\DoxyCodeLine{00061\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{fips202_8h_a8ce964b5f57fe2d72d7148f5042d9675}{shake256\_squeeze}}(uint8\_t\ *out,\ \textcolor{keywordtype}{size\_t}\ outlen,\ \mbox{\hyperlink{structkeccak__state}{keccak\_state}}\ *state);}
+\DoxyCodeLine{00062\ \textcolor{preprocessor}{\#define\ shake256\_absorb\_once\ FIPS202\_NAMESPACE(shake256\_absorb\_once)}}
+\DoxyCodeLine{00063\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{fips202_8h_a5fbb95889197d124a1baea83fae43745}{shake256\_absorb\_once}}(\mbox{\hyperlink{structkeccak__state}{keccak\_state}}\ *state,\ \textcolor{keyword}{const}\ uint8\_t\ *in,\ \textcolor{keywordtype}{size\_t}\ inlen);}
+\DoxyCodeLine{00064\ \textcolor{preprocessor}{\#define\ shake256\_squeezeblocks\ FIPS202\_NAMESPACE(shake256\_squeezeblocks)}}
+\DoxyCodeLine{00065\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{fips202_8h_a8cc6955e92dee3b9cfcdf6cda294676c}{shake256\_squeezeblocks}}(uint8\_t\ *out,\ \textcolor{keywordtype}{size\_t}\ nblocks,\ \ \mbox{\hyperlink{structkeccak__state}{keccak\_state}}\ *state);}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00086\ \textcolor{preprocessor}{\#define\ shake128\ FIPS202\_NAMESPACE(shake128)}}
+\DoxyCodeLine{00087\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{fips202_8h_a503922aece24ae8b03030593676c4ce2}{shake128}}(uint8\_t\ *out,\ \textcolor{keywordtype}{size\_t}\ outlen,\ \textcolor{keyword}{const}\ uint8\_t\ *in,\ \textcolor{keywordtype}{size\_t}\ inlen);}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ \textcolor{preprocessor}{\#define\ shake256\ FIPS202\_NAMESPACE(shake256)}}
+\DoxyCodeLine{00092\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{fips202_8h_a0c164311011135d040f2733415a639f5}{shake256}}(uint8\_t\ *out,\ \textcolor{keywordtype}{size\_t}\ outlen,\ \textcolor{keyword}{const}\ uint8\_t\ *in,\ \textcolor{keywordtype}{size\_t}\ inlen);}
+\DoxyCodeLine{00093\ \textcolor{preprocessor}{\#define\ sha3\_256\ FIPS202\_NAMESPACE(sha3\_256)}}
+\DoxyCodeLine{00094\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{fips202_8h_afbae018ec8ee1f2f678ad4a9100fa4e9}{sha3\_256}}(uint8\_t\ h[32],\ \textcolor{keyword}{const}\ uint8\_t\ *in,\ \textcolor{keywordtype}{size\_t}\ inlen);}
+\DoxyCodeLine{00095\ \textcolor{preprocessor}{\#define\ sha3\_512\ FIPS202\_NAMESPACE(sha3\_512)}}
+\DoxyCodeLine{00096\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{fips202_8h_ac7e9f6c0974148a006c3a22032be74c0}{sha3\_512}}(uint8\_t\ h[64],\ \textcolor{keyword}{const}\ uint8\_t\ *in,\ \textcolor{keywordtype}{size\_t}\ inlen);}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00098\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}
