@@ -3,7 +3,6 @@
 *.out
 *.exe
 *.a
-*.so
 *.d
 
 # === Compiled binaries ===
