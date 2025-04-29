@@ -1,0 +1,46 @@
+\doxysection{kem.\+h}
+\hypertarget{kem_8h_source}{}\label{kem_8h_source}\index{libs/kem.h@{libs/kem.h}}
+\mbox{\hyperlink{kem_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#ifndef\ KEM\_H}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#define\ KEM\_H}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{params_8h}{params.h}}"{}}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{comment}{//\ Definitions\ for\ key\ sizes\ and\ other\ parameters}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#define\ CRYPTO\_SECRETKEYBYTES\ \ KYBER\_SECRETKEYBYTES\ \ \ }}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#define\ CRYPTO\_PUBLICKEYBYTES\ \ KYBER\_PUBLICKEYBYTES\ \ \ }}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#define\ CRYPTO\_CIPHERTEXTBYTES\ KYBER\_CIPHERTEXTBYTES\ \ }}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#define\ CRYPTO\_BYTES\ \ \ \ \ \ \ \ \ \ \ KYBER\_SSBYTES\ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#if\ \ \ (KYBER\_K\ ==\ 2)}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#define\ CRYPTO\_ALGNAME\ "{}Kyber512"{}}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#elif\ (KYBER\_K\ ==\ 3)}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#define\ CRYPTO\_ALGNAME\ "{}Kyber768"{}}}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#elif\ (KYBER\_K\ ==\ 4)}}
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#define\ CRYPTO\_ALGNAME\ "{}Kyber1024"{}}}
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \textcolor{comment}{//\ Function\ declarations\ for\ KEM\ (Key\ Encapsulation\ Mechanism)}}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00048\ \textcolor{preprocessor}{\#define\ crypto\_kem\_keypair\_derand\ KYBER\_NAMESPACE(keypair\_derand)}}
+\DoxyCodeLine{00049\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{kem_8h_ac555dd337156af1cb48c341f260ca061}{crypto\_kem\_keypair\_derand}}(uint8\_t*\ pk,\ uint8\_t*\ sk,\ \textcolor{keyword}{const}\ uint8\_t*\ coins);\ \textcolor{comment}{//\ Function\ definition\ to\ follow}}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00061\ \textcolor{preprocessor}{\#define\ crypto\_kem\_keypair\ KYBER\_NAMESPACE(keypair)}}
+\DoxyCodeLine{00062\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{kem_8h_affcceebbb34b0fcdd82918c9dd6f80ef}{crypto\_kem\_keypair}}(uint8\_t*\ pk,\ uint8\_t*\ sk);\ \textcolor{comment}{//\ Function\ definition\ to\ follow}}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00076\ \textcolor{preprocessor}{\#define\ crypto\_kem\_enc\_derand\ KYBER\_NAMESPACE(enc\_derand)}}
+\DoxyCodeLine{00077\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{kem_8h_acf75639e33e41b126f355686766d6672}{crypto\_kem\_enc\_derand}}(uint8\_t*\ ct,\ uint8\_t*\ ss,\ \textcolor{keyword}{const}\ uint8\_t*\ pk,\ \textcolor{keyword}{const}\ uint8\_t*\ coins);\ \textcolor{comment}{//\ Function\ definition\ to\ follow}}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00091\ \textcolor{preprocessor}{\#define\ crypto\_kem\_enc\ KYBER\_NAMESPACE(enc)}}
+\DoxyCodeLine{00092\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{kem_8h_a34799e9bffdfd9786a5fcd8867837c74}{crypto\_kem\_enc}}(uint8\_t*\ ct,\ uint8\_t*\ ss,\ \textcolor{keyword}{const}\ uint8\_t*\ pk);\ \textcolor{comment}{//\ Function\ definition\ to\ follow}}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00105\ \textcolor{preprocessor}{\#define\ crypto\_kem\_dec\ KYBER\_NAMESPACE(dec)}}
+\DoxyCodeLine{00106\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{kem_8h_a08dbb674e5d520aca994bc4472ce5a02}{crypto\_kem\_dec}}(uint8\_t*\ ss,\ \textcolor{keyword}{const}\ uint8\_t*\ ct,\ \textcolor{keyword}{const}\ uint8\_t*\ sk);\ \textcolor{comment}{//\ Function\ definition\ to\ follow}}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00108\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{//\ KEM\_H}}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00110\ }
+
+\end{DoxyCode}

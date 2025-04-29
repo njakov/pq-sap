@@ -1,0 +1,364 @@
+\doxysection{libs/poly.h File Reference}
+\hypertarget{poly_8h}{}\label{poly_8h}\index{libs/poly.h@{libs/poly.h}}
+
+
+This file defines the {\ttfamily poly} data structure and provides function declarations for operations on polynomials used in cryptographic algorithms, particularly in the context of Kyber, a lattice-\/based encryption scheme.  
+
+
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include "{}align.\+h"{}}\newline
+{\ttfamily \#include "{}params.\+h"{}}\newline
+Include dependency graph for poly.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+union \mbox{\hyperlink{unionpoly}{poly}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{poly_8h_ae8f90c74ff2d05c0d30d6739a94cc37f}{poly\+\_\+compress}}~\mbox{\hyperlink{params_8h_a51c1085c773ccaac6cfa51a987dd346b}{KYBER\+\_\+\+NAMESPACE}}(poly\+\_\+compress)
+\begin{DoxyCompactList}\small\item\em Compresses a polynomial into a compact byte representation. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{poly_8h_a8205c86b8502059cbfe26303700e0370}{poly\+\_\+decompress}}~\mbox{\hyperlink{params_8h_a51c1085c773ccaac6cfa51a987dd346b}{KYBER\+\_\+\+NAMESPACE}}(poly\+\_\+decompress)
+\begin{DoxyCompactList}\small\item\em Decompresses a byte array back into a polynomial. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{poly_8h_ae67f09fc7da00f823dbf54d48ae0cadc}{poly\+\_\+tobytes}}~\mbox{\hyperlink{params_8h_a51c1085c773ccaac6cfa51a987dd346b}{KYBER\+\_\+\+NAMESPACE}}(poly\+\_\+tobytes)
+\item 
+\#define \mbox{\hyperlink{poly_8h_a85d87a3ad55b61a923ee77f69daec8ae}{poly\+\_\+frombytes}}~\mbox{\hyperlink{params_8h_a51c1085c773ccaac6cfa51a987dd346b}{KYBER\+\_\+\+NAMESPACE}}(poly\+\_\+frombytes)
+\item 
+\#define \mbox{\hyperlink{poly_8h_a367407f30cce09d9d6b6f96ece80a7c2}{poly\+\_\+frommsg}}~\mbox{\hyperlink{params_8h_a51c1085c773ccaac6cfa51a987dd346b}{KYBER\+\_\+\+NAMESPACE}}(poly\+\_\+frommsg)
+\item 
+\#define \mbox{\hyperlink{poly_8h_a6f23b421e6f4378f6e626e925c9645f9}{poly\+\_\+tomsg}}~\mbox{\hyperlink{params_8h_a51c1085c773ccaac6cfa51a987dd346b}{KYBER\+\_\+\+NAMESPACE}}(poly\+\_\+tomsg)
+\item 
+\#define \mbox{\hyperlink{poly_8h_a7acff2171f8515dcda521e0abce1f164}{poly\+\_\+getnoise\+\_\+eta1}}~\mbox{\hyperlink{params_8h_a51c1085c773ccaac6cfa51a987dd346b}{KYBER\+\_\+\+NAMESPACE}}(poly\+\_\+getnoise\+\_\+eta1)
+\begin{DoxyCompactList}\small\item\em Generates noise (eta1) for a polynomial using a seed and nonce. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{poly_8h_aed3cb6d95aa2d095fc415983ffa71099}{poly\+\_\+getnoise\+\_\+eta2}}~\mbox{\hyperlink{params_8h_a51c1085c773ccaac6cfa51a987dd346b}{KYBER\+\_\+\+NAMESPACE}}(poly\+\_\+getnoise\+\_\+eta2)
+\item 
+\#define \mbox{\hyperlink{poly_8h_a3c204442e50d0701875d40f1c9362c78}{poly\+\_\+getnoise\+\_\+eta1\+\_\+4x}}~\mbox{\hyperlink{params_8h_a51c1085c773ccaac6cfa51a987dd346b}{KYBER\+\_\+\+NAMESPACE}}(poly\+\_\+getnoise\+\_\+eta2\+\_\+4x)
+\item 
+\#define \mbox{\hyperlink{poly_8h_a6ac0fa1568e1e3c522d4350209b4ee04}{poly\+\_\+ntt}}~\mbox{\hyperlink{params_8h_a51c1085c773ccaac6cfa51a987dd346b}{KYBER\+\_\+\+NAMESPACE}}(poly\+\_\+ntt)
+\item 
+\#define \mbox{\hyperlink{poly_8h_a85be1368df18496986017e08fd21cb60}{poly\+\_\+invntt\+\_\+tomont}}~\mbox{\hyperlink{params_8h_a51c1085c773ccaac6cfa51a987dd346b}{KYBER\+\_\+\+NAMESPACE}}(poly\+\_\+invntt\+\_\+tomont)
+\item 
+\#define \mbox{\hyperlink{poly_8h_a2100aab0f04b42a73167c8a58dce82e1}{poly\+\_\+nttunpack}}~\mbox{\hyperlink{params_8h_a51c1085c773ccaac6cfa51a987dd346b}{KYBER\+\_\+\+NAMESPACE}}(poly\+\_\+nttunpack)
+\item 
+\#define \mbox{\hyperlink{poly_8h_accda9db5df970fd3e28c19007df52858}{poly\+\_\+basemul\+\_\+montgomery}}~\mbox{\hyperlink{params_8h_a51c1085c773ccaac6cfa51a987dd346b}{KYBER\+\_\+\+NAMESPACE}}(poly\+\_\+basemul\+\_\+montgomery)
+\item 
+\#define \mbox{\hyperlink{poly_8h_a245ca8de277f9a977284c692163f3f93}{poly\+\_\+tomont}}~\mbox{\hyperlink{params_8h_a51c1085c773ccaac6cfa51a987dd346b}{KYBER\+\_\+\+NAMESPACE}}(poly\+\_\+tomont)
+\begin{DoxyCompactList}\small\item\em Converts a polynomial to Montgomery form. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{poly_8h_ac96c2e4264b2a1ffa6729921fa4dceb3}{poly\+\_\+reduce}}~\mbox{\hyperlink{params_8h_a51c1085c773ccaac6cfa51a987dd346b}{KYBER\+\_\+\+NAMESPACE}}(poly\+\_\+reduce)
+\item 
+\#define \mbox{\hyperlink{poly_8h_a758eba1878dfc2b2eb50da047ccfddeb}{poly\+\_\+add}}~\mbox{\hyperlink{params_8h_a51c1085c773ccaac6cfa51a987dd346b}{KYBER\+\_\+\+NAMESPACE}}(poly\+\_\+add)
+\item 
+\#define \mbox{\hyperlink{poly_8h_a01d05577e962302c3ad3178d00b122e6}{poly\+\_\+sub}}~\mbox{\hyperlink{params_8h_a51c1085c773ccaac6cfa51a987dd346b}{KYBER\+\_\+\+NAMESPACE}}(poly\+\_\+sub)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{poly_8h_ab2ff2a3def231299469e4cb652e1613c}{pqcrystals\+\_\+kyber768\+\_\+avx2\+\_\+poly\+\_\+compress}} (uint8\+\_\+t r\mbox{[}128\mbox{]}, const \mbox{\hyperlink{unionpoly}{poly}} \texorpdfstring{$\ast$}{*}a)
+\item 
+void \mbox{\hyperlink{poly_8h_ab5ec9d67786b2e1c072548a07669b5bf}{pqcrystals\+\_\+kyber768\+\_\+avx2\+\_\+poly\+\_\+decompress}} (\mbox{\hyperlink{unionpoly}{poly}} \texorpdfstring{$\ast$}{*}r, const uint8\+\_\+t a\mbox{[}128\mbox{]})
+\item 
+void \mbox{\hyperlink{poly_8h_a7196b0e94e80cf8aaa98198ca1fd247b}{pqcrystals\+\_\+kyber768\+\_\+avx2\+\_\+poly\+\_\+tobytes}} (uint8\+\_\+t r\mbox{[}384\mbox{]}, const \mbox{\hyperlink{unionpoly}{poly}} \texorpdfstring{$\ast$}{*}a)
+\item 
+void \mbox{\hyperlink{poly_8h_a3a0fe1fb0c24f56bbc4a197f1bd116eb}{pqcrystals\+\_\+kyber768\+\_\+avx2\+\_\+poly\+\_\+frombytes}} (\mbox{\hyperlink{unionpoly}{poly}} \texorpdfstring{$\ast$}{*}r, const uint8\+\_\+t a\mbox{[}384\mbox{]})
+\item 
+void \mbox{\hyperlink{poly_8h_a90915cc4e335dcd70aeb7321b7002c82}{pqcrystals\+\_\+kyber768\+\_\+avx2\+\_\+poly\+\_\+frommsg}} (\mbox{\hyperlink{unionpoly}{poly}} \texorpdfstring{$\ast$}{*}r, const uint8\+\_\+t msg\mbox{[}(32)\mbox{]})
+\item 
+void \mbox{\hyperlink{poly_8h_abe47b366a210435d470f9ede47f17b39}{pqcrystals\+\_\+kyber768\+\_\+avx2\+\_\+poly\+\_\+tomsg}} (uint8\+\_\+t msg\mbox{[}(32)\mbox{]}, const \mbox{\hyperlink{unionpoly}{poly}} \texorpdfstring{$\ast$}{*}r)
+\item 
+void \mbox{\hyperlink{poly_8h_aac07b7c1e74447073c202964ba09dd69}{pqcrystals\+\_\+kyber768\+\_\+avx2\+\_\+poly\+\_\+getnoise\+\_\+eta1}} (\mbox{\hyperlink{unionpoly}{poly}} \texorpdfstring{$\ast$}{*}r, const uint8\+\_\+t seed\mbox{[}32\mbox{]}, uint8\+\_\+t nonce)
+\item 
+void \mbox{\hyperlink{poly_8h_ab43cab5d3d5b997b3b50a49e7fba2c46}{pqcrystals\+\_\+kyber768\+\_\+avx2\+\_\+poly\+\_\+getnoise\+\_\+eta2}} (\mbox{\hyperlink{unionpoly}{poly}} \texorpdfstring{$\ast$}{*}r, const uint8\+\_\+t seed\mbox{[}32\mbox{]}, uint8\+\_\+t nonce)
+\item 
+void \mbox{\hyperlink{poly_8h_a0e6c862b2a05f69af14071036b378abc}{pqcrystals\+\_\+kyber768\+\_\+avx2\+\_\+poly\+\_\+getnoise\+\_\+eta2\+\_\+4x}} (\mbox{\hyperlink{unionpoly}{poly}} \texorpdfstring{$\ast$}{*}r0, \mbox{\hyperlink{unionpoly}{poly}} \texorpdfstring{$\ast$}{*}r1, \mbox{\hyperlink{unionpoly}{poly}} \texorpdfstring{$\ast$}{*}r2, \mbox{\hyperlink{unionpoly}{poly}} \texorpdfstring{$\ast$}{*}r3, const uint8\+\_\+t seed\mbox{[}32\mbox{]}, uint8\+\_\+t nonce0, uint8\+\_\+t nonce1, uint8\+\_\+t nonce2, uint8\+\_\+t nonce3)
+\item 
+void \mbox{\hyperlink{poly_8h_a33486e6cb91e6daf49e2856dc4c902c9}{pqcrystals\+\_\+kyber768\+\_\+avx2\+\_\+poly\+\_\+ntt}} (\mbox{\hyperlink{unionpoly}{poly}} \texorpdfstring{$\ast$}{*}r)
+\item 
+void \mbox{\hyperlink{poly_8h_a3b2cfb6d216703bfb31dd66c319da80f}{pqcrystals\+\_\+kyber768\+\_\+avx2\+\_\+poly\+\_\+invntt\+\_\+tomont}} (\mbox{\hyperlink{unionpoly}{poly}} \texorpdfstring{$\ast$}{*}r)
+\item 
+void \mbox{\hyperlink{poly_8h_af630a27be293d6b4e1465fff1a6ca629}{pqcrystals\+\_\+kyber768\+\_\+avx2\+\_\+poly\+\_\+nttunpack}} (\mbox{\hyperlink{unionpoly}{poly}} \texorpdfstring{$\ast$}{*}r)
+\item 
+void \mbox{\hyperlink{poly_8h_a16f6fad20074e4179103db700aa27bb6}{pqcrystals\+\_\+kyber768\+\_\+avx2\+\_\+poly\+\_\+basemul\+\_\+montgomery}} (\mbox{\hyperlink{unionpoly}{poly}} \texorpdfstring{$\ast$}{*}r, const \mbox{\hyperlink{unionpoly}{poly}} \texorpdfstring{$\ast$}{*}a, const \mbox{\hyperlink{unionpoly}{poly}} \texorpdfstring{$\ast$}{*}b)
+\item 
+void \mbox{\hyperlink{poly_8h_a7d0390a7cf8632d3fdfc3b6160e6ea19}{pqcrystals\+\_\+kyber768\+\_\+avx2\+\_\+poly\+\_\+tomont}} (\mbox{\hyperlink{unionpoly}{poly}} \texorpdfstring{$\ast$}{*}r)
+\item 
+void \mbox{\hyperlink{poly_8h_a9509b6570b80d9c76e4e95358bc29e78}{pqcrystals\+\_\+kyber768\+\_\+avx2\+\_\+poly\+\_\+reduce}} (\mbox{\hyperlink{unionpoly}{poly}} \texorpdfstring{$\ast$}{*}r)
+\item 
+void \mbox{\hyperlink{poly_8h_a5ba181b0bdda66aea8e0f2313c2bfb75}{pqcrystals\+\_\+kyber768\+\_\+avx2\+\_\+poly\+\_\+add}} (\mbox{\hyperlink{unionpoly}{poly}} \texorpdfstring{$\ast$}{*}r, const \mbox{\hyperlink{unionpoly}{poly}} \texorpdfstring{$\ast$}{*}a, const \mbox{\hyperlink{unionpoly}{poly}} \texorpdfstring{$\ast$}{*}b)
+\item 
+void \mbox{\hyperlink{poly_8h_a7c0153325b93ba36db19e8f4eeffeb33}{pqcrystals\+\_\+kyber768\+\_\+avx2\+\_\+poly\+\_\+sub}} (\mbox{\hyperlink{unionpoly}{poly}} \texorpdfstring{$\ast$}{*}r, const \mbox{\hyperlink{unionpoly}{poly}} \texorpdfstring{$\ast$}{*}a, const \mbox{\hyperlink{unionpoly}{poly}} \texorpdfstring{$\ast$}{*}b)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This file defines the {\ttfamily poly} data structure and provides function declarations for operations on polynomials used in cryptographic algorithms, particularly in the context of Kyber, a lattice-\/based encryption scheme. 
+
+The operations include compression, decomposition, NTT (Number Theoretic Transform), base multiplication, and polynomial reductions.
+
+The {\ttfamily poly} structure represents a polynomial used in the Kyber cryptosystem, and the functions in this file perform various polynomial operations, such as converting to/from byte arrays, applying noise, performing modular reductions, and executing arithmetic operations (addition, subtraction, multiplication).
+
+The function implementations are likely found in the corresponding Kyber implementation files. 
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{poly_8h_a758eba1878dfc2b2eb50da047ccfddeb}\label{poly_8h_a758eba1878dfc2b2eb50da047ccfddeb} 
+\index{poly.h@{poly.h}!poly\_add@{poly\_add}}
+\index{poly\_add@{poly\_add}!poly.h@{poly.h}}
+\doxysubsubsection{\texorpdfstring{poly\_add}{poly\_add}}
+{\footnotesize\ttfamily \#define poly\+\_\+add~\mbox{\hyperlink{params_8h_a51c1085c773ccaac6cfa51a987dd346b}{KYBER\+\_\+\+NAMESPACE}}(poly\+\_\+add)}
+
+\Hypertarget{poly_8h_accda9db5df970fd3e28c19007df52858}\label{poly_8h_accda9db5df970fd3e28c19007df52858} 
+\index{poly.h@{poly.h}!poly\_basemul\_montgomery@{poly\_basemul\_montgomery}}
+\index{poly\_basemul\_montgomery@{poly\_basemul\_montgomery}!poly.h@{poly.h}}
+\doxysubsubsection{\texorpdfstring{poly\_basemul\_montgomery}{poly\_basemul\_montgomery}}
+{\footnotesize\ttfamily \#define poly\+\_\+basemul\+\_\+montgomery~\mbox{\hyperlink{params_8h_a51c1085c773ccaac6cfa51a987dd346b}{KYBER\+\_\+\+NAMESPACE}}(poly\+\_\+basemul\+\_\+montgomery)}
+
+\Hypertarget{poly_8h_ae8f90c74ff2d05c0d30d6739a94cc37f}\label{poly_8h_ae8f90c74ff2d05c0d30d6739a94cc37f} 
+\index{poly.h@{poly.h}!poly\_compress@{poly\_compress}}
+\index{poly\_compress@{poly\_compress}!poly.h@{poly.h}}
+\doxysubsubsection{\texorpdfstring{poly\_compress}{poly\_compress}}
+{\footnotesize\ttfamily \#define poly\+\_\+compress~\mbox{\hyperlink{params_8h_a51c1085c773ccaac6cfa51a987dd346b}{KYBER\+\_\+\+NAMESPACE}}(poly\+\_\+compress)}
+
+
+
+Compresses a polynomial into a compact byte representation. 
+
+This function compresses the given polynomial {\ttfamily a} into a byte array {\ttfamily r}. The implementation is optimized for the Kyber encryption scheme and is used for efficient polynomial storage and transmission.
+
+
+\begin{DoxyParams}{Parameters}
+{\em r} & The compressed byte representation of the polynomial. \\
+\hline
+{\em a} & The polynomial to be compressed. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{poly_8h_a8205c86b8502059cbfe26303700e0370}\label{poly_8h_a8205c86b8502059cbfe26303700e0370} 
+\index{poly.h@{poly.h}!poly\_decompress@{poly\_decompress}}
+\index{poly\_decompress@{poly\_decompress}!poly.h@{poly.h}}
+\doxysubsubsection{\texorpdfstring{poly\_decompress}{poly\_decompress}}
+{\footnotesize\ttfamily \#define poly\+\_\+decompress~\mbox{\hyperlink{params_8h_a51c1085c773ccaac6cfa51a987dd346b}{KYBER\+\_\+\+NAMESPACE}}(poly\+\_\+decompress)}
+
+
+
+Decompresses a byte array back into a polynomial. 
+
+This function decompresses the byte array {\ttfamily a} into the polynomial {\ttfamily r}. The byte array {\ttfamily a} represents the compressed form of the polynomial.
+
+
+\begin{DoxyParams}{Parameters}
+{\em r} & The resulting polynomial. \\
+\hline
+{\em a} & The byte array containing the compressed polynomial. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{poly_8h_a85d87a3ad55b61a923ee77f69daec8ae}\label{poly_8h_a85d87a3ad55b61a923ee77f69daec8ae} 
+\index{poly.h@{poly.h}!poly\_frombytes@{poly\_frombytes}}
+\index{poly\_frombytes@{poly\_frombytes}!poly.h@{poly.h}}
+\doxysubsubsection{\texorpdfstring{poly\_frombytes}{poly\_frombytes}}
+{\footnotesize\ttfamily \#define poly\+\_\+frombytes~\mbox{\hyperlink{params_8h_a51c1085c773ccaac6cfa51a987dd346b}{KYBER\+\_\+\+NAMESPACE}}(poly\+\_\+frombytes)}
+
+\Hypertarget{poly_8h_a367407f30cce09d9d6b6f96ece80a7c2}\label{poly_8h_a367407f30cce09d9d6b6f96ece80a7c2} 
+\index{poly.h@{poly.h}!poly\_frommsg@{poly\_frommsg}}
+\index{poly\_frommsg@{poly\_frommsg}!poly.h@{poly.h}}
+\doxysubsubsection{\texorpdfstring{poly\_frommsg}{poly\_frommsg}}
+{\footnotesize\ttfamily \#define poly\+\_\+frommsg~\mbox{\hyperlink{params_8h_a51c1085c773ccaac6cfa51a987dd346b}{KYBER\+\_\+\+NAMESPACE}}(poly\+\_\+frommsg)}
+
+\Hypertarget{poly_8h_a7acff2171f8515dcda521e0abce1f164}\label{poly_8h_a7acff2171f8515dcda521e0abce1f164} 
+\index{poly.h@{poly.h}!poly\_getnoise\_eta1@{poly\_getnoise\_eta1}}
+\index{poly\_getnoise\_eta1@{poly\_getnoise\_eta1}!poly.h@{poly.h}}
+\doxysubsubsection{\texorpdfstring{poly\_getnoise\_eta1}{poly\_getnoise\_eta1}}
+{\footnotesize\ttfamily \#define poly\+\_\+getnoise\+\_\+eta1~\mbox{\hyperlink{params_8h_a51c1085c773ccaac6cfa51a987dd346b}{KYBER\+\_\+\+NAMESPACE}}(poly\+\_\+getnoise\+\_\+eta1)}
+
+
+
+Generates noise (eta1) for a polynomial using a seed and nonce. 
+
+This function generates noise with a specific distribution (eta1) and stores it in the polynomial {\ttfamily r}. The noise is generated deterministically using the provided {\ttfamily seed} and {\ttfamily nonce}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em r} & The resulting polynomial containing the generated noise. \\
+\hline
+{\em seed} & The seed for noise generation. \\
+\hline
+{\em nonce} & The nonce used to differentiate different noise generations. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{poly_8h_a3c204442e50d0701875d40f1c9362c78}\label{poly_8h_a3c204442e50d0701875d40f1c9362c78} 
+\index{poly.h@{poly.h}!poly\_getnoise\_eta1\_4x@{poly\_getnoise\_eta1\_4x}}
+\index{poly\_getnoise\_eta1\_4x@{poly\_getnoise\_eta1\_4x}!poly.h@{poly.h}}
+\doxysubsubsection{\texorpdfstring{poly\_getnoise\_eta1\_4x}{poly\_getnoise\_eta1\_4x}}
+{\footnotesize\ttfamily \#define poly\+\_\+getnoise\+\_\+eta1\+\_\+4x~\mbox{\hyperlink{params_8h_a51c1085c773ccaac6cfa51a987dd346b}{KYBER\+\_\+\+NAMESPACE}}(poly\+\_\+getnoise\+\_\+eta2\+\_\+4x)}
+
+\Hypertarget{poly_8h_aed3cb6d95aa2d095fc415983ffa71099}\label{poly_8h_aed3cb6d95aa2d095fc415983ffa71099} 
+\index{poly.h@{poly.h}!poly\_getnoise\_eta2@{poly\_getnoise\_eta2}}
+\index{poly\_getnoise\_eta2@{poly\_getnoise\_eta2}!poly.h@{poly.h}}
+\doxysubsubsection{\texorpdfstring{poly\_getnoise\_eta2}{poly\_getnoise\_eta2}}
+{\footnotesize\ttfamily \#define poly\+\_\+getnoise\+\_\+eta2~\mbox{\hyperlink{params_8h_a51c1085c773ccaac6cfa51a987dd346b}{KYBER\+\_\+\+NAMESPACE}}(poly\+\_\+getnoise\+\_\+eta2)}
+
+\Hypertarget{poly_8h_a85be1368df18496986017e08fd21cb60}\label{poly_8h_a85be1368df18496986017e08fd21cb60} 
+\index{poly.h@{poly.h}!poly\_invntt\_tomont@{poly\_invntt\_tomont}}
+\index{poly\_invntt\_tomont@{poly\_invntt\_tomont}!poly.h@{poly.h}}
+\doxysubsubsection{\texorpdfstring{poly\_invntt\_tomont}{poly\_invntt\_tomont}}
+{\footnotesize\ttfamily \#define poly\+\_\+invntt\+\_\+tomont~\mbox{\hyperlink{params_8h_a51c1085c773ccaac6cfa51a987dd346b}{KYBER\+\_\+\+NAMESPACE}}(poly\+\_\+invntt\+\_\+tomont)}
+
+\Hypertarget{poly_8h_a6ac0fa1568e1e3c522d4350209b4ee04}\label{poly_8h_a6ac0fa1568e1e3c522d4350209b4ee04} 
+\index{poly.h@{poly.h}!poly\_ntt@{poly\_ntt}}
+\index{poly\_ntt@{poly\_ntt}!poly.h@{poly.h}}
+\doxysubsubsection{\texorpdfstring{poly\_ntt}{poly\_ntt}}
+{\footnotesize\ttfamily \#define poly\+\_\+ntt~\mbox{\hyperlink{params_8h_a51c1085c773ccaac6cfa51a987dd346b}{KYBER\+\_\+\+NAMESPACE}}(poly\+\_\+ntt)}
+
+\Hypertarget{poly_8h_a2100aab0f04b42a73167c8a58dce82e1}\label{poly_8h_a2100aab0f04b42a73167c8a58dce82e1} 
+\index{poly.h@{poly.h}!poly\_nttunpack@{poly\_nttunpack}}
+\index{poly\_nttunpack@{poly\_nttunpack}!poly.h@{poly.h}}
+\doxysubsubsection{\texorpdfstring{poly\_nttunpack}{poly\_nttunpack}}
+{\footnotesize\ttfamily \#define poly\+\_\+nttunpack~\mbox{\hyperlink{params_8h_a51c1085c773ccaac6cfa51a987dd346b}{KYBER\+\_\+\+NAMESPACE}}(poly\+\_\+nttunpack)}
+
+\Hypertarget{poly_8h_ac96c2e4264b2a1ffa6729921fa4dceb3}\label{poly_8h_ac96c2e4264b2a1ffa6729921fa4dceb3} 
+\index{poly.h@{poly.h}!poly\_reduce@{poly\_reduce}}
+\index{poly\_reduce@{poly\_reduce}!poly.h@{poly.h}}
+\doxysubsubsection{\texorpdfstring{poly\_reduce}{poly\_reduce}}
+{\footnotesize\ttfamily \#define poly\+\_\+reduce~\mbox{\hyperlink{params_8h_a51c1085c773ccaac6cfa51a987dd346b}{KYBER\+\_\+\+NAMESPACE}}(poly\+\_\+reduce)}
+
+\Hypertarget{poly_8h_a01d05577e962302c3ad3178d00b122e6}\label{poly_8h_a01d05577e962302c3ad3178d00b122e6} 
+\index{poly.h@{poly.h}!poly\_sub@{poly\_sub}}
+\index{poly\_sub@{poly\_sub}!poly.h@{poly.h}}
+\doxysubsubsection{\texorpdfstring{poly\_sub}{poly\_sub}}
+{\footnotesize\ttfamily \#define poly\+\_\+sub~\mbox{\hyperlink{params_8h_a51c1085c773ccaac6cfa51a987dd346b}{KYBER\+\_\+\+NAMESPACE}}(poly\+\_\+sub)}
+
+\Hypertarget{poly_8h_ae67f09fc7da00f823dbf54d48ae0cadc}\label{poly_8h_ae67f09fc7da00f823dbf54d48ae0cadc} 
+\index{poly.h@{poly.h}!poly\_tobytes@{poly\_tobytes}}
+\index{poly\_tobytes@{poly\_tobytes}!poly.h@{poly.h}}
+\doxysubsubsection{\texorpdfstring{poly\_tobytes}{poly\_tobytes}}
+{\footnotesize\ttfamily \#define poly\+\_\+tobytes~\mbox{\hyperlink{params_8h_a51c1085c773ccaac6cfa51a987dd346b}{KYBER\+\_\+\+NAMESPACE}}(poly\+\_\+tobytes)}
+
+\Hypertarget{poly_8h_a245ca8de277f9a977284c692163f3f93}\label{poly_8h_a245ca8de277f9a977284c692163f3f93} 
+\index{poly.h@{poly.h}!poly\_tomont@{poly\_tomont}}
+\index{poly\_tomont@{poly\_tomont}!poly.h@{poly.h}}
+\doxysubsubsection{\texorpdfstring{poly\_tomont}{poly\_tomont}}
+{\footnotesize\ttfamily \#define poly\+\_\+tomont~\mbox{\hyperlink{params_8h_a51c1085c773ccaac6cfa51a987dd346b}{KYBER\+\_\+\+NAMESPACE}}(poly\+\_\+tomont)}
+
+
+
+Converts a polynomial to Montgomery form. 
+
+This function converts the polynomial {\ttfamily r} into Montgomery form, which is necessary for efficient modular arithmetic in the Kyber scheme.
+
+
+\begin{DoxyParams}{Parameters}
+{\em r} & The polynomial to be converted. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{poly_8h_a6f23b421e6f4378f6e626e925c9645f9}\label{poly_8h_a6f23b421e6f4378f6e626e925c9645f9} 
+\index{poly.h@{poly.h}!poly\_tomsg@{poly\_tomsg}}
+\index{poly\_tomsg@{poly\_tomsg}!poly.h@{poly.h}}
+\doxysubsubsection{\texorpdfstring{poly\_tomsg}{poly\_tomsg}}
+{\footnotesize\ttfamily \#define poly\+\_\+tomsg~\mbox{\hyperlink{params_8h_a51c1085c773ccaac6cfa51a987dd346b}{KYBER\+\_\+\+NAMESPACE}}(poly\+\_\+tomsg)}
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{poly_8h_a5ba181b0bdda66aea8e0f2313c2bfb75}\label{poly_8h_a5ba181b0bdda66aea8e0f2313c2bfb75} 
+\index{poly.h@{poly.h}!pqcrystals\_kyber768\_avx2\_poly\_add@{pqcrystals\_kyber768\_avx2\_poly\_add}}
+\index{pqcrystals\_kyber768\_avx2\_poly\_add@{pqcrystals\_kyber768\_avx2\_poly\_add}!poly.h@{poly.h}}
+\doxysubsubsection{\texorpdfstring{pqcrystals\_kyber768\_avx2\_poly\_add()}{pqcrystals\_kyber768\_avx2\_poly\_add()}}
+{\footnotesize\ttfamily void pqcrystals\+\_\+kyber768\+\_\+avx2\+\_\+poly\+\_\+add (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{unionpoly}{poly}} \texorpdfstring{$\ast$}{*}}]{r,  }\item[{const \mbox{\hyperlink{unionpoly}{poly}} \texorpdfstring{$\ast$}{*}}]{a,  }\item[{const \mbox{\hyperlink{unionpoly}{poly}} \texorpdfstring{$\ast$}{*}}]{b }\end{DoxyParamCaption})}
+
+\Hypertarget{poly_8h_a16f6fad20074e4179103db700aa27bb6}\label{poly_8h_a16f6fad20074e4179103db700aa27bb6} 
+\index{poly.h@{poly.h}!pqcrystals\_kyber768\_avx2\_poly\_basemul\_montgomery@{pqcrystals\_kyber768\_avx2\_poly\_basemul\_montgomery}}
+\index{pqcrystals\_kyber768\_avx2\_poly\_basemul\_montgomery@{pqcrystals\_kyber768\_avx2\_poly\_basemul\_montgomery}!poly.h@{poly.h}}
+\doxysubsubsection{\texorpdfstring{pqcrystals\_kyber768\_avx2\_poly\_basemul\_montgomery()}{pqcrystals\_kyber768\_avx2\_poly\_basemul\_montgomery()}}
+{\footnotesize\ttfamily void pqcrystals\+\_\+kyber768\+\_\+avx2\+\_\+poly\+\_\+basemul\+\_\+montgomery (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{unionpoly}{poly}} \texorpdfstring{$\ast$}{*}}]{r,  }\item[{const \mbox{\hyperlink{unionpoly}{poly}} \texorpdfstring{$\ast$}{*}}]{a,  }\item[{const \mbox{\hyperlink{unionpoly}{poly}} \texorpdfstring{$\ast$}{*}}]{b }\end{DoxyParamCaption})}
+
+\Hypertarget{poly_8h_ab2ff2a3def231299469e4cb652e1613c}\label{poly_8h_ab2ff2a3def231299469e4cb652e1613c} 
+\index{poly.h@{poly.h}!pqcrystals\_kyber768\_avx2\_poly\_compress@{pqcrystals\_kyber768\_avx2\_poly\_compress}}
+\index{pqcrystals\_kyber768\_avx2\_poly\_compress@{pqcrystals\_kyber768\_avx2\_poly\_compress}!poly.h@{poly.h}}
+\doxysubsubsection{\texorpdfstring{pqcrystals\_kyber768\_avx2\_poly\_compress()}{pqcrystals\_kyber768\_avx2\_poly\_compress()}}
+{\footnotesize\ttfamily void pqcrystals\+\_\+kyber768\+\_\+avx2\+\_\+poly\+\_\+compress (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{r\mbox{[}128\mbox{]},  }\item[{const \mbox{\hyperlink{unionpoly}{poly}} \texorpdfstring{$\ast$}{*}}]{a }\end{DoxyParamCaption})}
+
+\Hypertarget{poly_8h_ab5ec9d67786b2e1c072548a07669b5bf}\label{poly_8h_ab5ec9d67786b2e1c072548a07669b5bf} 
+\index{poly.h@{poly.h}!pqcrystals\_kyber768\_avx2\_poly\_decompress@{pqcrystals\_kyber768\_avx2\_poly\_decompress}}
+\index{pqcrystals\_kyber768\_avx2\_poly\_decompress@{pqcrystals\_kyber768\_avx2\_poly\_decompress}!poly.h@{poly.h}}
+\doxysubsubsection{\texorpdfstring{pqcrystals\_kyber768\_avx2\_poly\_decompress()}{pqcrystals\_kyber768\_avx2\_poly\_decompress()}}
+{\footnotesize\ttfamily void pqcrystals\+\_\+kyber768\+\_\+avx2\+\_\+poly\+\_\+decompress (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{unionpoly}{poly}} \texorpdfstring{$\ast$}{*}}]{r,  }\item[{const uint8\+\_\+t}]{a\mbox{[}128\mbox{]} }\end{DoxyParamCaption})}
+
+\Hypertarget{poly_8h_a3a0fe1fb0c24f56bbc4a197f1bd116eb}\label{poly_8h_a3a0fe1fb0c24f56bbc4a197f1bd116eb} 
+\index{poly.h@{poly.h}!pqcrystals\_kyber768\_avx2\_poly\_frombytes@{pqcrystals\_kyber768\_avx2\_poly\_frombytes}}
+\index{pqcrystals\_kyber768\_avx2\_poly\_frombytes@{pqcrystals\_kyber768\_avx2\_poly\_frombytes}!poly.h@{poly.h}}
+\doxysubsubsection{\texorpdfstring{pqcrystals\_kyber768\_avx2\_poly\_frombytes()}{pqcrystals\_kyber768\_avx2\_poly\_frombytes()}}
+{\footnotesize\ttfamily void pqcrystals\+\_\+kyber768\+\_\+avx2\+\_\+poly\+\_\+frombytes (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{unionpoly}{poly}} \texorpdfstring{$\ast$}{*}}]{r,  }\item[{const uint8\+\_\+t}]{a\mbox{[}384\mbox{]} }\end{DoxyParamCaption})}
+
+\Hypertarget{poly_8h_a90915cc4e335dcd70aeb7321b7002c82}\label{poly_8h_a90915cc4e335dcd70aeb7321b7002c82} 
+\index{poly.h@{poly.h}!pqcrystals\_kyber768\_avx2\_poly\_frommsg@{pqcrystals\_kyber768\_avx2\_poly\_frommsg}}
+\index{pqcrystals\_kyber768\_avx2\_poly\_frommsg@{pqcrystals\_kyber768\_avx2\_poly\_frommsg}!poly.h@{poly.h}}
+\doxysubsubsection{\texorpdfstring{pqcrystals\_kyber768\_avx2\_poly\_frommsg()}{pqcrystals\_kyber768\_avx2\_poly\_frommsg()}}
+{\footnotesize\ttfamily void pqcrystals\+\_\+kyber768\+\_\+avx2\+\_\+poly\+\_\+frommsg (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{unionpoly}{poly}} \texorpdfstring{$\ast$}{*}}]{r,  }\item[{const uint8\+\_\+t}]{msg\mbox{[}(32)\mbox{]} }\end{DoxyParamCaption})}
+
+\Hypertarget{poly_8h_aac07b7c1e74447073c202964ba09dd69}\label{poly_8h_aac07b7c1e74447073c202964ba09dd69} 
+\index{poly.h@{poly.h}!pqcrystals\_kyber768\_avx2\_poly\_getnoise\_eta1@{pqcrystals\_kyber768\_avx2\_poly\_getnoise\_eta1}}
+\index{pqcrystals\_kyber768\_avx2\_poly\_getnoise\_eta1@{pqcrystals\_kyber768\_avx2\_poly\_getnoise\_eta1}!poly.h@{poly.h}}
+\doxysubsubsection{\texorpdfstring{pqcrystals\_kyber768\_avx2\_poly\_getnoise\_eta1()}{pqcrystals\_kyber768\_avx2\_poly\_getnoise\_eta1()}}
+{\footnotesize\ttfamily void pqcrystals\+\_\+kyber768\+\_\+avx2\+\_\+poly\+\_\+getnoise\+\_\+eta1 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{unionpoly}{poly}} \texorpdfstring{$\ast$}{*}}]{r,  }\item[{const uint8\+\_\+t}]{seed\mbox{[}32\mbox{]},  }\item[{uint8\+\_\+t}]{nonce }\end{DoxyParamCaption})}
+
+\Hypertarget{poly_8h_ab43cab5d3d5b997b3b50a49e7fba2c46}\label{poly_8h_ab43cab5d3d5b997b3b50a49e7fba2c46} 
+\index{poly.h@{poly.h}!pqcrystals\_kyber768\_avx2\_poly\_getnoise\_eta2@{pqcrystals\_kyber768\_avx2\_poly\_getnoise\_eta2}}
+\index{pqcrystals\_kyber768\_avx2\_poly\_getnoise\_eta2@{pqcrystals\_kyber768\_avx2\_poly\_getnoise\_eta2}!poly.h@{poly.h}}
+\doxysubsubsection{\texorpdfstring{pqcrystals\_kyber768\_avx2\_poly\_getnoise\_eta2()}{pqcrystals\_kyber768\_avx2\_poly\_getnoise\_eta2()}}
+{\footnotesize\ttfamily void pqcrystals\+\_\+kyber768\+\_\+avx2\+\_\+poly\+\_\+getnoise\+\_\+eta2 (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{unionpoly}{poly}} \texorpdfstring{$\ast$}{*}}]{r,  }\item[{const uint8\+\_\+t}]{seed\mbox{[}32\mbox{]},  }\item[{uint8\+\_\+t}]{nonce }\end{DoxyParamCaption})}
+
+\Hypertarget{poly_8h_a0e6c862b2a05f69af14071036b378abc}\label{poly_8h_a0e6c862b2a05f69af14071036b378abc} 
+\index{poly.h@{poly.h}!pqcrystals\_kyber768\_avx2\_poly\_getnoise\_eta2\_4x@{pqcrystals\_kyber768\_avx2\_poly\_getnoise\_eta2\_4x}}
+\index{pqcrystals\_kyber768\_avx2\_poly\_getnoise\_eta2\_4x@{pqcrystals\_kyber768\_avx2\_poly\_getnoise\_eta2\_4x}!poly.h@{poly.h}}
+\doxysubsubsection{\texorpdfstring{pqcrystals\_kyber768\_avx2\_poly\_getnoise\_eta2\_4x()}{pqcrystals\_kyber768\_avx2\_poly\_getnoise\_eta2\_4x()}}
+{\footnotesize\ttfamily void pqcrystals\+\_\+kyber768\+\_\+avx2\+\_\+poly\+\_\+getnoise\+\_\+eta2\+\_\+4x (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{unionpoly}{poly}} \texorpdfstring{$\ast$}{*}}]{r0,  }\item[{\mbox{\hyperlink{unionpoly}{poly}} \texorpdfstring{$\ast$}{*}}]{r1,  }\item[{\mbox{\hyperlink{unionpoly}{poly}} \texorpdfstring{$\ast$}{*}}]{r2,  }\item[{\mbox{\hyperlink{unionpoly}{poly}} \texorpdfstring{$\ast$}{*}}]{r3,  }\item[{const uint8\+\_\+t}]{seed\mbox{[}32\mbox{]},  }\item[{uint8\+\_\+t}]{nonce0,  }\item[{uint8\+\_\+t}]{nonce1,  }\item[{uint8\+\_\+t}]{nonce2,  }\item[{uint8\+\_\+t}]{nonce3 }\end{DoxyParamCaption})}
+
+\Hypertarget{poly_8h_a3b2cfb6d216703bfb31dd66c319da80f}\label{poly_8h_a3b2cfb6d216703bfb31dd66c319da80f} 
+\index{poly.h@{poly.h}!pqcrystals\_kyber768\_avx2\_poly\_invntt\_tomont@{pqcrystals\_kyber768\_avx2\_poly\_invntt\_tomont}}
+\index{pqcrystals\_kyber768\_avx2\_poly\_invntt\_tomont@{pqcrystals\_kyber768\_avx2\_poly\_invntt\_tomont}!poly.h@{poly.h}}
+\doxysubsubsection{\texorpdfstring{pqcrystals\_kyber768\_avx2\_poly\_invntt\_tomont()}{pqcrystals\_kyber768\_avx2\_poly\_invntt\_tomont()}}
+{\footnotesize\ttfamily void pqcrystals\+\_\+kyber768\+\_\+avx2\+\_\+poly\+\_\+invntt\+\_\+tomont (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{unionpoly}{poly}} \texorpdfstring{$\ast$}{*}}]{r }\end{DoxyParamCaption})}
+
+\Hypertarget{poly_8h_a33486e6cb91e6daf49e2856dc4c902c9}\label{poly_8h_a33486e6cb91e6daf49e2856dc4c902c9} 
+\index{poly.h@{poly.h}!pqcrystals\_kyber768\_avx2\_poly\_ntt@{pqcrystals\_kyber768\_avx2\_poly\_ntt}}
+\index{pqcrystals\_kyber768\_avx2\_poly\_ntt@{pqcrystals\_kyber768\_avx2\_poly\_ntt}!poly.h@{poly.h}}
+\doxysubsubsection{\texorpdfstring{pqcrystals\_kyber768\_avx2\_poly\_ntt()}{pqcrystals\_kyber768\_avx2\_poly\_ntt()}}
+{\footnotesize\ttfamily void pqcrystals\+\_\+kyber768\+\_\+avx2\+\_\+poly\+\_\+ntt (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{unionpoly}{poly}} \texorpdfstring{$\ast$}{*}}]{r }\end{DoxyParamCaption})}
+
+\Hypertarget{poly_8h_af630a27be293d6b4e1465fff1a6ca629}\label{poly_8h_af630a27be293d6b4e1465fff1a6ca629} 
+\index{poly.h@{poly.h}!pqcrystals\_kyber768\_avx2\_poly\_nttunpack@{pqcrystals\_kyber768\_avx2\_poly\_nttunpack}}
+\index{pqcrystals\_kyber768\_avx2\_poly\_nttunpack@{pqcrystals\_kyber768\_avx2\_poly\_nttunpack}!poly.h@{poly.h}}
+\doxysubsubsection{\texorpdfstring{pqcrystals\_kyber768\_avx2\_poly\_nttunpack()}{pqcrystals\_kyber768\_avx2\_poly\_nttunpack()}}
+{\footnotesize\ttfamily void pqcrystals\+\_\+kyber768\+\_\+avx2\+\_\+poly\+\_\+nttunpack (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{unionpoly}{poly}} \texorpdfstring{$\ast$}{*}}]{r }\end{DoxyParamCaption})}
+
+\Hypertarget{poly_8h_a9509b6570b80d9c76e4e95358bc29e78}\label{poly_8h_a9509b6570b80d9c76e4e95358bc29e78} 
+\index{poly.h@{poly.h}!pqcrystals\_kyber768\_avx2\_poly\_reduce@{pqcrystals\_kyber768\_avx2\_poly\_reduce}}
+\index{pqcrystals\_kyber768\_avx2\_poly\_reduce@{pqcrystals\_kyber768\_avx2\_poly\_reduce}!poly.h@{poly.h}}
+\doxysubsubsection{\texorpdfstring{pqcrystals\_kyber768\_avx2\_poly\_reduce()}{pqcrystals\_kyber768\_avx2\_poly\_reduce()}}
+{\footnotesize\ttfamily void pqcrystals\+\_\+kyber768\+\_\+avx2\+\_\+poly\+\_\+reduce (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{unionpoly}{poly}} \texorpdfstring{$\ast$}{*}}]{r }\end{DoxyParamCaption})}
+
+\Hypertarget{poly_8h_a7c0153325b93ba36db19e8f4eeffeb33}\label{poly_8h_a7c0153325b93ba36db19e8f4eeffeb33} 
+\index{poly.h@{poly.h}!pqcrystals\_kyber768\_avx2\_poly\_sub@{pqcrystals\_kyber768\_avx2\_poly\_sub}}
+\index{pqcrystals\_kyber768\_avx2\_poly\_sub@{pqcrystals\_kyber768\_avx2\_poly\_sub}!poly.h@{poly.h}}
+\doxysubsubsection{\texorpdfstring{pqcrystals\_kyber768\_avx2\_poly\_sub()}{pqcrystals\_kyber768\_avx2\_poly\_sub()}}
+{\footnotesize\ttfamily void pqcrystals\+\_\+kyber768\+\_\+avx2\+\_\+poly\+\_\+sub (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{unionpoly}{poly}} \texorpdfstring{$\ast$}{*}}]{r,  }\item[{const \mbox{\hyperlink{unionpoly}{poly}} \texorpdfstring{$\ast$}{*}}]{a,  }\item[{const \mbox{\hyperlink{unionpoly}{poly}} \texorpdfstring{$\ast$}{*}}]{b }\end{DoxyParamCaption})}
+
+\Hypertarget{poly_8h_a7196b0e94e80cf8aaa98198ca1fd247b}\label{poly_8h_a7196b0e94e80cf8aaa98198ca1fd247b} 
+\index{poly.h@{poly.h}!pqcrystals\_kyber768\_avx2\_poly\_tobytes@{pqcrystals\_kyber768\_avx2\_poly\_tobytes}}
+\index{pqcrystals\_kyber768\_avx2\_poly\_tobytes@{pqcrystals\_kyber768\_avx2\_poly\_tobytes}!poly.h@{poly.h}}
+\doxysubsubsection{\texorpdfstring{pqcrystals\_kyber768\_avx2\_poly\_tobytes()}{pqcrystals\_kyber768\_avx2\_poly\_tobytes()}}
+{\footnotesize\ttfamily void pqcrystals\+\_\+kyber768\+\_\+avx2\+\_\+poly\+\_\+tobytes (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{r\mbox{[}384\mbox{]},  }\item[{const \mbox{\hyperlink{unionpoly}{poly}} \texorpdfstring{$\ast$}{*}}]{a }\end{DoxyParamCaption})}
+
+\Hypertarget{poly_8h_a7d0390a7cf8632d3fdfc3b6160e6ea19}\label{poly_8h_a7d0390a7cf8632d3fdfc3b6160e6ea19} 
+\index{poly.h@{poly.h}!pqcrystals\_kyber768\_avx2\_poly\_tomont@{pqcrystals\_kyber768\_avx2\_poly\_tomont}}
+\index{pqcrystals\_kyber768\_avx2\_poly\_tomont@{pqcrystals\_kyber768\_avx2\_poly\_tomont}!poly.h@{poly.h}}
+\doxysubsubsection{\texorpdfstring{pqcrystals\_kyber768\_avx2\_poly\_tomont()}{pqcrystals\_kyber768\_avx2\_poly\_tomont()}}
+{\footnotesize\ttfamily void pqcrystals\+\_\+kyber768\+\_\+avx2\+\_\+poly\+\_\+tomont (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{unionpoly}{poly}} \texorpdfstring{$\ast$}{*}}]{r }\end{DoxyParamCaption})}
+
+\Hypertarget{poly_8h_abe47b366a210435d470f9ede47f17b39}\label{poly_8h_abe47b366a210435d470f9ede47f17b39} 
+\index{poly.h@{poly.h}!pqcrystals\_kyber768\_avx2\_poly\_tomsg@{pqcrystals\_kyber768\_avx2\_poly\_tomsg}}
+\index{pqcrystals\_kyber768\_avx2\_poly\_tomsg@{pqcrystals\_kyber768\_avx2\_poly\_tomsg}!poly.h@{poly.h}}
+\doxysubsubsection{\texorpdfstring{pqcrystals\_kyber768\_avx2\_poly\_tomsg()}{pqcrystals\_kyber768\_avx2\_poly\_tomsg()}}
+{\footnotesize\ttfamily void pqcrystals\+\_\+kyber768\+\_\+avx2\+\_\+poly\+\_\+tomsg (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{msg\mbox{[}(32)\mbox{]},  }\item[{const \mbox{\hyperlink{unionpoly}{poly}} \texorpdfstring{$\ast$}{*}}]{r }\end{DoxyParamCaption})}
+

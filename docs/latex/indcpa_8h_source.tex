@@ -1,0 +1,40 @@
+\doxysection{indcpa.\+h}
+\hypertarget{indcpa_8h_source}{}\label{indcpa_8h_source}\index{libs/indcpa.h@{libs/indcpa.h}}
+\mbox{\hyperlink{indcpa_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ INDCPA\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ INDCPA\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{params_8h}{params.h}}"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{polyvec_8h}{polyvec.h}}"{}}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ }
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#define\ gen\_matrix\ KYBER\_NAMESPACE(gen\_matrix)}}
+\DoxyCodeLine{00017\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{indcpa_8h_a95867e1475dc47314959ced95627df2c}{gen\_matrix}}(\mbox{\hyperlink{structpolyvec}{polyvec}}\ *a,\ \textcolor{keyword}{const}\ uint8\_t\ seed[\mbox{\hyperlink{params_8h_a132bbc78e88ea5e14e93e0963dd5d0f9}{KYBER\_SYMBYTES}}],\ \textcolor{keywordtype}{int}\ transposed);}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#define\ indcpa\_keypair\_derand\ KYBER\_NAMESPACE(indcpa\_keypair\_derand)}}
+\DoxyCodeLine{00020\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{indcpa_8h_a2e33d9cec9ca2f7d8a1b5b32e5790e5f}{indcpa\_keypair\_derand}}(uint8\_t\ pk[\mbox{\hyperlink{params_8h_a4c9f2345946a0d01dc2051b493c2bda4}{KYBER\_INDCPA\_PUBLICKEYBYTES}}],}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ sk[\mbox{\hyperlink{params_8h_a7258274ad7836627403880fe8dda0cfa}{KYBER\_INDCPA\_SECRETKEYBYTES}}],}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ uint8\_t\ coins[\mbox{\hyperlink{params_8h_a132bbc78e88ea5e14e93e0963dd5d0f9}{KYBER\_SYMBYTES}}]);}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#define\ indcpa\_enc\ KYBER\_NAMESPACE(indcpa\_enc)}}
+\DoxyCodeLine{00025\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{indcpa_8h_ac30bf8e7a6647f8d1557f7f969c0436a}{indcpa\_enc}}(uint8\_t\ c[\mbox{\hyperlink{params_8h_a14d4b725309e5e2664245eedc25ef4c4}{KYBER\_INDCPA\_BYTES}}],}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ uint8\_t\ m[\mbox{\hyperlink{params_8h_afbda72968986f789dc91f6ca3368a628}{KYBER\_INDCPA\_MSGBYTES}}],}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ uint8\_t\ pk[\mbox{\hyperlink{params_8h_a4c9f2345946a0d01dc2051b493c2bda4}{KYBER\_INDCPA\_PUBLICKEYBYTES}}],}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ uint8\_t\ coins[\mbox{\hyperlink{params_8h_a132bbc78e88ea5e14e93e0963dd5d0f9}{KYBER\_SYMBYTES}}]);}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#define\ indcpa\_dec\ KYBER\_NAMESPACE(indcpa\_dec)}}
+\DoxyCodeLine{00031\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{indcpa_8h_a36f0ace6b8b1f28b1f4446f6802437b7}{indcpa\_dec}}(uint8\_t\ m[\mbox{\hyperlink{params_8h_afbda72968986f789dc91f6ca3368a628}{KYBER\_INDCPA\_MSGBYTES}}],}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ uint8\_t\ c[\mbox{\hyperlink{params_8h_a14d4b725309e5e2664245eedc25ef4c4}{KYBER\_INDCPA\_BYTES}}],}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ uint8\_t\ sk[\mbox{\hyperlink{params_8h_a7258274ad7836627403880fe8dda0cfa}{KYBER\_INDCPA\_SECRETKEYBYTES}}]);}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#define\ unpack\_pk\ KYBER\_NAMESPACE(unpack\_pk)}}
+\DoxyCodeLine{00043\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{indcpa_8h_a0b1c9afb8ba4870a733d4f675c8028a9}{unpack\_pk}}(\mbox{\hyperlink{structpolyvec}{polyvec}}\ *pk,}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ seed[\mbox{\hyperlink{params_8h_a132bbc78e88ea5e14e93e0963dd5d0f9}{KYBER\_SYMBYTES}}],}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ uint8\_t\ packedpk[\mbox{\hyperlink{params_8h_a4c9f2345946a0d01dc2051b493c2bda4}{KYBER\_INDCPA\_PUBLICKEYBYTES}}]);}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

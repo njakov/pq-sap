@@ -1,0 +1,169 @@
+\doxysection{libs/indcpa.h File Reference}
+\hypertarget{indcpa_8h}{}\label{indcpa_8h}\index{libs/indcpa.h@{libs/indcpa.h}}
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include "{}params.\+h"{}}\newline
+{\ttfamily \#include "{}polyvec.\+h"{}}\newline
+Include dependency graph for indcpa.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{indcpa_8h_a95867e1475dc47314959ced95627df2c}{gen\+\_\+matrix}}~\mbox{\hyperlink{params_8h_a51c1085c773ccaac6cfa51a987dd346b}{KYBER\+\_\+\+NAMESPACE}}(gen\+\_\+matrix)
+\begin{DoxyCompactList}\small\item\em Generate the matrix A or A\texorpdfstring{$^\wedge$}{\string^}T -\/ USED. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{indcpa_8h_a2e33d9cec9ca2f7d8a1b5b32e5790e5f}{indcpa\+\_\+keypair\+\_\+derand}}~\mbox{\hyperlink{params_8h_a51c1085c773ccaac6cfa51a987dd346b}{KYBER\+\_\+\+NAMESPACE}}(indcpa\+\_\+keypair\+\_\+derand)
+\item 
+\#define \mbox{\hyperlink{indcpa_8h_ac30bf8e7a6647f8d1557f7f969c0436a}{indcpa\+\_\+enc}}~\mbox{\hyperlink{params_8h_a51c1085c773ccaac6cfa51a987dd346b}{KYBER\+\_\+\+NAMESPACE}}(indcpa\+\_\+enc)
+\item 
+\#define \mbox{\hyperlink{indcpa_8h_a36f0ace6b8b1f28b1f4446f6802437b7}{indcpa\+\_\+dec}}~\mbox{\hyperlink{params_8h_a51c1085c773ccaac6cfa51a987dd346b}{KYBER\+\_\+\+NAMESPACE}}(indcpa\+\_\+dec)
+\item 
+\#define \mbox{\hyperlink{indcpa_8h_a0b1c9afb8ba4870a733d4f675c8028a9}{unpack\+\_\+pk}}~\mbox{\hyperlink{params_8h_a51c1085c773ccaac6cfa51a987dd346b}{KYBER\+\_\+\+NAMESPACE}}(unpack\+\_\+pk)
+\begin{DoxyCompactList}\small\item\em De-\/serialize public key from a byte array; approximate inverse of pack\+\_\+pk. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{indcpa_8h_aa68d655af0e4681412f1bba8986d557a}{pqcrystals\+\_\+kyber768\+\_\+avx2\+\_\+gen\+\_\+matrix}} (\mbox{\hyperlink{structpolyvec}{polyvec}} \texorpdfstring{$\ast$}{*}a, const uint8\+\_\+t seed\mbox{[}32\mbox{]}, int transposed)
+\item 
+void \mbox{\hyperlink{indcpa_8h_ac22fd46fccadd0c000e90e7ad7b4a07f}{pqcrystals\+\_\+kyber768\+\_\+avx2\+\_\+indcpa\+\_\+keypair\+\_\+derand}} (uint8\+\_\+t pk\mbox{[}((3 \texorpdfstring{$\ast$}{*}384)+32)\mbox{]}, uint8\+\_\+t sk\mbox{[}((3 \texorpdfstring{$\ast$}{*}384))\mbox{]}, const uint8\+\_\+t coins\mbox{[}32\mbox{]})
+\begin{DoxyCompactList}\small\item\em Name\+: indcpa\+\_\+keypair\+\_\+derand. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{indcpa_8h_ab3cdda7846d5142fed67e497ff99ad9e}{pqcrystals\+\_\+kyber768\+\_\+avx2\+\_\+indcpa\+\_\+enc}} (uint8\+\_\+t c\mbox{[}((3 \texorpdfstring{$\ast$}{*}320)+128)\mbox{]}, const uint8\+\_\+t m\mbox{[}(32)\mbox{]}, const uint8\+\_\+t pk\mbox{[}((3 \texorpdfstring{$\ast$}{*}384)+32)\mbox{]}, const uint8\+\_\+t coins\mbox{[}32\mbox{]})
+\begin{DoxyCompactList}\small\item\em Name\+: indcpa\+\_\+enc. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{indcpa_8h_a6c16f353f15a0690db8251f6fbcc5e0d}{pqcrystals\+\_\+kyber768\+\_\+avx2\+\_\+indcpa\+\_\+dec}} (uint8\+\_\+t m\mbox{[}(32)\mbox{]}, const uint8\+\_\+t c\mbox{[}((3 \texorpdfstring{$\ast$}{*}320)+128)\mbox{]}, const uint8\+\_\+t sk\mbox{[}((3 \texorpdfstring{$\ast$}{*}384))\mbox{]})
+\begin{DoxyCompactList}\small\item\em Name\+: indcpa\+\_\+dec. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{indcpa_8h_acd8dab719660d65b32a25ad051cfd442}{pqcrystals\+\_\+kyber768\+\_\+avx2\+\_\+unpack\+\_\+pk}} (\mbox{\hyperlink{structpolyvec}{polyvec}} \texorpdfstring{$\ast$}{*}pk, uint8\+\_\+t seed\mbox{[}32\mbox{]}, const uint8\+\_\+t packedpk\mbox{[}((3 \texorpdfstring{$\ast$}{*}384)+32)\mbox{]})
+\begin{DoxyCompactList}\small\item\em Workflow\+: \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{indcpa_8h_a95867e1475dc47314959ced95627df2c}\label{indcpa_8h_a95867e1475dc47314959ced95627df2c} 
+\index{indcpa.h@{indcpa.h}!gen\_matrix@{gen\_matrix}}
+\index{gen\_matrix@{gen\_matrix}!indcpa.h@{indcpa.h}}
+\doxysubsubsection{\texorpdfstring{gen\_matrix}{gen\_matrix}}
+{\footnotesize\ttfamily \#define gen\+\_\+matrix~\mbox{\hyperlink{params_8h_a51c1085c773ccaac6cfa51a987dd346b}{KYBER\+\_\+\+NAMESPACE}}(gen\+\_\+matrix)}
+
+
+
+Generate the matrix A or A\texorpdfstring{$^\wedge$}{\string^}T -\/ USED. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & Output matrix A (or A\texorpdfstring{$^\wedge$}{\string^}T). \\
+\hline
+{\em seed} & The seed to generate the matrix. \\
+\hline
+{\em transposed} & Boolean flag to decide whether A or A\texorpdfstring{$^\wedge$}{\string^}T is generated. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{indcpa_8h_a36f0ace6b8b1f28b1f4446f6802437b7}\label{indcpa_8h_a36f0ace6b8b1f28b1f4446f6802437b7} 
+\index{indcpa.h@{indcpa.h}!indcpa\_dec@{indcpa\_dec}}
+\index{indcpa\_dec@{indcpa\_dec}!indcpa.h@{indcpa.h}}
+\doxysubsubsection{\texorpdfstring{indcpa\_dec}{indcpa\_dec}}
+{\footnotesize\ttfamily \#define indcpa\+\_\+dec~\mbox{\hyperlink{params_8h_a51c1085c773ccaac6cfa51a987dd346b}{KYBER\+\_\+\+NAMESPACE}}(indcpa\+\_\+dec)}
+
+\Hypertarget{indcpa_8h_ac30bf8e7a6647f8d1557f7f969c0436a}\label{indcpa_8h_ac30bf8e7a6647f8d1557f7f969c0436a} 
+\index{indcpa.h@{indcpa.h}!indcpa\_enc@{indcpa\_enc}}
+\index{indcpa\_enc@{indcpa\_enc}!indcpa.h@{indcpa.h}}
+\doxysubsubsection{\texorpdfstring{indcpa\_enc}{indcpa\_enc}}
+{\footnotesize\ttfamily \#define indcpa\+\_\+enc~\mbox{\hyperlink{params_8h_a51c1085c773ccaac6cfa51a987dd346b}{KYBER\+\_\+\+NAMESPACE}}(indcpa\+\_\+enc)}
+
+\Hypertarget{indcpa_8h_a2e33d9cec9ca2f7d8a1b5b32e5790e5f}\label{indcpa_8h_a2e33d9cec9ca2f7d8a1b5b32e5790e5f} 
+\index{indcpa.h@{indcpa.h}!indcpa\_keypair\_derand@{indcpa\_keypair\_derand}}
+\index{indcpa\_keypair\_derand@{indcpa\_keypair\_derand}!indcpa.h@{indcpa.h}}
+\doxysubsubsection{\texorpdfstring{indcpa\_keypair\_derand}{indcpa\_keypair\_derand}}
+{\footnotesize\ttfamily \#define indcpa\+\_\+keypair\+\_\+derand~\mbox{\hyperlink{params_8h_a51c1085c773ccaac6cfa51a987dd346b}{KYBER\+\_\+\+NAMESPACE}}(indcpa\+\_\+keypair\+\_\+derand)}
+
+\Hypertarget{indcpa_8h_a0b1c9afb8ba4870a733d4f675c8028a9}\label{indcpa_8h_a0b1c9afb8ba4870a733d4f675c8028a9} 
+\index{indcpa.h@{indcpa.h}!unpack\_pk@{unpack\_pk}}
+\index{unpack\_pk@{unpack\_pk}!indcpa.h@{indcpa.h}}
+\doxysubsubsection{\texorpdfstring{unpack\_pk}{unpack\_pk}}
+{\footnotesize\ttfamily \#define unpack\+\_\+pk~\mbox{\hyperlink{params_8h_a51c1085c773ccaac6cfa51a987dd346b}{KYBER\+\_\+\+NAMESPACE}}(unpack\+\_\+pk)}
+
+
+
+De-\/serialize public key from a byte array; approximate inverse of pack\+\_\+pk. 
+
+
+\begin{DoxyItemize}
+\item USED 
+\begin{DoxyParams}{Parameters}
+{\em pk} & Pointer to output public-\/key polynomial vector. \\
+\hline
+{\em seed} & Pointer to output seed to generate matrix A. \\
+\hline
+{\em packedpk} & Pointer to the input serialized public key. \\
+\hline
+\end{DoxyParams}
+
+\end{DoxyItemize}
+
+\doxysubsection{Function Documentation}
+\Hypertarget{indcpa_8h_aa68d655af0e4681412f1bba8986d557a}\label{indcpa_8h_aa68d655af0e4681412f1bba8986d557a} 
+\index{indcpa.h@{indcpa.h}!pqcrystals\_kyber768\_avx2\_gen\_matrix@{pqcrystals\_kyber768\_avx2\_gen\_matrix}}
+\index{pqcrystals\_kyber768\_avx2\_gen\_matrix@{pqcrystals\_kyber768\_avx2\_gen\_matrix}!indcpa.h@{indcpa.h}}
+\doxysubsubsection{\texorpdfstring{pqcrystals\_kyber768\_avx2\_gen\_matrix()}{pqcrystals\_kyber768\_avx2\_gen\_matrix()}}
+{\footnotesize\ttfamily void pqcrystals\+\_\+kyber768\+\_\+avx2\+\_\+gen\+\_\+matrix (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structpolyvec}{polyvec}} \texorpdfstring{$\ast$}{*}}]{a,  }\item[{const uint8\+\_\+t}]{seed\mbox{[}32\mbox{]},  }\item[{int}]{transposed }\end{DoxyParamCaption})}
+
+\Hypertarget{indcpa_8h_a6c16f353f15a0690db8251f6fbcc5e0d}\label{indcpa_8h_a6c16f353f15a0690db8251f6fbcc5e0d} 
+\index{indcpa.h@{indcpa.h}!pqcrystals\_kyber768\_avx2\_indcpa\_dec@{pqcrystals\_kyber768\_avx2\_indcpa\_dec}}
+\index{pqcrystals\_kyber768\_avx2\_indcpa\_dec@{pqcrystals\_kyber768\_avx2\_indcpa\_dec}!indcpa.h@{indcpa.h}}
+\doxysubsubsection{\texorpdfstring{pqcrystals\_kyber768\_avx2\_indcpa\_dec()}{pqcrystals\_kyber768\_avx2\_indcpa\_dec()}}
+{\footnotesize\ttfamily void pqcrystals\+\_\+kyber768\+\_\+avx2\+\_\+indcpa\+\_\+dec (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{m\mbox{[}(32)\mbox{]},  }\item[{const uint8\+\_\+t}]{c\mbox{[}((3 \texorpdfstring{$\ast$}{*}320)+128)\mbox{]},  }\item[{const uint8\+\_\+t}]{sk\mbox{[}((3 \texorpdfstring{$\ast$}{*}384))\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Name\+: indcpa\+\_\+dec. 
+
+Description\+: Decryption function of the CPA-\/secure public-\/key encryption scheme underlying Kyber.
+
+Arguments\+: -\/ uint8\+\_\+t \texorpdfstring{$\ast$}{*}m\+: pointer to output decrypted message (of length KYBER\+\_\+\+INDCPA\+\_\+\+MSGBYTES)
+\begin{DoxyItemize}
+\item const uint8\+\_\+t \texorpdfstring{$\ast$}{*}c\+: pointer to input ciphertext (of length KYBER\+\_\+\+INDCPA\+\_\+\+BYTES)
+\item const uint8\+\_\+t \texorpdfstring{$\ast$}{*}sk\+: pointer to input secret key (of length KYBER\+\_\+\+INDCPA\+\_\+\+SECRETKEYBYTES) 
+\end{DoxyItemize}\Hypertarget{indcpa_8h_ab3cdda7846d5142fed67e497ff99ad9e}\label{indcpa_8h_ab3cdda7846d5142fed67e497ff99ad9e} 
+\index{indcpa.h@{indcpa.h}!pqcrystals\_kyber768\_avx2\_indcpa\_enc@{pqcrystals\_kyber768\_avx2\_indcpa\_enc}}
+\index{pqcrystals\_kyber768\_avx2\_indcpa\_enc@{pqcrystals\_kyber768\_avx2\_indcpa\_enc}!indcpa.h@{indcpa.h}}
+\doxysubsubsection{\texorpdfstring{pqcrystals\_kyber768\_avx2\_indcpa\_enc()}{pqcrystals\_kyber768\_avx2\_indcpa\_enc()}}
+{\footnotesize\ttfamily void pqcrystals\+\_\+kyber768\+\_\+avx2\+\_\+indcpa\+\_\+enc (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{c\mbox{[}((3 \texorpdfstring{$\ast$}{*}320)+128)\mbox{]},  }\item[{const uint8\+\_\+t}]{m\mbox{[}(32)\mbox{]},  }\item[{const uint8\+\_\+t}]{pk\mbox{[}((3 \texorpdfstring{$\ast$}{*}384)+32)\mbox{]},  }\item[{const uint8\+\_\+t}]{coins\mbox{[}32\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Name\+: indcpa\+\_\+enc. 
+
+Description\+: Encryption function of the CPA-\/secure public-\/key encryption scheme underlying Kyber.
+
+Arguments\+: -\/ uint8\+\_\+t \texorpdfstring{$\ast$}{*}c\+: pointer to output ciphertext (of length KYBER\+\_\+\+INDCPA\+\_\+\+BYTES bytes)
+\begin{DoxyItemize}
+\item const uint8\+\_\+t \texorpdfstring{$\ast$}{*}m\+: pointer to input message (of length KYBER\+\_\+\+INDCPA\+\_\+\+MSGBYTES bytes)
+\item const uint8\+\_\+t \texorpdfstring{$\ast$}{*}pk\+: pointer to input public key (of length KYBER\+\_\+\+INDCPA\+\_\+\+PUBLICKEYBYTES)
+\item const uint8\+\_\+t \texorpdfstring{$\ast$}{*}coins\+: pointer to input random coins used as seed (of length KYBER\+\_\+\+SYMBYTES) to deterministically generate all randomness 
+\end{DoxyItemize}\Hypertarget{indcpa_8h_ac22fd46fccadd0c000e90e7ad7b4a07f}\label{indcpa_8h_ac22fd46fccadd0c000e90e7ad7b4a07f} 
+\index{indcpa.h@{indcpa.h}!pqcrystals\_kyber768\_avx2\_indcpa\_keypair\_derand@{pqcrystals\_kyber768\_avx2\_indcpa\_keypair\_derand}}
+\index{pqcrystals\_kyber768\_avx2\_indcpa\_keypair\_derand@{pqcrystals\_kyber768\_avx2\_indcpa\_keypair\_derand}!indcpa.h@{indcpa.h}}
+\doxysubsubsection{\texorpdfstring{pqcrystals\_kyber768\_avx2\_indcpa\_keypair\_derand()}{pqcrystals\_kyber768\_avx2\_indcpa\_keypair\_derand()}}
+{\footnotesize\ttfamily void pqcrystals\+\_\+kyber768\+\_\+avx2\+\_\+indcpa\+\_\+keypair\+\_\+derand (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{pk\mbox{[}((3 \texorpdfstring{$\ast$}{*}384)+32)\mbox{]},  }\item[{uint8\+\_\+t}]{sk\mbox{[}((3 \texorpdfstring{$\ast$}{*}384))\mbox{]},  }\item[{const uint8\+\_\+t}]{coins\mbox{[}32\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Name\+: indcpa\+\_\+keypair\+\_\+derand. 
+
+Description\+: Generates public and private key for the CPA-\/secure public-\/key encryption scheme underlying Kyber
+
+Arguments\+: -\/ uint8\+\_\+t \texorpdfstring{$\ast$}{*}pk\+: pointer to output public key (of length KYBER\+\_\+\+INDCPA\+\_\+\+PUBLICKEYBYTES bytes)
+\begin{DoxyItemize}
+\item uint8\+\_\+t \texorpdfstring{$\ast$}{*}sk\+: pointer to output private key (of length KYBER\+\_\+\+INDCPA\+\_\+\+SECRETKEYBYTES bytes)
+\item const uint8\+\_\+t \texorpdfstring{$\ast$}{*}coins\+: pointer to input randomness (of length KYBER\+\_\+\+SYMBYTES bytes) 
+\end{DoxyItemize}\Hypertarget{indcpa_8h_acd8dab719660d65b32a25ad051cfd442}\label{indcpa_8h_acd8dab719660d65b32a25ad051cfd442} 
+\index{indcpa.h@{indcpa.h}!pqcrystals\_kyber768\_avx2\_unpack\_pk@{pqcrystals\_kyber768\_avx2\_unpack\_pk}}
+\index{pqcrystals\_kyber768\_avx2\_unpack\_pk@{pqcrystals\_kyber768\_avx2\_unpack\_pk}!indcpa.h@{indcpa.h}}
+\doxysubsubsection{\texorpdfstring{pqcrystals\_kyber768\_avx2\_unpack\_pk()}{pqcrystals\_kyber768\_avx2\_unpack\_pk()}}
+{\footnotesize\ttfamily void pqcrystals\+\_\+kyber768\+\_\+avx2\+\_\+unpack\+\_\+pk (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structpolyvec}{polyvec}} \texorpdfstring{$\ast$}{*}}]{pk,  }\item[{uint8\+\_\+t}]{seed\mbox{[}32\mbox{]},  }\item[{const uint8\+\_\+t}]{packedpk\mbox{[}((3 \texorpdfstring{$\ast$}{*}384)+32)\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Workflow\+: 
+
+
+\begin{DoxyEnumerate}
+\item Calling \doxylink{polyvec_8h_a6bccf486b0a4aa8bae3689c1c2a540f0}{polyvec\+\_\+frombytes(pk, packedpk)} . 
+\end{DoxyEnumerate}
