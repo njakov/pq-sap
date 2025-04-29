@@ -53,11 +53,11 @@ void print_hex(const char* label, const uint8_t* data, size_t len) {
  */
 
 int main() {
-    uint8_t pk[KYBER_PUBLICKEYBYTES];  // Public key
-    uint8_t sk[KYBER_SECRETKEYBYTES];  // Secret key
-    uint8_t ct[KYBER_CIPHERTEXTBYTES]; // Ciphertext
-    uint8_t ss1[KYBER_SSBYTES];        // Shared secret from encapsulation
-    uint8_t ss2[KYBER_SSBYTES];        // Shared secret from decapsulation
+    uint8_t pk[KYBER_PUBLICKEYBYTES];
+    uint8_t sk[KYBER_SECRETKEYBYTES];
+    uint8_t ct[KYBER_CIPHERTEXTBYTES];
+    uint8_t ss1[KYBER_SSBYTES];
+    uint8_t ss2[KYBER_SSBYTES];
 
     printf("Hello Kyber!\n");
 

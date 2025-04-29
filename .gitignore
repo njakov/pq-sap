@@ -1,0 +1,26 @@
+# === Build outputs ===
+*.o
+*.out
+*.exe
+*.a
+*.so
+*.d
+
+# === Compiled binaries ===
+kyber_demo
+main_program
+tests/kem_test
+tests/protocol_test
+
+# === Editor / IDE ===
+.vs/
+.vscode/
+
+# === Doxygen output ===
+docs/latex/
+docs/html/
+
+# === Backup & temp files ===
+*~
+*.swp
+*.bak
