@@ -26,8 +26,8 @@ int main() {
     uint8_t view_tag;
     uint8_t stealth_pub_key_sender[STEALTH_ADDRESS_BYTES];
     uint8_t stealth_pub_key_reciever[STEALTH_ADDRESS_BYTES];
-    uint8_t ss[KYBER_SSBYTES];
-    uint8_t ss2[KYBER_SSBYTES];
+    //uint8_t ss[KYBER_SSBYTES];
+    //uint8_t ss2[KYBER_SSBYTES];
 
     printf("SAP Protocol: ");
 
