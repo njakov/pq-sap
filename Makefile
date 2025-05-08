@@ -3,16 +3,20 @@ LIB_DIR = ./libs
 INC_DIR = ./libs
 TEST_DIR = ./tests
 SRC_DIR = ./src
+BENCH_DIR = ./bench
 
 # Targets
 TARGET = kyber_demo
 TEST_NAMES = kem_test protocol_test
 TEST_TARGETS = $(addprefix $(TEST_DIR)/, $(TEST_NAMES))
+BENCH_TARGET = benchmark
 
 # Sources
 MAIN_SOURCES = main.c 
 SHARED_SOURCES = $(LIB_DIR)/randombytes.c #$(LIB_DIR)/indcpa.c
 
+# Benchmark sources
+BENCH_SOURCES = $(BENCH_DIR)/bench.c $(SRC_DIR)/protocol.c $(SHARED_SOURCES)
 
 # Libraries 
 KYBER_LIBS =  -lpqcrystals_kyber512_avx2 -lpqcrystals_kyber768_avx2 -lpqcrystals_kyber1024_avx2
@@ -42,6 +46,10 @@ $(TEST_DIR)/protocol_test: $(TEST_DIR)/protocol_test.c $(SRC_DIR)/protocol.c $(S
 # Build all test targets
 tests: $(TEST_TARGETS)
 
+# Benchmark target
+$(BENCH_TARGET): $(BENCH_SOURCES)
+	$(CC) $(CFLAGS) $^ -o $@ $(LDFLAGS)
+
 # Run tests
 test: tests
 	LD_LIBRARY_PATH=$(LIB_DIR) $(TEST_DIR)/kem_test
@@ -51,8 +59,12 @@ test: tests
 run: $(TARGET)
 	LD_LIBRARY_PATH=$(LIB_DIR) ./$(TARGET)
 
+# Run benchmarks
+bench: $(BENCH_TARGET)
+	LD_LIBRARY_PATH=$(LIB_DIR) ./$(BENCH_TARGET)
+
 # Clean build artifacts
 clean:
-	rm -f $(TARGET) $(TEST_TARGETS)
+	rm -f $(TARGET) $(TEST_TARGETS) $(BENCH_TARGET)
 
 .PHONY: all tests test run clean
