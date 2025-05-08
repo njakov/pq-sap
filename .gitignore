@@ -10,6 +10,7 @@ kyber_demo
 main_program
 tests/kem_test
 tests/protocol_test
+bench/benchmark
 
 # === Editor / IDE ===
 .vs/
