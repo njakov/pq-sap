@@ -9,12 +9,13 @@ BENCH_DIR = ./bench
 TARGET = kyber_demo
 TEST_NAMES = kem_test protocol_test
 TEST_TARGETS = $(addprefix $(TEST_DIR)/, $(TEST_NAMES))
-BENCH_TARGET = $(BENCH_DIR)/benchmark
+BENCH_NAMES = benchmark benchmark_shuffle
+BENCH_TARGET = $(addprefix $(BENCH_DIR)/, $(BENCH_NAMES))
 
 # Sources
 MAIN_SOURCES = main.c 
 SHARED_SOURCES = $(LIB_DIR)/randombytes.c #$(LIB_DIR)/indcpa.c
-BENCH_SOURCES = $(BENCH_DIR)/bench.c $(SRC_DIR)/protocol.c $(SHARED_SOURCES)
+BENCH_SOURCES = $(SRC_DIR)/protocol.c $(SHARED_SOURCES)
 
 # Libraries 
 KYBER_LIBS =  -lpqcrystals_kyber512_avx2 -lpqcrystals_kyber768_avx2 -lpqcrystals_kyber1024_avx2
@@ -40,7 +41,10 @@ $(TEST_DIR)/protocol_test: $(TEST_DIR)/protocol_test.c $(SRC_DIR)/protocol.c $(S
 	$(CC) $(CFLAGS) $^ -o $@ $(LDFLAGS)
 
 # Benchmark target
-$(BENCH_DIR)/benchmark: $(BENCH_SOURCES)
+$(BENCH_DIR)/benchmark: $(BENCH_DIR)/bench.c $(BENCH_SOURCES)
+	$(CC) $(CFLAGS) $^ -o $@ $(LDFLAGS)
+
+$(BENCH_DIR)/benchmark_shuffle: $(BENCH_DIR)/bench_shuffle.c $(BENCH_SOURCES)
 	$(CC) $(CFLAGS) $^ -o $@ $(LDFLAGS)
 
 
