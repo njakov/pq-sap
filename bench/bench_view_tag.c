@@ -38,9 +38,11 @@ void shuffle_registers(uint8_t** epkr, uint8_t** view_tags, int n) {
 }
 
 
-void run(int n, int m) {
+void run(int n, int m, int shuffle) {
     struct timespec start, end;
-    __uint128_t total_ns = 0;
+    __uint128_t total_ns_1 = 0,
+                total_ns_2 = 0,
+                total_ns_3 = 0;
 
     for (int trial = 0; trial < m; ++trial) {
         // Receiver keypair
@@ -53,8 +55,6 @@ void run(int n, int m) {
         crypto_kem_keypair(v_pub, v_priv);
 
         uint8_t** ephemeral_pub_key_reg = malloc(n * sizeof(uint8_t*));
-        // uint8_t* view_tags = malloc(n * sizeof(uint8_t));
-        // uint8_t* view_tags = malloc(n * 32 * sizeof(uint8_t));
         uint8_t** view_tags = malloc(n * sizeof(uint8_t*));
         for (int i = 0; i < n; ++i) {
             ephemeral_pub_key_reg[i] = malloc(CRYPTO_CIPHERTEXTBYTES);
@@ -68,46 +68,62 @@ void run(int n, int m) {
             uint8_t ss[CRYPTO_BYTES];
             crypto_kem_enc(ephemeral_pub_key_reg[i], ss, temp_pub);
 
-            // view_tags[i] = calculate_view_tag(ss);
-            // shake128(view_tags+32*i, 32, ss, KYBER_SSBYTES);
             view_tags[i] = calculate_ss_hash(ss);
         }
 
         uint8_t ss_sender[CRYPTO_BYTES];
         crypto_kem_enc(ephemeral_pub_key_reg[n-1], ss_sender, v_pub);
-        // view_tags[n-1] = calculate_view_tag(ss_sender);
-        // shake128(view_tags+32*(n-1), 32, ss_sender, KYBER_SSBYTES);
         view_tags[n-1] = calculate_ss_hash(ss_sender);
 
-        shuffle_registers(ephemeral_pub_key_reg, view_tags, n);
+        if(shuffle) shuffle_registers(ephemeral_pub_key_reg, view_tags, n);
 
+        __uint128_t elapsed_ns;
+
+        //using no view tag
         clock_gettime(CLOCK_REALTIME, &start);
-
         for (int i = 0; i < n; ++i) {
             uint8_t ss[CRYPTO_BYTES];
             uint8_t stealth_pub_key[STEALTH_ADDRESS_BYTES];
 
             crypto_kem_dec(ss, ephemeral_pub_key_reg[i], v_priv);
-            // uint8_t tag = calculate_view_tag(ss);
+            calculate_stealth_pub_key(stealth_pub_key, ss, k_pub);
+        }
+        clock_gettime(CLOCK_REALTIME, &end);
+        elapsed_ns = calculate_elapsed_time(start, end);
+        total_ns_1 += elapsed_ns;
+
+        //using 1B of hash view tag
+        clock_gettime(CLOCK_REALTIME, &start);
+        for (int i = 0; i < n; ++i) {
+            uint8_t ss[CRYPTO_BYTES];
+            uint8_t stealth_pub_key[STEALTH_ADDRESS_BYTES];
+
+            crypto_kem_dec(ss, ephemeral_pub_key_reg[i], v_priv);
+            uint8_t tag = calculate_view_tag(ss);
+
+            if(view_tags[i][0] == tag)
+                calculate_stealth_pub_key(stealth_pub_key, ss, k_pub);
+        }
+        clock_gettime(CLOCK_REALTIME, &end);
+        elapsed_ns = calculate_elapsed_time(start, end);
+        total_ns_2 += elapsed_ns;
+
+        //using whole hash view tag
+        clock_gettime(CLOCK_REALTIME, &start);
+        for (int i = 0; i < n; ++i) {
+            uint8_t ss[CRYPTO_BYTES];
+            uint8_t stealth_pub_key[STEALTH_ADDRESS_BYTES];
+
+            crypto_kem_dec(ss, ephemeral_pub_key_reg[i], v_priv);
             uint8_t* tag = calculate_ss_hash(ss);
 
-            // if (tag == view_tags[i]) {
-            //     calculate_stealth_pub_key(stealth_pub_key, ss, k_pub);
-            // }
             int equal=1;
-            for(int j=0; j<32; j++){
-                if(tag[j] != view_tags[i][j])equal=0;
-            }
-            if(equal){
-                calculate_stealth_pub_key(stealth_pub_key, ss, k_pub);
-                break;
-            }
-
+            for(int j=0; j<32; j++){ if(tag[j] != view_tags[i][j]) equal=0; }
+            if(equal){ calculate_stealth_pub_key(stealth_pub_key, ss, k_pub); break; }
         }
-
         clock_gettime(CLOCK_REALTIME, &end);
-        __uint128_t elapsed_ns = calculate_elapsed_time(start, end);
-        total_ns += elapsed_ns;
+        elapsed_ns = calculate_elapsed_time(start, end);
+        total_ns_3 += elapsed_ns;
 
         for (int i = 0; i < n; ++i) {
             free(ephemeral_pub_key_reg[i]);
@@ -117,23 +133,27 @@ void run(int n, int m) {
         free(view_tags);
     }
 
-    double avg_ms = (double)total_ns / m / 1e6;
-    printf(" N = %d, Avg time = %.3f ms\n", n, avg_ms);
+    double avg_ms_1 = (double)total_ns_1 / m / 1e6;
+    double avg_ms_2 = (double)total_ns_2 / m / 1e6;
+    double avg_ms_3 = (double)total_ns_3 / m / 1e6;
+    printf("N = %5d, Avg time (No WT|1B WT|Full WT) = %8.3fms | %8.3fms | %8.3fms\n",
+                                                     n, avg_ms_1,avg_ms_2,avg_ms_3);
 }
 
 int main() {
     int ns[] = {5000, 10000, 20000, 40000, 80000};
     int len = sizeof(ns) / sizeof(ns[0]);
+    int shuffle = 0;
 
     for (int i = 0; i < len; ++i) {
-        run(ns[i], M_TRIALS);
+        run(ns[i], M_TRIALS, shuffle);
     }
     
-    /*  N = 5000, Avg time = 72.737 ms
-        N = 10000, Avg time = 134.340 ms
-        N = 20000, Avg time = 246.183 ms
-        N = 40000, Avg time = 530.417 ms
-        N = 80000, Avg time = 1391.601 ms
+    /*  N =  5000, Avg time (No WT|1B WT|Full WT) =   67.174ms |   43.454ms |   44.289ms
+        N = 10000, Avg time (No WT|1B WT|Full WT) =  135.695ms |   88.034ms |   88.525ms
+        N = 20000, Avg time (No WT|1B WT|Full WT) =  274.977ms |  179.547ms |  178.979ms
+        N = 40000, Avg time (No WT|1B WT|Full WT) =  545.585ms |  352.256ms |  355.304ms
+        N = 80000, Avg time (No WT|1B WT|Full WT) = 1104.643ms |  707.253ms |  719.648ms
     */
 
     return 0;

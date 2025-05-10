@@ -11,6 +11,8 @@ main_program
 tests/kem_test
 tests/protocol_test
 bench/benchmark
+bench/benchmark_shuffle
+bench/benchmark_view_tag
 
 # === Editor / IDE ===
 .vs/

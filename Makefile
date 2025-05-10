@@ -9,7 +9,7 @@ BENCH_DIR = ./bench
 TARGET = kyber_demo
 TEST_NAMES = kem_test protocol_test
 TEST_TARGETS = $(addprefix $(TEST_DIR)/, $(TEST_NAMES))
-BENCH_NAMES = benchmark benchmark_shuffle
+BENCH_NAMES = benchmark benchmark_shuffle benchmark_view_tag
 BENCH_TARGET = $(addprefix $(BENCH_DIR)/, $(BENCH_NAMES))
 
 # Sources
@@ -45,6 +45,9 @@ $(BENCH_DIR)/benchmark: $(BENCH_DIR)/bench.c $(BENCH_SOURCES)
 	$(CC) $(CFLAGS) $^ -o $@ $(LDFLAGS)
 
 $(BENCH_DIR)/benchmark_shuffle: $(BENCH_DIR)/bench_shuffle.c $(BENCH_SOURCES)
+	$(CC) $(CFLAGS) $^ -o $@ $(LDFLAGS)
+
+$(BENCH_DIR)/benchmark_view_tag: $(BENCH_DIR)/bench_view_tag.c $(BENCH_SOURCES)
 	$(CC) $(CFLAGS) $^ -o $@ $(LDFLAGS)
 
 
