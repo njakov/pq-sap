@@ -148,3 +148,16 @@ void calculate_stealth_pub_key(uint8_t stealth_pub_key[STEALTH_ADDRESS_BYTES],
 
     polyvec_tobytes(stealth_pub_key, &p_poly);
 }
+
+
+uint8_t* calculate_ss_hash(const uint8_t ss[SS_BYTES])
+{
+    if (ss == NULL) {
+        return 0;
+    }
+
+    uint8_t* hash = malloc(32*sizeof(uint8_t));
+    shake128(hash, 32, ss, KYBER_SSBYTES);
+
+    return hash;
+}

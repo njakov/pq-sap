@@ -83,3 +83,7 @@ void sender_computes_stealth_pub_key_and_viewtag(uint8_t stealth_pub_key[STEALTH
 /// @param[in] ss Shared secret.
 /// @return View tag as a single byte.
 uint8_t calculate_view_tag(const uint8_t ss[SS_BYTES]);
+
+
+
+uint8_t* calculate_ss_hash(const uint8_t ss[SS_BYTES]);

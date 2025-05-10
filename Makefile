@@ -9,14 +9,13 @@ BENCH_DIR = ./bench
 TARGET = kyber_demo
 TEST_NAMES = kem_test protocol_test
 TEST_TARGETS = $(addprefix $(TEST_DIR)/, $(TEST_NAMES))
-BENCH_TARGET = benchmark
+BENCH_NAMES = benchmark benchmark_shuffle benchmark_view_tag
+BENCH_TARGET = $(addprefix $(BENCH_DIR)/, $(BENCH_NAMES))
 
 # Sources
 MAIN_SOURCES = main.c 
 SHARED_SOURCES = $(LIB_DIR)/randombytes.c #$(LIB_DIR)/indcpa.c
-
-# Benchmark sources
-BENCH_SOURCES = $(BENCH_DIR)/bench.c $(SRC_DIR)/protocol.c $(SHARED_SOURCES)
+BENCH_SOURCES = $(SRC_DIR)/protocol.c $(SHARED_SOURCES)
 
 # Libraries 
 KYBER_LIBS =  -lpqcrystals_kyber512_avx2 -lpqcrystals_kyber768_avx2 -lpqcrystals_kyber1024_avx2
@@ -28,13 +27,12 @@ CFLAGS = -Wall -Wextra -I$(INC_DIR) -I$(SRC_DIR)
 LDFLAGS = -L$(LIB_DIR) -Wl,-rpath=$(LIB_DIR) $(KYBER_LIBS) $(FIPS202_LIBS)
 
 # Default target
-all: $(TARGET) tests
+all: $(TARGET) tests benchmarks
 
 # Main demo target
 $(TARGET): $(MAIN_SOURCES) $(SHARED_SOURCES)
 	$(CC) $(CFLAGS) $^ -o $@ $(LDFLAGS)
 
-# Rule for compiling tests
 # Rule for compiling tests
 $(TEST_DIR)/kem_test: $(TEST_DIR)/kem_test.c $(SHARED_SOURCES)
 	$(CC) $(CFLAGS) $^ -o $@ $(LDFLAGS)
@@ -42,13 +40,20 @@ $(TEST_DIR)/kem_test: $(TEST_DIR)/kem_test.c $(SHARED_SOURCES)
 $(TEST_DIR)/protocol_test: $(TEST_DIR)/protocol_test.c $(SRC_DIR)/protocol.c $(SHARED_SOURCES)
 	$(CC) $(CFLAGS) $^ -o $@ $(LDFLAGS)
 
+# Benchmark target
+$(BENCH_DIR)/benchmark: $(BENCH_DIR)/bench.c $(BENCH_SOURCES)
+	$(CC) $(CFLAGS) $^ -o $@ $(LDFLAGS)
+
+$(BENCH_DIR)/benchmark_shuffle: $(BENCH_DIR)/bench_shuffle.c $(BENCH_SOURCES)
+	$(CC) $(CFLAGS) $^ -o $@ $(LDFLAGS)
+
+$(BENCH_DIR)/benchmark_view_tag: $(BENCH_DIR)/bench_view_tag.c $(BENCH_SOURCES)
+	$(CC) $(CFLAGS) $^ -o $@ $(LDFLAGS)
+
 
 # Build all test targets
 tests: $(TEST_TARGETS)
-
-# Benchmark target
-$(BENCH_TARGET): $(BENCH_SOURCES)
-	$(CC) $(CFLAGS) $^ -o $@ $(LDFLAGS)
+benchmarks: $(BENCH_TARGET)
 
 # Run tests
 test: tests
@@ -60,7 +65,7 @@ run: $(TARGET)
 	LD_LIBRARY_PATH=$(LIB_DIR) ./$(TARGET)
 
 # Run benchmarks
-bench: $(BENCH_TARGET)
+bench: benchmarks
 	LD_LIBRARY_PATH=$(LIB_DIR) ./$(BENCH_TARGET)
 
 # Clean build artifacts
